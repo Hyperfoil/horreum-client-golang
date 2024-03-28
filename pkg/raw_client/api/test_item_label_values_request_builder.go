@@ -18,14 +18,10 @@ type TestItemLabelValuesRequestBuilderGetQueryParameters struct {
     Before *string `uriparametername:"before"`
     // either Ascending or Descending
     Direction *string `uriparametername:"direction"`
-    // name of a label to exclude from the result
-    Exclude []string `uriparametername:"exclude"`
     // either a required json sub-document or path expression
     Filter *string `uriparametername:"filter"`
     // Retrieve values for Filtering Labels
     Filtering *bool `uriparametername:"filtering"`
-    // name of a label to include in the result
-    Include []string `uriparametername:"include"`
     // the maximum number of results to include
     Limit *int32 `uriparametername:"limit"`
     // Retrieve values for Metric Labels
@@ -47,7 +43,7 @@ type TestItemLabelValuesRequestBuilderGetRequestConfiguration struct {
 // NewTestItemLabelValuesRequestBuilderInternal instantiates a new TestItemLabelValuesRequestBuilder and sets the default values.
 func NewTestItemLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemLabelValuesRequestBuilder) {
     m := &TestItemLabelValuesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}/labelValues{?after*,before*,direction*,exclude*,filter*,filtering*,include*,limit*,metrics*,page*,sort*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}/labelValues{?after*,before*,direction*,filter*,filtering*,limit*,metrics*,page*,sort*}", pathParameters),
     }
     return m
 }

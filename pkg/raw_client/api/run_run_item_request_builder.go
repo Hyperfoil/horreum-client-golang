@@ -122,6 +122,11 @@ func (m *RunRunItemRequestBuilder) Trash()(*RunItemTrashRequestBuilder) {
 func (m *RunRunItemRequestBuilder) UpdateAccess()(*RunItemUpdateAccessRequestBuilder) {
     return NewRunItemUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// WaitforDatasets the waitforDatasets property
+// returns a *RunItemWaitforDatasetsRequestBuilder when successful
+func (m *RunRunItemRequestBuilder) WaitforDatasets()(*RunItemWaitforDatasetsRequestBuilder) {
+    return NewRunItemWaitforDatasetsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *RunRunItemRequestBuilder when successful
 func (m *RunRunItemRequestBuilder) WithUrl(rawUrl string)(*RunRunItemRequestBuilder) {

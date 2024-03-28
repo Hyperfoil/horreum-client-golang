@@ -14,12 +14,8 @@ type RunItemLabelValuesRequestBuilder struct {
 type RunItemLabelValuesRequestBuilderGetQueryParameters struct {
     // either Ascending or Descending
     Direction *string `uriparametername:"direction"`
-    // name of a label to exclude from the result
-    Exclude []string `uriparametername:"exclude"`
     // either a required json sub-document or path expression
     Filter *string `uriparametername:"filter"`
-    // name of a label to include in the result
-    Include []string `uriparametername:"include"`
     // the maximum number of results to include
     Limit *int32 `uriparametername:"limit"`
     // which page to skip to when using a limit
@@ -39,7 +35,7 @@ type RunItemLabelValuesRequestBuilderGetRequestConfiguration struct {
 // NewRunItemLabelValuesRequestBuilderInternal instantiates a new RunItemLabelValuesRequestBuilder and sets the default values.
 func NewRunItemLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemLabelValuesRequestBuilder) {
     m := &RunItemLabelValuesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/labelValues{?direction*,exclude*,filter*,include*,limit*,page*,sort*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/labelValues{?direction*,filter*,limit*,page*,sort*}", pathParameters),
     }
     return m
 }
