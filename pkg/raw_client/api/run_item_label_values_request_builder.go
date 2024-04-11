@@ -14,8 +14,12 @@ type RunItemLabelValuesRequestBuilder struct {
 type RunItemLabelValuesRequestBuilderGetQueryParameters struct {
     // either Ascending or Descending
     Direction *string `uriparametername:"direction"`
+    // label name(s) to exclude from the result as scalar or comma separated
+    Exclude []string `uriparametername:"exclude"`
     // either a required json sub-document or path expression
     Filter *string `uriparametername:"filter"`
+    // label name(s) to include in the result as scalar or comma separated
+    Include []string `uriparametername:"include"`
     // the maximum number of results to include
     Limit *int32 `uriparametername:"limit"`
     // which page to skip to when using a limit
