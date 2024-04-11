@@ -50,10 +50,10 @@ func (m *TestItemTransformersRequestBuilder) ToPostRequestInformation(ctx contex
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     cast := make([]interface{}, len(body))
-	for i, v := range body {
-		cast[i] = v
-	}
-	requestInfo.SetContentFromScalarCollection(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", cast)
+    for i, v := range body {
+        cast[i] = v
+    }
+    requestInfo.SetContentFromScalarCollection(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", cast)
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
