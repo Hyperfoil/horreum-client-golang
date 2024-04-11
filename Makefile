@@ -28,7 +28,7 @@ endif
 GOLANGCI_LINT ?= ${PROJECT_BIN}/golangci-lint
 GOLANGCI_LINT_VERSION ?= "v1.54.2"
 KIOTA ?= ${PROJECT_BIN}/kiota
-KIOTA_VERSION ?= "v1.12.0"
+KIOTA_VERSION ?= "v1.13.0"
 HORREUM_BRANCH ?= "master"
 HORREUM_OPENAPI_PATH ?= "https://raw.githubusercontent.com/Hyperfoil/Horreum/${HORREUM_BRANCH}/docs/site/content/en/openapi/openapi.yaml"
 GENERATED_CLIENT_PATH = "${PROJECT_PATH}/pkg/raw_client"
@@ -91,7 +91,6 @@ generate-client: tools ## Generate kiota Horreum client
 	@{\
 		set -e ;\
 		${KIOTA} generate -l go -c HorreumRawClient -n github.com/hyperfoil/horreum-client-golang/pkg/raw_client -d ${OPENAPI_PATH}/openapi.yaml -o ${GENERATED_CLIENT_PATH} ;\
-		${PROJECT_PATH}/patches/patch_generated_code.sh ;\
 	}
 
 .PHONY: generate
