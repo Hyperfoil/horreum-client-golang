@@ -17,7 +17,6 @@ env:
   GO_VERSION: "1.21"
 jobs:
   check-openapi-change:
-    # TODO: find a way to set name including the branch we are checking
     runs-on: ubuntu-latest
     env:
       FORCE_COLOR: "1"
@@ -60,8 +59,8 @@ jobs:
           # Need another secret, less privilages
           GITHUB_TOKEN: ${{ secrets.UPDATE_HORREUM_CLIENT }}
         with:
-          title: Update build-chain-configuration-reader to ${{ github.event.client_payload.branch }}
+          title: Update build-chain-configuration-reader to ${{ steps.fetch-client-branch.outputs.horreum_client_branch }}
           body: >
             There is a change in the Horreum openapi spec for branch ${{ steps.fetch-horreum-branch.outputs.horreum_branch }}. Verify that there are no breaking changes.
-          branch: detected-horreum-openapi-change-${{ github.event.client_payload.branch }}
+          branch: detected-horreum-openapi-change-${{ steps.fetch-client-branch.outputs.horreum_client_branch }}
           commit-message: Horreum client updated
