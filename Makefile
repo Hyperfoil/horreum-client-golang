@@ -117,3 +117,10 @@ vet: generate ## Examines source code and reports suspicious constructs
 .PHONY: build
 build: generate vet lint ## Build golang pkg
 	go build ./pkg/...
+
+
+##@ Example
+
+.PHONY: run-example
+run-example: ## Run basic example
+	go run examples/basic_example.go
