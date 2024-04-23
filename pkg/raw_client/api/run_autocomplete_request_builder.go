@@ -10,6 +10,7 @@ type RunAutocompleteRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 type RunAutocompleteRequestBuilderGetQueryParameters struct {
+    // JSONPath to be autocompleted
     Query *string `uriparametername:"query"`
 }
 // RunAutocompleteRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
