@@ -1,6 +1,7 @@
 package models
 
 import (
+    ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6 "strings"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -24,14 +25,16 @@ type Action struct {
     // The type property
     typeEscaped *string
 }
-// Action_Action_config composed type wrapper for classes GithubIssueCommentActionable, GithubIssueCreateActionable, HttpActionable
+// Action_Action_config composed type wrapper for classes GithubIssueCommentActionConfigable, GithubIssueCreateActionConfigable, HttpActionConfigable, SlackChannelMessageActionConfigable
 type Action_Action_config struct {
-    // Composed type representation for type GithubIssueCommentActionable
-    githubIssueCommentAction GithubIssueCommentActionable
-    // Composed type representation for type GithubIssueCreateActionable
-    githubIssueCreateAction GithubIssueCreateActionable
-    // Composed type representation for type HttpActionable
-    httpAction HttpActionable
+    // Composed type representation for type GithubIssueCommentActionConfigable
+    githubIssueCommentActionConfig GithubIssueCommentActionConfigable
+    // Composed type representation for type GithubIssueCreateActionConfigable
+    githubIssueCreateActionConfig GithubIssueCreateActionConfigable
+    // Composed type representation for type HttpActionConfigable
+    httpActionConfig HttpActionConfigable
+    // Composed type representation for type SlackChannelMessageActionConfigable
+    slackChannelMessageActionConfig SlackChannelMessageActionConfigable
 }
 // NewAction_Action_config instantiates a new Action_Action_config and sets the default values.
 func NewAction_Action_config()(*Action_Action_config) {
@@ -44,7 +47,7 @@ func NewAction_Action_config()(*Action_Action_config) {
 func CreateAction_Action_configFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     result := NewAction_Action_config()
     if parseNode != nil {
-        mappingValueNode, err := parseNode.GetChildNode("")
+        mappingValueNode, err := parseNode.GetChildNode("type")
         if err != nil {
             return nil, err
         }
@@ -54,6 +57,15 @@ func CreateAction_Action_configFromDiscriminatorValue(parseNode i878a80d2330e89d
                 return nil, err
             }
             if mappingValue != nil {
+                if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "github-issue-comment") {
+                    result.SetGithubIssueCommentActionConfig(NewGithubIssueCommentActionConfig())
+                } else if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "github-issue-create") {
+                    result.SetGithubIssueCreateActionConfig(NewGithubIssueCreateActionConfig())
+                } else if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "http") {
+                    result.SetHttpActionConfig(NewHttpActionConfig())
+                } else if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "slack-channel-message") {
+                    result.SetSlackChannelMessageActionConfig(NewSlackChannelMessageActionConfig())
+                }
             }
         }
     }
@@ -64,66 +76,82 @@ func CreateAction_Action_configFromDiscriminatorValue(parseNode i878a80d2330e89d
 func (m *Action_Action_config) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     return make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
 }
-// GetGithubIssueCommentAction gets the GithubIssueCommentAction property value. Composed type representation for type GithubIssueCommentActionable
-// returns a GithubIssueCommentActionable when successful
-func (m *Action_Action_config) GetGithubIssueCommentAction()(GithubIssueCommentActionable) {
-    return m.githubIssueCommentAction
+// GetGithubIssueCommentActionConfig gets the GithubIssueCommentActionConfig property value. Composed type representation for type GithubIssueCommentActionConfigable
+// returns a GithubIssueCommentActionConfigable when successful
+func (m *Action_Action_config) GetGithubIssueCommentActionConfig()(GithubIssueCommentActionConfigable) {
+    return m.githubIssueCommentActionConfig
 }
-// GetGithubIssueCreateAction gets the GithubIssueCreateAction property value. Composed type representation for type GithubIssueCreateActionable
-// returns a GithubIssueCreateActionable when successful
-func (m *Action_Action_config) GetGithubIssueCreateAction()(GithubIssueCreateActionable) {
-    return m.githubIssueCreateAction
+// GetGithubIssueCreateActionConfig gets the GithubIssueCreateActionConfig property value. Composed type representation for type GithubIssueCreateActionConfigable
+// returns a GithubIssueCreateActionConfigable when successful
+func (m *Action_Action_config) GetGithubIssueCreateActionConfig()(GithubIssueCreateActionConfigable) {
+    return m.githubIssueCreateActionConfig
 }
-// GetHttpAction gets the HttpAction property value. Composed type representation for type HttpActionable
-// returns a HttpActionable when successful
-func (m *Action_Action_config) GetHttpAction()(HttpActionable) {
-    return m.httpAction
+// GetHttpActionConfig gets the HttpActionConfig property value. Composed type representation for type HttpActionConfigable
+// returns a HttpActionConfigable when successful
+func (m *Action_Action_config) GetHttpActionConfig()(HttpActionConfigable) {
+    return m.httpActionConfig
 }
 // GetIsComposedType determines if the current object is a wrapper around a composed type
 // returns a bool when successful
 func (m *Action_Action_config) GetIsComposedType()(bool) {
     return true
 }
+// GetSlackChannelMessageActionConfig gets the SlackChannelMessageActionConfig property value. Composed type representation for type SlackChannelMessageActionConfigable
+// returns a SlackChannelMessageActionConfigable when successful
+func (m *Action_Action_config) GetSlackChannelMessageActionConfig()(SlackChannelMessageActionConfigable) {
+    return m.slackChannelMessageActionConfig
+}
 // Serialize serializes information the current object
 func (m *Action_Action_config) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetGithubIssueCommentAction() != nil {
-        err := writer.WriteObjectValue("", m.GetGithubIssueCommentAction())
+    if m.GetGithubIssueCommentActionConfig() != nil {
+        err := writer.WriteObjectValue("", m.GetGithubIssueCommentActionConfig())
         if err != nil {
             return err
         }
-    } else if m.GetGithubIssueCreateAction() != nil {
-        err := writer.WriteObjectValue("", m.GetGithubIssueCreateAction())
+    } else if m.GetGithubIssueCreateActionConfig() != nil {
+        err := writer.WriteObjectValue("", m.GetGithubIssueCreateActionConfig())
         if err != nil {
             return err
         }
-    } else if m.GetHttpAction() != nil {
-        err := writer.WriteObjectValue("", m.GetHttpAction())
+    } else if m.GetHttpActionConfig() != nil {
+        err := writer.WriteObjectValue("", m.GetHttpActionConfig())
+        if err != nil {
+            return err
+        }
+    } else if m.GetSlackChannelMessageActionConfig() != nil {
+        err := writer.WriteObjectValue("", m.GetSlackChannelMessageActionConfig())
         if err != nil {
             return err
         }
     }
     return nil
 }
-// SetGithubIssueCommentAction sets the GithubIssueCommentAction property value. Composed type representation for type GithubIssueCommentActionable
-func (m *Action_Action_config) SetGithubIssueCommentAction(value GithubIssueCommentActionable)() {
-    m.githubIssueCommentAction = value
+// SetGithubIssueCommentActionConfig sets the GithubIssueCommentActionConfig property value. Composed type representation for type GithubIssueCommentActionConfigable
+func (m *Action_Action_config) SetGithubIssueCommentActionConfig(value GithubIssueCommentActionConfigable)() {
+    m.githubIssueCommentActionConfig = value
 }
-// SetGithubIssueCreateAction sets the GithubIssueCreateAction property value. Composed type representation for type GithubIssueCreateActionable
-func (m *Action_Action_config) SetGithubIssueCreateAction(value GithubIssueCreateActionable)() {
-    m.githubIssueCreateAction = value
+// SetGithubIssueCreateActionConfig sets the GithubIssueCreateActionConfig property value. Composed type representation for type GithubIssueCreateActionConfigable
+func (m *Action_Action_config) SetGithubIssueCreateActionConfig(value GithubIssueCreateActionConfigable)() {
+    m.githubIssueCreateActionConfig = value
 }
-// SetHttpAction sets the HttpAction property value. Composed type representation for type HttpActionable
-func (m *Action_Action_config) SetHttpAction(value HttpActionable)() {
-    m.httpAction = value
+// SetHttpActionConfig sets the HttpActionConfig property value. Composed type representation for type HttpActionConfigable
+func (m *Action_Action_config) SetHttpActionConfig(value HttpActionConfigable)() {
+    m.httpActionConfig = value
+}
+// SetSlackChannelMessageActionConfig sets the SlackChannelMessageActionConfig property value. Composed type representation for type SlackChannelMessageActionConfigable
+func (m *Action_Action_config) SetSlackChannelMessageActionConfig(value SlackChannelMessageActionConfigable)() {
+    m.slackChannelMessageActionConfig = value
 }
 type Action_Action_configable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetGithubIssueCommentAction()(GithubIssueCommentActionable)
-    GetGithubIssueCreateAction()(GithubIssueCreateActionable)
-    GetHttpAction()(HttpActionable)
-    SetGithubIssueCommentAction(value GithubIssueCommentActionable)()
-    SetGithubIssueCreateAction(value GithubIssueCreateActionable)()
-    SetHttpAction(value HttpActionable)()
+    GetGithubIssueCommentActionConfig()(GithubIssueCommentActionConfigable)
+    GetGithubIssueCreateActionConfig()(GithubIssueCreateActionConfigable)
+    GetHttpActionConfig()(HttpActionConfigable)
+    GetSlackChannelMessageActionConfig()(SlackChannelMessageActionConfigable)
+    SetGithubIssueCommentActionConfig(value GithubIssueCommentActionConfigable)()
+    SetGithubIssueCreateActionConfig(value GithubIssueCreateActionConfigable)()
+    SetHttpActionConfig(value HttpActionConfigable)()
+    SetSlackChannelMessageActionConfig(value SlackChannelMessageActionConfigable)()
 }
 // NewAction instantiates a new Action and sets the default values.
 func NewAction()(*Action) {
