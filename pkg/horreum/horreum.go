@@ -4,7 +4,10 @@ import (
 	"context"
 	"fmt"
 
+	nethttp "net/http"
+
 	"github.com/hyperfoil/horreum-client-golang/pkg/raw_client"
+	abstractions "github.com/microsoft/kiota-abstractions-go"
 	"github.com/microsoft/kiota-abstractions-go/authentication"
 	http "github.com/microsoft/kiota-http-go"
 
@@ -15,9 +18,9 @@ import (
 var version string
 
 type HorreumClient struct {
-	baseUrl  string
-	username *string
-	password *string
+	baseUrl      string
+	credentials  *HorreumCredentials
+	clientConfig *ClientConfiguration
 
 	RawClient   *raw_client.HorreumRawClient
 	AuthProvder authentication.AuthenticationProvider
@@ -41,34 +44,54 @@ func setupAuthProvider(baseUrl string, username string, password string) (authen
 	return NewKeycloakAccessProvider(config, username, password)
 }
 
-func NewHorreumClient(baseUrl string, username *string, password *string) (*HorreumClient, error) {
+func NewHorreumClient(baseUrl string, credentials *HorreumCredentials, clientConfig *ClientConfiguration) (*HorreumClient, error) {
 	client := &HorreumClient{
-		baseUrl:  baseUrl,
-		username: username,
-		password: password,
+		baseUrl:      baseUrl,
+		credentials:  credentials,
+		clientConfig: clientConfig,
+
+		// By default, set auth provider to anonymous one
+		AuthProvder: &authentication.AnonymousAuthenticationProvider{},
 	}
 
-	if username != nil && password != nil {
-		provider, err := setupAuthProvider(baseUrl, *username, *password)
-		if err != nil {
-			return nil, fmt.Errorf("error setting up keycloak provider: %w", err)
+	if credentials != nil {
+		if credentials.Username != nil && credentials.Password != nil {
+			provider, err := setupAuthProvider(baseUrl, *credentials.Username, *credentials.Password)
+			if err != nil {
+				return nil, fmt.Errorf("error setting up keycloak provider: %w", err)
+			}
+			client.AuthProvder = authentication.NewBaseBearerTokenAuthenticationProvider(provider)
+		} else if credentials.Password != nil {
+			return nil, fmt.Errorf("providing password without username, have you missed something?")
 		}
-		client.AuthProvder = authentication.NewBaseBearerTokenAuthenticationProvider(provider)
-	} else if password != nil {
-		return nil, fmt.Errorf("providing password without username, have you missed something?")
-	} else {
-		// anonymous authentication
-		client.AuthProvder = &authentication.AnonymousAuthenticationProvider{}
 	}
 
 	// Disable gzip compression
 	// To avoid "HTTP 400 Bad Request Illegal character ((CTRL-CHAR, code 31)): only regular white space (\r, \n, \t) is allowed between tokens"
-	compressOpt := http.NewCompressionOptions(false)
-	middlewares, err := http.GetDefaultMiddlewaresWithOptions(&compressOpt)
-	if err != nil {
-		return nil, fmt.Errorf("error creating default middlewares with compression disabled")
+	compressOption := http.NewCompressionOptions(false)
+	middlewareOptions := []abstractions.RequestOption{
+		&compressOption,
 	}
-	httpClient := http.GetDefaultClient(middlewares...)
+	// Add additional middleware options if provided
+	if clientConfig != nil && len(clientConfig.Options) > 0 {
+		middlewareOptions = append(middlewareOptions, clientConfig.Options...)
+	}
+
+	// Create default middlewares with provided options
+	middlewares, err := http.GetDefaultMiddlewaresWithOptions(middlewareOptions...)
+	if err != nil {
+		return nil, fmt.Errorf("error creating default middlewares with custom options: %w", err)
+	}
+
+	var httpClient *nethttp.Client
+	if clientConfig != nil && clientConfig.HttpClient != nil && clientConfig.UseDefaultMiddlewares {
+		httpClient = clientConfig.HttpClient
+		// Set middlewares
+		httpClient.Transport = http.NewCustomTransportWithParentTransport(clientConfig.ParentTransport, middlewares...)
+	} else {
+		httpClient = http.GetDefaultClient(middlewares...)
+	}
+
 	adapter, err := http.NewNetHttpRequestAdapterWithParseNodeFactoryAndSerializationWriterFactoryAndHttpClient(client.AuthProvder, nil, nil, httpClient)
 	if err != nil {
 		return nil, fmt.Errorf("error creating client adapter: %w", err)
