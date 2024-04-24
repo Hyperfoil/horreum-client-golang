@@ -121,6 +121,10 @@ build: generate vet lint ## Build golang pkg
 
 ##@ Example
 
-.PHONY: run-example
-run-example: ## Run basic example
-	go run examples/basic_example.go
+.PHONY: run-basic-example
+run-basic-example: ## Run basic example
+	go run examples/basic/basic_example.go
+
+.PHONY: run-read-only-example
+run-read-only-example: ## Run read-only example
+	go run examples/readonly/read_only_example.go
