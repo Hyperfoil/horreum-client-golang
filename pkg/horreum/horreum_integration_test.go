@@ -31,7 +31,10 @@ func setupAnonymousClient(t *testing.T) (*assert.Assertions, *HorreumClient) {
 }
 
 func setupAuthenticatedClient(t *testing.T) (*assert.Assertions, *HorreumClient) {
-	client, err := NewHorreumClient("http://localhost:8080", &username, &password)
+	client, err := NewHorreumClient("http://localhost:8080", &HorreumCredentials{
+		Username: &username,
+		Password: &password,
+	}, nil)
 	assertion := assert.New(t)
 	assertion.Nil(err)
 
