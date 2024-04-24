@@ -29,7 +29,7 @@ func Of[E any](e E) *E {
 	return &e
 }
 
-// this will setup all data variables
+// This will setup all data variables
 func init() {
 	log.Printf("setting up data")
 
@@ -156,7 +156,10 @@ func deleteAll(client *horreum.HorreumClient) {
 }
 
 func main() {
-	client, err := horreum.NewHorreumClient("http://localhost:8080", &username, &password)
+	client, err := horreum.NewHorreumClient("http://localhost:8080", &horreum.HorreumCredentials{
+		Username: &username,
+		Password: &password,
+	}, nil)
 	if err != nil {
 		log.Fatalf("error creating Horreum client: %s", err.Error())
 	}
@@ -185,5 +188,4 @@ func main() {
 	if getRuns, _ := client.RawClient.Api().Run().List().Get(ctx, nil); *getRuns.GetTotal() != int64(1) {
 		log.Fatalf("expected 1 run in the server")
 	}
-
 }
