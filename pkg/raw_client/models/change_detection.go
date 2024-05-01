@@ -15,8 +15,10 @@ type ChangeDetection struct {
     // The model property
     model *string
 }
-// ChangeDetection_ChangeDetection_config composed type wrapper for classes FixedThresholdDetectionConfigable, RelativeDifferenceDetectionConfigable
+// ChangeDetection_ChangeDetection_config composed type wrapper for classes EDivisiveDetectionConfigable, FixedThresholdDetectionConfigable, RelativeDifferenceDetectionConfigable
 type ChangeDetection_ChangeDetection_config struct {
+    // Composed type representation for type EDivisiveDetectionConfigable
+    eDivisiveDetectionConfig EDivisiveDetectionConfigable
     // Composed type representation for type FixedThresholdDetectionConfigable
     fixedThresholdDetectionConfig FixedThresholdDetectionConfigable
     // Composed type representation for type RelativeDifferenceDetectionConfigable
@@ -43,7 +45,9 @@ func CreateChangeDetection_ChangeDetection_configFromDiscriminatorValue(parseNod
                 return nil, err
             }
             if mappingValue != nil {
-                if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "fixedThreshold") {
+                if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "eDivisive") {
+                    result.SetEDivisiveDetectionConfig(NewEDivisiveDetectionConfig())
+                } else if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "fixedThreshold") {
                     result.SetFixedThresholdDetectionConfig(NewFixedThresholdDetectionConfig())
                 } else if ie967d16dae74a49b5e0e051225c5dac0d76e5e38f13dd1628028cbce108c25b6.EqualFold(*mappingValue, "relativeDifference") {
                     result.SetRelativeDifferenceDetectionConfig(NewRelativeDifferenceDetectionConfig())
@@ -52,6 +56,11 @@ func CreateChangeDetection_ChangeDetection_configFromDiscriminatorValue(parseNod
         }
     }
     return result, nil
+}
+// GetEDivisiveDetectionConfig gets the EDivisiveDetectionConfig property value. Composed type representation for type EDivisiveDetectionConfigable
+// returns a EDivisiveDetectionConfigable when successful
+func (m *ChangeDetection_ChangeDetection_config) GetEDivisiveDetectionConfig()(EDivisiveDetectionConfigable) {
+    return m.eDivisiveDetectionConfig
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
@@ -75,7 +84,12 @@ func (m *ChangeDetection_ChangeDetection_config) GetRelativeDifferenceDetectionC
 }
 // Serialize serializes information the current object
 func (m *ChangeDetection_ChangeDetection_config) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetFixedThresholdDetectionConfig() != nil {
+    if m.GetEDivisiveDetectionConfig() != nil {
+        err := writer.WriteObjectValue("", m.GetEDivisiveDetectionConfig())
+        if err != nil {
+            return err
+        }
+    } else if m.GetFixedThresholdDetectionConfig() != nil {
         err := writer.WriteObjectValue("", m.GetFixedThresholdDetectionConfig())
         if err != nil {
             return err
@@ -88,6 +102,10 @@ func (m *ChangeDetection_ChangeDetection_config) Serialize(writer i878a80d2330e8
     }
     return nil
 }
+// SetEDivisiveDetectionConfig sets the EDivisiveDetectionConfig property value. Composed type representation for type EDivisiveDetectionConfigable
+func (m *ChangeDetection_ChangeDetection_config) SetEDivisiveDetectionConfig(value EDivisiveDetectionConfigable)() {
+    m.eDivisiveDetectionConfig = value
+}
 // SetFixedThresholdDetectionConfig sets the FixedThresholdDetectionConfig property value. Composed type representation for type FixedThresholdDetectionConfigable
 func (m *ChangeDetection_ChangeDetection_config) SetFixedThresholdDetectionConfig(value FixedThresholdDetectionConfigable)() {
     m.fixedThresholdDetectionConfig = value
@@ -98,8 +116,10 @@ func (m *ChangeDetection_ChangeDetection_config) SetRelativeDifferenceDetectionC
 }
 type ChangeDetection_ChangeDetection_configable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetEDivisiveDetectionConfig()(EDivisiveDetectionConfigable)
     GetFixedThresholdDetectionConfig()(FixedThresholdDetectionConfigable)
     GetRelativeDifferenceDetectionConfig()(RelativeDifferenceDetectionConfigable)
+    SetEDivisiveDetectionConfig(value EDivisiveDetectionConfigable)()
     SetFixedThresholdDetectionConfig(value FixedThresholdDetectionConfigable)()
     SetRelativeDifferenceDetectionConfig(value RelativeDifferenceDetectionConfigable)()
 }

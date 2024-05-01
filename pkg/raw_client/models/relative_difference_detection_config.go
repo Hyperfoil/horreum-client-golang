@@ -13,6 +13,8 @@ type RelativeDifferenceDetectionConfig struct {
     filter *string
     // Minimal number of preceding datapoints
     minPrevious *int32
+    // The model property
+    model *RelativeDifferenceDetectionConfig_model
     // Maximum difference between the aggregated value of last <window> datapoints and the mean of preceding values.
     threshold *float64
     // Number of most recent datapoints used for aggregating the value for comparison.
@@ -74,6 +76,16 @@ func (m *RelativeDifferenceDetectionConfig) GetFieldDeserializers()(map[string]f
         }
         return nil
     }
+    res["model"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseRelativeDifferenceDetectionConfig_model)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetModel(val.(*RelativeDifferenceDetectionConfig_model))
+        }
+        return nil
+    }
     res["threshold"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetFloat64Value()
         if err != nil {
@@ -106,6 +118,11 @@ func (m *RelativeDifferenceDetectionConfig) GetFilter()(*string) {
 func (m *RelativeDifferenceDetectionConfig) GetMinPrevious()(*int32) {
     return m.minPrevious
 }
+// GetModel gets the model property value. The model property
+// returns a *RelativeDifferenceDetectionConfig_model when successful
+func (m *RelativeDifferenceDetectionConfig) GetModel()(*RelativeDifferenceDetectionConfig_model) {
+    return m.model
+}
 // GetThreshold gets the threshold property value. Maximum difference between the aggregated value of last <window> datapoints and the mean of preceding values.
 // returns a *float64 when successful
 func (m *RelativeDifferenceDetectionConfig) GetThreshold()(*float64) {
@@ -132,6 +149,13 @@ func (m *RelativeDifferenceDetectionConfig) Serialize(writer i878a80d2330e89d268
     }
     {
         err := writer.WriteInt32Value("minPrevious", m.GetMinPrevious())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetModel() != nil {
+        cast := (*m.GetModel()).String()
+        err := writer.WriteStringValue("model", &cast)
         if err != nil {
             return err
         }
@@ -172,6 +196,10 @@ func (m *RelativeDifferenceDetectionConfig) SetFilter(value *string)() {
 func (m *RelativeDifferenceDetectionConfig) SetMinPrevious(value *int32)() {
     m.minPrevious = value
 }
+// SetModel sets the model property value. The model property
+func (m *RelativeDifferenceDetectionConfig) SetModel(value *RelativeDifferenceDetectionConfig_model)() {
+    m.model = value
+}
 // SetThreshold sets the threshold property value. Maximum difference between the aggregated value of last <window> datapoints and the mean of preceding values.
 func (m *RelativeDifferenceDetectionConfig) SetThreshold(value *float64)() {
     m.threshold = value
@@ -186,11 +214,13 @@ type RelativeDifferenceDetectionConfigable interface {
     GetBuiltIn()(*bool)
     GetFilter()(*string)
     GetMinPrevious()(*int32)
+    GetModel()(*RelativeDifferenceDetectionConfig_model)
     GetThreshold()(*float64)
     GetWindow()(*int32)
     SetBuiltIn(value *bool)()
     SetFilter(value *string)()
     SetMinPrevious(value *int32)()
+    SetModel(value *RelativeDifferenceDetectionConfig_model)()
     SetThreshold(value *float64)()
     SetWindow(value *int32)()
 }
