@@ -13,6 +13,8 @@ type FixedThresholdDetectionConfig struct {
     max FixedThresholdDetectionConfig_maxable
     // Lower bound for acceptable datapoint values
     min FixedThresholdDetectionConfig_minable
+    // The model property
+    model *FixedThresholdDetectionConfig_model
 }
 // NewFixedThresholdDetectionConfig instantiates a new FixedThresholdDetectionConfig and sets the default values.
 func NewFixedThresholdDetectionConfig()(*FixedThresholdDetectionConfig) {
@@ -70,6 +72,16 @@ func (m *FixedThresholdDetectionConfig) GetFieldDeserializers()(map[string]func(
         }
         return nil
     }
+    res["model"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseFixedThresholdDetectionConfig_model)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetModel(val.(*FixedThresholdDetectionConfig_model))
+        }
+        return nil
+    }
     return res
 }
 // GetMax gets the max property value. Upper bound for acceptable datapoint values
@@ -81,6 +93,11 @@ func (m *FixedThresholdDetectionConfig) GetMax()(FixedThresholdDetectionConfig_m
 // returns a FixedThresholdDetectionConfig_minable when successful
 func (m *FixedThresholdDetectionConfig) GetMin()(FixedThresholdDetectionConfig_minable) {
     return m.min
+}
+// GetModel gets the model property value. The model property
+// returns a *FixedThresholdDetectionConfig_model when successful
+func (m *FixedThresholdDetectionConfig) GetModel()(*FixedThresholdDetectionConfig_model) {
+    return m.model
 }
 // Serialize serializes information the current object
 func (m *FixedThresholdDetectionConfig) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -98,6 +115,13 @@ func (m *FixedThresholdDetectionConfig) Serialize(writer i878a80d2330e89d2689638
     }
     {
         err := writer.WriteObjectValue("min", m.GetMin())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetModel() != nil {
+        cast := (*m.GetModel()).String()
+        err := writer.WriteStringValue("model", &cast)
         if err != nil {
             return err
         }
@@ -126,13 +150,19 @@ func (m *FixedThresholdDetectionConfig) SetMax(value FixedThresholdDetectionConf
 func (m *FixedThresholdDetectionConfig) SetMin(value FixedThresholdDetectionConfig_minable)() {
     m.min = value
 }
+// SetModel sets the model property value. The model property
+func (m *FixedThresholdDetectionConfig) SetModel(value *FixedThresholdDetectionConfig_model)() {
+    m.model = value
+}
 type FixedThresholdDetectionConfigable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBuiltIn()(*bool)
     GetMax()(FixedThresholdDetectionConfig_maxable)
     GetMin()(FixedThresholdDetectionConfig_minable)
+    GetModel()(*FixedThresholdDetectionConfig_model)
     SetBuiltIn(value *bool)()
     SetMax(value FixedThresholdDetectionConfig_maxable)()
     SetMin(value FixedThresholdDetectionConfig_minable)()
+    SetModel(value *FixedThresholdDetectionConfig_model)()
 }
