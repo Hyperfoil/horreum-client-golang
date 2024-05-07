@@ -5,7 +5,7 @@ import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// SchemaItemDropTokenRequestBuilder builds and executes requests for operations under \api\schema\{id-id}\dropToken
+// SchemaItemDropTokenRequestBuilder builds and executes requests for operations under \api\schema\{-id}\dropToken
 type SchemaItemDropTokenRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -19,7 +19,7 @@ type SchemaItemDropTokenRequestBuilderDeleteRequestConfiguration struct {
 // NewSchemaItemDropTokenRequestBuilderInternal instantiates a new SchemaItemDropTokenRequestBuilder and sets the default values.
 func NewSchemaItemDropTokenRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemDropTokenRequestBuilder) {
     m := &SchemaItemDropTokenRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{id%2Did}/dropToken", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}/dropToken", pathParameters),
     }
     return m
 }

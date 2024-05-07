@@ -6,7 +6,7 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// DatasetItemLabelValuesRequestBuilder builds and executes requests for operations under \api\dataset\{datasetId-id}\labelValues
+// DatasetItemLabelValuesRequestBuilder builds and executes requests for operations under \api\dataset\{dataset-id}\labelValues
 type DatasetItemLabelValuesRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -20,7 +20,7 @@ type DatasetItemLabelValuesRequestBuilderGetRequestConfiguration struct {
 // NewDatasetItemLabelValuesRequestBuilderInternal instantiates a new DatasetItemLabelValuesRequestBuilder and sets the default values.
 func NewDatasetItemLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetItemLabelValuesRequestBuilder) {
     m := &DatasetItemLabelValuesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/{datasetId%2Did}/labelValues", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/{dataset%2Did}/labelValues", pathParameters),
     }
     return m
 }

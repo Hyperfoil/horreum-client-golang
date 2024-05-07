@@ -53,28 +53,28 @@ func (m *SchemaRequestBuilder) AllLabels()(*SchemaAllLabelsRequestBuilder) {
 func (m *SchemaRequestBuilder) AllTransformers()(*SchemaAllTransformersRequestBuilder) {
     return NewSchemaAllTransformersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ByIdId gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.schema.item collection
+// ById gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.schema.item collection
 // Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
-// returns a *SchemaIdItemRequestBuilder when successful
-func (m *SchemaRequestBuilder) ByIdId(idId string)(*SchemaIdItemRequestBuilder) {
+// returns a *SchemaItemRequestBuilder when successful
+func (m *SchemaRequestBuilder) ById(id string)(*SchemaItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
-    if idId != "" {
-        urlTplParams["id%2Did"] = idId
+    if id != "" {
+        urlTplParams["%2Did"] = id
     }
-    return NewSchemaIdItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+    return NewSchemaItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// ByIdIdInteger gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.schema.item collection
-// returns a *SchemaIdItemRequestBuilder when successful
-func (m *SchemaRequestBuilder) ByIdIdInteger(idId int32)(*SchemaIdItemRequestBuilder) {
+// ByIdInteger gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.schema.item collection
+// returns a *SchemaItemRequestBuilder when successful
+func (m *SchemaRequestBuilder) ByIdInteger(id int32)(*SchemaItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
-    urlTplParams["id%2Did"] = i53ac87e8cb3cc9276228f74d38694a208cacb99bb8ceb705eeae99fb88d4d274.FormatInt(int64(idId), 10)
-    return NewSchemaIdItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+    urlTplParams["%2Did"] = i53ac87e8cb3cc9276228f74d38694a208cacb99bb8ceb705eeae99fb88d4d274.FormatInt(int64(id), 10)
+    return NewSchemaItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewSchemaRequestBuilderInternal instantiates a new SchemaRequestBuilder and sets the default values.
 func NewSchemaRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaRequestBuilder) {
@@ -158,7 +158,7 @@ func (m *SchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requ
 // ToPostRequestInformation save a new Schema
 // returns a *RequestInformation when successful
 func (m *SchemaRequestBuilder) ToPostRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Schemaable, requestConfiguration *SchemaRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, "{+baseurl}/api/schema", m.BaseRequestBuilder.PathParameters)
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)

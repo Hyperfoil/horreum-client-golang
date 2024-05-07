@@ -24,17 +24,17 @@ type ConfigDatastoreRequestBuilderPutRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// ByIdId gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.config.datastore.item collection
-// returns a *ConfigDatastoreIdItemRequestBuilder when successful
-func (m *ConfigDatastoreRequestBuilder) ByIdId(idId string)(*ConfigDatastoreIdItemRequestBuilder) {
+// ById gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.config.datastore.item collection
+// returns a *ConfigDatastoreItemRequestBuilder when successful
+func (m *ConfigDatastoreRequestBuilder) ById(id string)(*ConfigDatastoreItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
-    if idId != "" {
-        urlTplParams["id%2Did"] = idId
+    if id != "" {
+        urlTplParams["%2Did"] = id
     }
-    return NewConfigDatastoreIdItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+    return NewConfigDatastoreItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewConfigDatastoreRequestBuilderInternal instantiates a new ConfigDatastoreRequestBuilder and sets the default values.
 func NewConfigDatastoreRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConfigDatastoreRequestBuilder) {

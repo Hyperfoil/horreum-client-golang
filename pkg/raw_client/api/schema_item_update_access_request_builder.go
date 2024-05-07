@@ -6,7 +6,7 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// SchemaItemUpdateAccessRequestBuilder builds and executes requests for operations under \api\schema\{id-id}\updateAccess
+// SchemaItemUpdateAccessRequestBuilder builds and executes requests for operations under \api\schema\{-id}\updateAccess
 type SchemaItemUpdateAccessRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -32,7 +32,7 @@ type SchemaItemUpdateAccessRequestBuilderPostRequestConfiguration struct {
 // NewSchemaItemUpdateAccessRequestBuilderInternal instantiates a new SchemaItemUpdateAccessRequestBuilder and sets the default values.
 func NewSchemaItemUpdateAccessRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemUpdateAccessRequestBuilder) {
     m := &SchemaItemUpdateAccessRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{id%2Did}/updateAccess?access={access}&owner={owner}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}/updateAccess?access={access}&owner={owner}", pathParameters),
     }
     return m
 }

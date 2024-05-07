@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E5E2B3C035BD0D0D79253F6B3B3FECF429AC8683282247C9DB6F5856E0A8C3B90D8286B1C3C406C7B956B8AC5F7EE1A261F7CC461F639350420D7F29224EA53D",
+  "descriptionHash": "32D7E208EFBDEE46CCD4C5C875F618A597C0461871077214F1A0EB0E978E7A7A6555E3FA2F995F9AB7CFC277DFE1B084D7BFDB9D6D4A7D1173BF3796EBC47183",
   "descriptionLocation": "../../openapi/openapi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.14.0",
   "clientClassName": "HorreumRawClient",
   "clientNamespaceName": "github.com/hyperfoil/horreum-client-golang/pkg/raw_client",
   "language": "Go",

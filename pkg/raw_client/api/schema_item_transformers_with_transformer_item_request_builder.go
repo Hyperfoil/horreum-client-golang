@@ -5,7 +5,7 @@ import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// SchemaItemTransformersWithTransformerItemRequestBuilder builds and executes requests for operations under \api\schema\{id-id}\transformers\{transformerId}
+// SchemaItemTransformersWithTransformerItemRequestBuilder builds and executes requests for operations under \api\schema\{-id}\transformers\{transformerId}
 type SchemaItemTransformersWithTransformerItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -19,7 +19,7 @@ type SchemaItemTransformersWithTransformerItemRequestBuilderDeleteRequestConfigu
 // NewSchemaItemTransformersWithTransformerItemRequestBuilderInternal instantiates a new SchemaItemTransformersWithTransformerItemRequestBuilder and sets the default values.
 func NewSchemaItemTransformersWithTransformerItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemTransformersWithTransformerItemRequestBuilder) {
     m := &SchemaItemTransformersWithTransformerItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{id%2Did}/transformers/{transformerId}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}/transformers/{transformerId}", pathParameters),
     }
     return m
 }
