@@ -6,7 +6,7 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// ConfigDatastoreItemTestRequestBuilder builds and executes requests for operations under \api\config\datastore\{id-id}\test
+// ConfigDatastoreItemTestRequestBuilder builds and executes requests for operations under \api\config\datastore\{-id}\test
 type ConfigDatastoreItemTestRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -20,7 +20,7 @@ type ConfigDatastoreItemTestRequestBuilderGetRequestConfiguration struct {
 // NewConfigDatastoreItemTestRequestBuilderInternal instantiates a new ConfigDatastoreItemTestRequestBuilder and sets the default values.
 func NewConfigDatastoreItemTestRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ConfigDatastoreItemTestRequestBuilder) {
     m := &ConfigDatastoreItemTestRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/config/datastore/{id%2Did}/test", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/config/datastore/{%2Did}/test", pathParameters),
     }
     return m
 }

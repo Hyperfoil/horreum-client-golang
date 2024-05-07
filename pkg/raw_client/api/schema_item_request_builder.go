@@ -6,46 +6,46 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// SchemaIdItemRequestBuilder builds and executes requests for operations under \api\schema\{id-id}
-type SchemaIdItemRequestBuilder struct {
+// SchemaItemRequestBuilder builds and executes requests for operations under \api\schema\{-id}
+type SchemaItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// SchemaIdItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type SchemaIdItemRequestBuilderDeleteRequestConfiguration struct {
+// SchemaItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type SchemaItemRequestBuilderDeleteRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// SchemaIdItemRequestBuilderGetQueryParameters retrieve Schema by ID
-type SchemaIdItemRequestBuilderGetQueryParameters struct {
+// SchemaItemRequestBuilderGetQueryParameters retrieve Schema by ID
+type SchemaItemRequestBuilderGetQueryParameters struct {
     // API token for authorization
     Token *string `uriparametername:"token"`
 }
-// SchemaIdItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type SchemaIdItemRequestBuilderGetRequestConfiguration struct {
+// SchemaItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type SchemaItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *SchemaIdItemRequestBuilderGetQueryParameters
+    QueryParameters *SchemaItemRequestBuilderGetQueryParameters
 }
-// NewSchemaIdItemRequestBuilderInternal instantiates a new SchemaIdItemRequestBuilder and sets the default values.
-func NewSchemaIdItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaIdItemRequestBuilder) {
-    m := &SchemaIdItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{id%2Did}{?token*}", pathParameters),
+// NewSchemaItemRequestBuilderInternal instantiates a new SchemaItemRequestBuilder and sets the default values.
+func NewSchemaItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemRequestBuilder) {
+    m := &SchemaItemRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}{?token*}", pathParameters),
     }
     return m
 }
-// NewSchemaIdItemRequestBuilder instantiates a new SchemaIdItemRequestBuilder and sets the default values.
-func NewSchemaIdItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaIdItemRequestBuilder) {
+// NewSchemaItemRequestBuilder instantiates a new SchemaItemRequestBuilder and sets the default values.
+func NewSchemaItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewSchemaIdItemRequestBuilderInternal(urlParams, requestAdapter)
+    return NewSchemaItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Delete delete a Schema by id
-func (m *SchemaIdItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *SchemaIdItemRequestBuilderDeleteRequestConfiguration)(error) {
+func (m *SchemaItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *SchemaItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return err
@@ -58,17 +58,17 @@ func (m *SchemaIdItemRequestBuilder) Delete(ctx context.Context, requestConfigur
 }
 // DropToken the dropToken property
 // returns a *SchemaItemDropTokenRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) DropToken()(*SchemaItemDropTokenRequestBuilder) {
+func (m *SchemaItemRequestBuilder) DropToken()(*SchemaItemDropTokenRequestBuilder) {
     return NewSchemaItemDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Export the export property
 // returns a *SchemaItemExportRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) Export()(*SchemaItemExportRequestBuilder) {
+func (m *SchemaItemRequestBuilder) Export()(*SchemaItemExportRequestBuilder) {
     return NewSchemaItemExportRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get retrieve Schema by ID
 // returns a Schemaable when successful
-func (m *SchemaIdItemRequestBuilder) Get(ctx context.Context, requestConfiguration *SchemaIdItemRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Schemaable, error) {
+func (m *SchemaItemRequestBuilder) Get(ctx context.Context, requestConfiguration *SchemaItemRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Schemaable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
@@ -84,18 +84,18 @@ func (m *SchemaIdItemRequestBuilder) Get(ctx context.Context, requestConfigurati
 }
 // Labels the labels property
 // returns a *SchemaItemLabelsRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) Labels()(*SchemaItemLabelsRequestBuilder) {
+func (m *SchemaItemRequestBuilder) Labels()(*SchemaItemLabelsRequestBuilder) {
     return NewSchemaItemLabelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ResetToken the resetToken property
 // returns a *SchemaItemResetTokenRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) ResetToken()(*SchemaItemResetTokenRequestBuilder) {
+func (m *SchemaItemRequestBuilder) ResetToken()(*SchemaItemResetTokenRequestBuilder) {
     return NewSchemaItemResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ToDeleteRequestInformation delete a Schema by id
 // returns a *RequestInformation when successful
-func (m *SchemaIdItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *SchemaIdItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, "{+baseurl}/api/schema/{id%2Did}", m.BaseRequestBuilder.PathParameters)
+func (m *SchemaItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *SchemaItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
@@ -104,7 +104,7 @@ func (m *SchemaIdItemRequestBuilder) ToDeleteRequestInformation(ctx context.Cont
 }
 // ToGetRequestInformation retrieve Schema by ID
 // returns a *RequestInformation when successful
-func (m *SchemaIdItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SchemaIdItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *SchemaItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SchemaItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
@@ -118,16 +118,16 @@ func (m *SchemaIdItemRequestBuilder) ToGetRequestInformation(ctx context.Context
 }
 // Transformers the transformers property
 // returns a *SchemaItemTransformersRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) Transformers()(*SchemaItemTransformersRequestBuilder) {
+func (m *SchemaItemRequestBuilder) Transformers()(*SchemaItemTransformersRequestBuilder) {
     return NewSchemaItemTransformersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // UpdateAccess the updateAccess property
 // returns a *SchemaItemUpdateAccessRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) UpdateAccess()(*SchemaItemUpdateAccessRequestBuilder) {
+func (m *SchemaItemRequestBuilder) UpdateAccess()(*SchemaItemUpdateAccessRequestBuilder) {
     return NewSchemaItemUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *SchemaIdItemRequestBuilder when successful
-func (m *SchemaIdItemRequestBuilder) WithUrl(rawUrl string)(*SchemaIdItemRequestBuilder) {
-    return NewSchemaIdItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *SchemaItemRequestBuilder when successful
+func (m *SchemaItemRequestBuilder) WithUrl(rawUrl string)(*SchemaItemRequestBuilder) {
+    return NewSchemaItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

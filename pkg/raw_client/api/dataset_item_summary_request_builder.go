@@ -6,7 +6,7 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// DatasetItemSummaryRequestBuilder builds and executes requests for operations under \api\dataset\{datasetId-id}\summary
+// DatasetItemSummaryRequestBuilder builds and executes requests for operations under \api\dataset\{dataset-id}\summary
 type DatasetItemSummaryRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -25,7 +25,7 @@ type DatasetItemSummaryRequestBuilderGetRequestConfiguration struct {
 // NewDatasetItemSummaryRequestBuilderInternal instantiates a new DatasetItemSummaryRequestBuilder and sets the default values.
 func NewDatasetItemSummaryRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetItemSummaryRequestBuilder) {
     m := &DatasetItemSummaryRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/{datasetId%2Did}/summary{?viewId*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/{dataset%2Did}/summary{?viewId*}", pathParameters),
     }
     return m
 }

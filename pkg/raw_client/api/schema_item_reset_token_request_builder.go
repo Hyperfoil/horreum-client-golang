@@ -5,7 +5,7 @@ import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// SchemaItemResetTokenRequestBuilder builds and executes requests for operations under \api\schema\{id-id}\resetToken
+// SchemaItemResetTokenRequestBuilder builds and executes requests for operations under \api\schema\{-id}\resetToken
 type SchemaItemResetTokenRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -19,7 +19,7 @@ type SchemaItemResetTokenRequestBuilderPostRequestConfiguration struct {
 // NewSchemaItemResetTokenRequestBuilderInternal instantiates a new SchemaItemResetTokenRequestBuilder and sets the default values.
 func NewSchemaItemResetTokenRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemResetTokenRequestBuilder) {
     m := &SchemaItemResetTokenRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{id%2Did}/resetToken", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}/resetToken", pathParameters),
     }
     return m
 }

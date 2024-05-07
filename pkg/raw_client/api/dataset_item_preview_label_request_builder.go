@@ -6,7 +6,7 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// DatasetItemPreviewLabelRequestBuilder builds and executes requests for operations under \api\dataset\{datasetId-id}\previewLabel
+// DatasetItemPreviewLabelRequestBuilder builds and executes requests for operations under \api\dataset\{dataset-id}\previewLabel
 type DatasetItemPreviewLabelRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -20,7 +20,7 @@ type DatasetItemPreviewLabelRequestBuilderPostRequestConfiguration struct {
 // NewDatasetItemPreviewLabelRequestBuilderInternal instantiates a new DatasetItemPreviewLabelRequestBuilder and sets the default values.
 func NewDatasetItemPreviewLabelRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetItemPreviewLabelRequestBuilder) {
     m := &DatasetItemPreviewLabelRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/{datasetId%2Did}/previewLabel", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/{dataset%2Did}/previewLabel", pathParameters),
     }
     return m
 }

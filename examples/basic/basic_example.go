@@ -93,7 +93,7 @@ func createSchema(client *horreum.HorreumClient, schema models.Schemaable) int32
 }
 
 func createSchemaTransformers(client *horreum.HorreumClient, schemaId int32, transformer models.Transformerable) int32 {
-	transformerId, err := client.RawClient.Api().Schema().ByIdIdInteger(schemaId).Transformers().Post(ctx, transformer, nil)
+	transformerId, err := client.RawClient.Api().Schema().ByIdInteger(schemaId).Transformers().Post(ctx, transformer, nil)
 	if err != nil {
 		log.Fatalf("unable to create schema transformers for %d: %s", schemaId, err.Error())
 	}
@@ -148,7 +148,7 @@ func deleteAll(client *horreum.HorreumClient) {
 		log.Fatalf("unable to query all schemas: %s", err.Error())
 	}
 	for _, s := range schemaQueryRes.GetSchemas() {
-		err = client.RawClient.Api().Schema().ByIdIdInteger(*s.GetId()).Delete(ctx, nil)
+		err = client.RawClient.Api().Schema().ByIdInteger(*s.GetId()).Delete(ctx, nil)
 		if err != nil {
 			log.Fatalf("unable to delete schema %d: %s", *s.GetId(), err.Error())
 		}

@@ -5,7 +5,7 @@ import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// SchemaItemLabelsWithLabelItemRequestBuilder builds and executes requests for operations under \api\schema\{id-id}\labels\{labelId}
+// SchemaItemLabelsWithLabelItemRequestBuilder builds and executes requests for operations under \api\schema\{-id}\labels\{labelId}
 type SchemaItemLabelsWithLabelItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
@@ -19,7 +19,7 @@ type SchemaItemLabelsWithLabelItemRequestBuilderDeleteRequestConfiguration struc
 // NewSchemaItemLabelsWithLabelItemRequestBuilderInternal instantiates a new SchemaItemLabelsWithLabelItemRequestBuilder and sets the default values.
 func NewSchemaItemLabelsWithLabelItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemLabelsWithLabelItemRequestBuilder) {
     m := &SchemaItemLabelsWithLabelItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{id%2Did}/labels/{labelId}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}/labels/{labelId}", pathParameters),
     }
     return m
 }
