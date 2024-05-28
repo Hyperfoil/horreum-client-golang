@@ -22,6 +22,8 @@ type RunItemLabelValuesRequestBuilderGetQueryParameters struct {
     Include []string `uriparametername:"include"`
     // the maximum number of results to include
     Limit *int32 `uriparametername:"limit"`
+    // enable filtering for multiple values with an array of values
+    MultiFilter *bool `uriparametername:"multiFilter"`
     // which page to skip to when using a limit
     Page *int32 `uriparametername:"page"`
     // label name for sorting
@@ -39,7 +41,7 @@ type RunItemLabelValuesRequestBuilderGetRequestConfiguration struct {
 // NewRunItemLabelValuesRequestBuilderInternal instantiates a new RunItemLabelValuesRequestBuilder and sets the default values.
 func NewRunItemLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemLabelValuesRequestBuilder) {
     m := &RunItemLabelValuesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/labelValues{?direction*,exclude*,filter*,include*,limit*,page*,sort*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/labelValues{?direction*,exclude*,filter*,include*,limit*,multiFilter*,page*,sort*}", pathParameters),
     }
     return m
 }
