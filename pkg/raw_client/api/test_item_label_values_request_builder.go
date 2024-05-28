@@ -30,6 +30,8 @@ type TestItemLabelValuesRequestBuilderGetQueryParameters struct {
     Limit *int32 `uriparametername:"limit"`
     // Retrieve values for Metric Labels
     Metrics *bool `uriparametername:"metrics"`
+    // enable filtering for multiple values with an array of values
+    MultiFilter *bool `uriparametername:"multiFilter"`
     // which page to skip to when using a limit
     Page *int32 `uriparametername:"page"`
     // json path to sortable value or start or stop for sorting by time
@@ -47,7 +49,7 @@ type TestItemLabelValuesRequestBuilderGetRequestConfiguration struct {
 // NewTestItemLabelValuesRequestBuilderInternal instantiates a new TestItemLabelValuesRequestBuilder and sets the default values.
 func NewTestItemLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemLabelValuesRequestBuilder) {
     m := &TestItemLabelValuesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}/labelValues{?after*,before*,direction*,exclude*,filter*,filtering*,include*,limit*,metrics*,page*,sort*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}/labelValues{?after*,before*,direction*,exclude*,filter*,filtering*,include*,limit*,metrics*,multiFilter*,page*,sort*}", pathParameters),
     }
     return m
 }
