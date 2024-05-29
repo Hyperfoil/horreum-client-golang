@@ -14,10 +14,7 @@ type TestRequestBuilder struct {
 // TestRequestBuilderGetQueryParameters retrieve a paginated list of Tests with available count
 type TestRequestBuilderGetQueryParameters struct {
     // Sort direction
-    // Deprecated: This property is deprecated, use DirectionAsSortDirection instead
     Direction *string `uriparametername:"direction"`
-    // Sort direction
-    DirectionAsSortDirection *i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.SortDirection `uriparametername:"direction"`
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
     // filter by page number of a paginated list of Tests
