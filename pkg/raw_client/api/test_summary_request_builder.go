@@ -18,7 +18,9 @@ type TestSummaryRequestBuilderGetQueryParameters struct {
     Folder *string `uriparametername:"folder"`
     // limit the result count
     Limit *int32 `uriparametername:"limit"`
-    // filter by page number of a paginated list of 
+    // Filter by test name
+    Name *string `uriparametername:"name"`
+    // filter by page number of a paginated list of, set to 0 means return all results 
     Page *int32 `uriparametername:"page"`
     // "__my", "__all" or a comma delimited  list of roles
     Roles *string `uriparametername:"roles"`
@@ -35,7 +37,7 @@ type TestSummaryRequestBuilderGetRequestConfiguration struct {
 // NewTestSummaryRequestBuilderInternal instantiates a new TestSummaryRequestBuilder and sets the default values.
 func NewTestSummaryRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestSummaryRequestBuilder) {
     m := &TestSummaryRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/summary{?direction*,folder*,limit*,page*,roles*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/summary{?direction*,folder*,limit*,name*,page*,roles*}", pathParameters),
     }
     return m
 }
