@@ -34,7 +34,7 @@ jobs:
       - name: Create Pull Request
         uses: gr2m/create-or-update-pull-request-action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RH_PERF_BOT_TOKEN }}
         with:
           title: Update Kiota version to ${{ github.event.inputs.version }}
           body: >

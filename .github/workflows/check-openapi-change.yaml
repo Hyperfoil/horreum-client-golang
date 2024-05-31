@@ -57,7 +57,7 @@ jobs:
         uses: gr2m/create-or-update-pull-request-action@v1
         env:
           # Need another secret, less privilages
-          GITHUB_TOKEN: ${{ secrets.UPDATE_HORREUM_CLIENT }}
+          GITHUB_TOKEN: ${{ secrets.RH_PERF_BOT_TOKEN }}
         with:
           title: Update Horreum raw client on ${{ steps.fetch-client-branch.outputs.horreum_client_branch }}
           body: >

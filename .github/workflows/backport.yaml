@@ -7,7 +7,7 @@ on:
       - labeled
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.RH_PERF_BOT_TOKEN }}
   NO_SQUASH_OPTION: true
 
 jobs:
