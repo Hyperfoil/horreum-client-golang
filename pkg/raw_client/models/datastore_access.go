@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 // Access rights for the test. This defines the visibility of the Test in the UI
 type Datastore_access int
 
@@ -24,7 +21,7 @@ func ParseDatastore_access(v string) (any, error) {
         case "PRIVATE":
             result = PRIVATE_DATASTORE_ACCESS
         default:
-            return 0, errors.New("Unknown Datastore_access value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 // Access rights for the test. This defines the visibility of the Test in the UI
 type ProtectedType_access int
 
@@ -24,7 +21,7 @@ func ParseProtectedType_access(v string) (any, error) {
         case "PRIVATE":
             result = PRIVATE_PROTECTEDTYPE_ACCESS
         default:
-            return 0, errors.New("Unknown ProtectedType_access value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

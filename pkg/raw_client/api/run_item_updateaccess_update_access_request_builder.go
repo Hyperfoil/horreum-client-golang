@@ -6,12 +6,12 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// RunItemUpdateAccessRequestBuilder builds and executes requests for operations under \api\run\{id}\updateAccess
-type RunItemUpdateAccessRequestBuilder struct {
+// RunItemUpdateaccessUpdateAccessRequestBuilder builds and executes requests for operations under \api\run\{id}\updateAccess
+type RunItemUpdateaccessUpdateAccessRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// RunItemUpdateAccessRequestBuilderPostQueryParameters update the Access configuration for a Run
-type RunItemUpdateAccessRequestBuilderPostQueryParameters struct {
+// RunItemUpdateaccessUpdateAccessRequestBuilderPostQueryParameters update the Access configuration for a Run
+type RunItemUpdateaccessUpdateAccessRequestBuilderPostQueryParameters struct {
     // New Access level
     // Deprecated: This property is deprecated, use AccessAsAccess instead
     Access *string `uriparametername:"access"`
@@ -20,30 +20,30 @@ type RunItemUpdateAccessRequestBuilderPostQueryParameters struct {
     // Name of the new owner
     Owner *string `uriparametername:"owner"`
 }
-// RunItemUpdateAccessRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type RunItemUpdateAccessRequestBuilderPostRequestConfiguration struct {
+// RunItemUpdateaccessUpdateAccessRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type RunItemUpdateaccessUpdateAccessRequestBuilderPostRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *RunItemUpdateAccessRequestBuilderPostQueryParameters
+    QueryParameters *RunItemUpdateaccessUpdateAccessRequestBuilderPostQueryParameters
 }
-// NewRunItemUpdateAccessRequestBuilderInternal instantiates a new RunItemUpdateAccessRequestBuilder and sets the default values.
-func NewRunItemUpdateAccessRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemUpdateAccessRequestBuilder) {
-    m := &RunItemUpdateAccessRequestBuilder{
+// NewRunItemUpdateaccessUpdateAccessRequestBuilderInternal instantiates a new RunItemUpdateaccessUpdateAccessRequestBuilder and sets the default values.
+func NewRunItemUpdateaccessUpdateAccessRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemUpdateaccessUpdateAccessRequestBuilder) {
+    m := &RunItemUpdateaccessUpdateAccessRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/updateAccess?access={access}&owner={owner}", pathParameters),
     }
     return m
 }
-// NewRunItemUpdateAccessRequestBuilder instantiates a new RunItemUpdateAccessRequestBuilder and sets the default values.
-func NewRunItemUpdateAccessRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemUpdateAccessRequestBuilder) {
+// NewRunItemUpdateaccessUpdateAccessRequestBuilder instantiates a new RunItemUpdateaccessUpdateAccessRequestBuilder and sets the default values.
+func NewRunItemUpdateaccessUpdateAccessRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemUpdateaccessUpdateAccessRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewRunItemUpdateAccessRequestBuilderInternal(urlParams, requestAdapter)
+    return NewRunItemUpdateaccessUpdateAccessRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post update the Access configuration for a Run
-func (m *RunItemUpdateAccessRequestBuilder) Post(ctx context.Context, requestConfiguration *RunItemUpdateAccessRequestBuilderPostRequestConfiguration)(error) {
+func (m *RunItemUpdateaccessUpdateAccessRequestBuilder) Post(ctx context.Context, requestConfiguration *RunItemUpdateaccessUpdateAccessRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return err
@@ -56,7 +56,7 @@ func (m *RunItemUpdateAccessRequestBuilder) Post(ctx context.Context, requestCon
 }
 // ToPostRequestInformation update the Access configuration for a Run
 // returns a *RequestInformation when successful
-func (m *RunItemUpdateAccessRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *RunItemUpdateAccessRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *RunItemUpdateaccessUpdateAccessRequestBuilder) ToPostRequestInformation(ctx context.Context, requestConfiguration *RunItemUpdateaccessUpdateAccessRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
@@ -68,7 +68,7 @@ func (m *RunItemUpdateAccessRequestBuilder) ToPostRequestInformation(ctx context
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *RunItemUpdateAccessRequestBuilder when successful
-func (m *RunItemUpdateAccessRequestBuilder) WithUrl(rawUrl string)(*RunItemUpdateAccessRequestBuilder) {
-    return NewRunItemUpdateAccessRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *RunItemUpdateaccessUpdateAccessRequestBuilder when successful
+func (m *RunItemUpdateaccessUpdateAccessRequestBuilder) WithUrl(rawUrl string)(*RunItemUpdateaccessUpdateAccessRequestBuilder) {
+    return NewRunItemUpdateaccessUpdateAccessRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

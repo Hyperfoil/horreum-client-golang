@@ -5,33 +5,33 @@ import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
-// SchemaIdByUriWithUriItemRequestBuilder builds and executes requests for operations under \api\schema\idByUri\{uri}
-type SchemaIdByUriWithUriItemRequestBuilder struct {
+// SchemaIdbyuriWithUriItemRequestBuilder builds and executes requests for operations under \api\schema\idByUri\{uri}
+type SchemaIdbyuriWithUriItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// SchemaIdByUriWithUriItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type SchemaIdByUriWithUriItemRequestBuilderGetRequestConfiguration struct {
+// SchemaIdbyuriWithUriItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type SchemaIdbyuriWithUriItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewSchemaIdByUriWithUriItemRequestBuilderInternal instantiates a new SchemaIdByUriWithUriItemRequestBuilder and sets the default values.
-func NewSchemaIdByUriWithUriItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaIdByUriWithUriItemRequestBuilder) {
-    m := &SchemaIdByUriWithUriItemRequestBuilder{
+// NewSchemaIdbyuriWithUriItemRequestBuilderInternal instantiates a new SchemaIdbyuriWithUriItemRequestBuilder and sets the default values.
+func NewSchemaIdbyuriWithUriItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaIdbyuriWithUriItemRequestBuilder) {
+    m := &SchemaIdbyuriWithUriItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/idByUri/{uri}", pathParameters),
     }
     return m
 }
-// NewSchemaIdByUriWithUriItemRequestBuilder instantiates a new SchemaIdByUriWithUriItemRequestBuilder and sets the default values.
-func NewSchemaIdByUriWithUriItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaIdByUriWithUriItemRequestBuilder) {
+// NewSchemaIdbyuriWithUriItemRequestBuilder instantiates a new SchemaIdbyuriWithUriItemRequestBuilder and sets the default values.
+func NewSchemaIdbyuriWithUriItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaIdbyuriWithUriItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewSchemaIdByUriWithUriItemRequestBuilderInternal(urlParams, requestAdapter)
+    return NewSchemaIdbyuriWithUriItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get retrieve Schema ID by uri
 // returns a *int32 when successful
-func (m *SchemaIdByUriWithUriItemRequestBuilder) Get(ctx context.Context, requestConfiguration *SchemaIdByUriWithUriItemRequestBuilderGetRequestConfiguration)(*int32, error) {
+func (m *SchemaIdbyuriWithUriItemRequestBuilder) Get(ctx context.Context, requestConfiguration *SchemaIdbyuriWithUriItemRequestBuilderGetRequestConfiguration)(*int32, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
@@ -47,7 +47,7 @@ func (m *SchemaIdByUriWithUriItemRequestBuilder) Get(ctx context.Context, reques
 }
 // ToGetRequestInformation retrieve Schema ID by uri
 // returns a *RequestInformation when successful
-func (m *SchemaIdByUriWithUriItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SchemaIdByUriWithUriItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *SchemaIdbyuriWithUriItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SchemaIdbyuriWithUriItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
@@ -57,7 +57,7 @@ func (m *SchemaIdByUriWithUriItemRequestBuilder) ToGetRequestInformation(ctx con
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *SchemaIdByUriWithUriItemRequestBuilder when successful
-func (m *SchemaIdByUriWithUriItemRequestBuilder) WithUrl(rawUrl string)(*SchemaIdByUriWithUriItemRequestBuilder) {
-    return NewSchemaIdByUriWithUriItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *SchemaIdbyuriWithUriItemRequestBuilder when successful
+func (m *SchemaIdbyuriWithUriItemRequestBuilder) WithUrl(rawUrl string)(*SchemaIdbyuriWithUriItemRequestBuilder) {
+    return NewSchemaIdbyuriWithUriItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

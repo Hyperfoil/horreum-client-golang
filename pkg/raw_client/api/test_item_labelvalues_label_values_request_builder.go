@@ -6,12 +6,12 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// TestItemLabelValuesRequestBuilder builds and executes requests for operations under \api\test\{id}\labelValues
-type TestItemLabelValuesRequestBuilder struct {
+// TestItemLabelvaluesLabelValuesRequestBuilder builds and executes requests for operations under \api\test\{id}\labelValues
+type TestItemLabelvaluesLabelValuesRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// TestItemLabelValuesRequestBuilderGetQueryParameters list all Label Values for a Test
-type TestItemLabelValuesRequestBuilderGetQueryParameters struct {
+// TestItemLabelvaluesLabelValuesRequestBuilderGetQueryParameters list all Label Values for a Test
+type TestItemLabelvaluesLabelValuesRequestBuilderGetQueryParameters struct {
     // ISO-like date time string or epoch millis
     After *string `uriparametername:"after"`
     // ISO-like date time string or epoch millis
@@ -37,31 +37,31 @@ type TestItemLabelValuesRequestBuilderGetQueryParameters struct {
     // json path to sortable value or start or stop for sorting by time
     Sort *string `uriparametername:"sort"`
 }
-// TestItemLabelValuesRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type TestItemLabelValuesRequestBuilderGetRequestConfiguration struct {
+// TestItemLabelvaluesLabelValuesRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type TestItemLabelvaluesLabelValuesRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *TestItemLabelValuesRequestBuilderGetQueryParameters
+    QueryParameters *TestItemLabelvaluesLabelValuesRequestBuilderGetQueryParameters
 }
-// NewTestItemLabelValuesRequestBuilderInternal instantiates a new TestItemLabelValuesRequestBuilder and sets the default values.
-func NewTestItemLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemLabelValuesRequestBuilder) {
-    m := &TestItemLabelValuesRequestBuilder{
+// NewTestItemLabelvaluesLabelValuesRequestBuilderInternal instantiates a new TestItemLabelvaluesLabelValuesRequestBuilder and sets the default values.
+func NewTestItemLabelvaluesLabelValuesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemLabelvaluesLabelValuesRequestBuilder) {
+    m := &TestItemLabelvaluesLabelValuesRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}/labelValues{?after*,before*,direction*,exclude*,filter*,filtering*,include*,limit*,metrics*,multiFilter*,page*,sort*}", pathParameters),
     }
     return m
 }
-// NewTestItemLabelValuesRequestBuilder instantiates a new TestItemLabelValuesRequestBuilder and sets the default values.
-func NewTestItemLabelValuesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemLabelValuesRequestBuilder) {
+// NewTestItemLabelvaluesLabelValuesRequestBuilder instantiates a new TestItemLabelvaluesLabelValuesRequestBuilder and sets the default values.
+func NewTestItemLabelvaluesLabelValuesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemLabelvaluesLabelValuesRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewTestItemLabelValuesRequestBuilderInternal(urlParams, requestAdapter)
+    return NewTestItemLabelvaluesLabelValuesRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get list all Label Values for a Test
 // returns a []ExportedLabelValuesable when successful
-func (m *TestItemLabelValuesRequestBuilder) Get(ctx context.Context, requestConfiguration *TestItemLabelValuesRequestBuilderGetRequestConfiguration)([]i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.ExportedLabelValuesable, error) {
+func (m *TestItemLabelvaluesLabelValuesRequestBuilder) Get(ctx context.Context, requestConfiguration *TestItemLabelvaluesLabelValuesRequestBuilderGetRequestConfiguration)([]i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.ExportedLabelValuesable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
@@ -80,7 +80,7 @@ func (m *TestItemLabelValuesRequestBuilder) Get(ctx context.Context, requestConf
 }
 // ToGetRequestInformation list all Label Values for a Test
 // returns a *RequestInformation when successful
-func (m *TestItemLabelValuesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TestItemLabelValuesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *TestItemLabelvaluesLabelValuesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TestItemLabelvaluesLabelValuesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
@@ -93,7 +93,7 @@ func (m *TestItemLabelValuesRequestBuilder) ToGetRequestInformation(ctx context.
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *TestItemLabelValuesRequestBuilder when successful
-func (m *TestItemLabelValuesRequestBuilder) WithUrl(rawUrl string)(*TestItemLabelValuesRequestBuilder) {
-    return NewTestItemLabelValuesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *TestItemLabelvaluesLabelValuesRequestBuilder when successful
+func (m *TestItemLabelvaluesLabelValuesRequestBuilder) WithUrl(rawUrl string)(*TestItemLabelvaluesLabelValuesRequestBuilder) {
+    return NewTestItemLabelvaluesLabelValuesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

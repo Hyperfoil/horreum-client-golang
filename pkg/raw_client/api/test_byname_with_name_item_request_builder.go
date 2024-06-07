@@ -6,33 +6,33 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// TestByNameWithNameItemRequestBuilder builds and executes requests for operations under \api\test\byName\{name}
-type TestByNameWithNameItemRequestBuilder struct {
+// TestBynameWithNameItemRequestBuilder builds and executes requests for operations under \api\test\byName\{name}
+type TestBynameWithNameItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// TestByNameWithNameItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type TestByNameWithNameItemRequestBuilderGetRequestConfiguration struct {
+// TestBynameWithNameItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type TestBynameWithNameItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewTestByNameWithNameItemRequestBuilderInternal instantiates a new TestByNameWithNameItemRequestBuilder and sets the default values.
-func NewTestByNameWithNameItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestByNameWithNameItemRequestBuilder) {
-    m := &TestByNameWithNameItemRequestBuilder{
+// NewTestBynameWithNameItemRequestBuilderInternal instantiates a new TestBynameWithNameItemRequestBuilder and sets the default values.
+func NewTestBynameWithNameItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestBynameWithNameItemRequestBuilder) {
+    m := &TestBynameWithNameItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/byName/{name}", pathParameters),
     }
     return m
 }
-// NewTestByNameWithNameItemRequestBuilder instantiates a new TestByNameWithNameItemRequestBuilder and sets the default values.
-func NewTestByNameWithNameItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestByNameWithNameItemRequestBuilder) {
+// NewTestBynameWithNameItemRequestBuilder instantiates a new TestBynameWithNameItemRequestBuilder and sets the default values.
+func NewTestBynameWithNameItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestBynameWithNameItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewTestByNameWithNameItemRequestBuilderInternal(urlParams, requestAdapter)
+    return NewTestBynameWithNameItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get retrieve a test by name
 // returns a Testable when successful
-func (m *TestByNameWithNameItemRequestBuilder) Get(ctx context.Context, requestConfiguration *TestByNameWithNameItemRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Testable, error) {
+func (m *TestBynameWithNameItemRequestBuilder) Get(ctx context.Context, requestConfiguration *TestBynameWithNameItemRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Testable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
@@ -48,7 +48,7 @@ func (m *TestByNameWithNameItemRequestBuilder) Get(ctx context.Context, requestC
 }
 // ToGetRequestInformation retrieve a test by name
 // returns a *RequestInformation when successful
-func (m *TestByNameWithNameItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TestByNameWithNameItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *TestBynameWithNameItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TestBynameWithNameItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
@@ -58,7 +58,7 @@ func (m *TestByNameWithNameItemRequestBuilder) ToGetRequestInformation(ctx conte
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *TestByNameWithNameItemRequestBuilder when successful
-func (m *TestByNameWithNameItemRequestBuilder) WithUrl(rawUrl string)(*TestByNameWithNameItemRequestBuilder) {
-    return NewTestByNameWithNameItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *TestBynameWithNameItemRequestBuilder when successful
+func (m *TestBynameWithNameItemRequestBuilder) WithUrl(rawUrl string)(*TestBynameWithNameItemRequestBuilder) {
+    return NewTestBynameWithNameItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

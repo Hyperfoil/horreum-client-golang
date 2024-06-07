@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 type SortDirection int
 
 const (
@@ -20,7 +17,7 @@ func ParseSortDirection(v string) (any, error) {
         case "Descending":
             result = DESCENDING_SORTDIRECTION
         default:
-            return 0, errors.New("Unknown SortDirection value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

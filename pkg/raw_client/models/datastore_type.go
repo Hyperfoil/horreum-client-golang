@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 // Type of backend datastore
 type Datastore_type int
 
@@ -21,7 +18,7 @@ func ParseDatastore_type(v string) (any, error) {
         case "ELASTICSEARCH":
             result = ELASTICSEARCH_DATASTORE_TYPE
         default:
-            return 0, errors.New("Unknown Datastore_type value: " + v)
+            return nil, nil
     }
     return &result, nil
 }
