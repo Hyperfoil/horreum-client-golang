@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 type FixedThresholdDetectionConfig_model int
 
 const (
@@ -17,7 +14,7 @@ func ParseFixedThresholdDetectionConfig_model(v string) (any, error) {
         case "fixedThreshold":
             result = FIXEDTHRESHOLD_FIXEDTHRESHOLDDETECTIONCONFIG_MODEL
         default:
-            return 0, errors.New("Unknown FixedThresholdDetectionConfig_model value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

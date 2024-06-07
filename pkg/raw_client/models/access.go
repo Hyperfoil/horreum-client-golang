@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 // Resources have different visibility within the UI. 'PUBLIC', 'PROTECTED' and 'PRIVATE'. Restricted resources are not visible to users who do not have the correct permissions
 type Access int
 
@@ -24,7 +21,7 @@ func ParseAccess(v string) (any, error) {
         case "PRIVATE":
             result = PRIVATE_ACCESS
         default:
-            return 0, errors.New("Unknown Access value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

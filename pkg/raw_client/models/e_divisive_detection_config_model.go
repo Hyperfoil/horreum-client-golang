@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 type EDivisiveDetectionConfig_model int
 
 const (
@@ -17,7 +14,7 @@ func ParseEDivisiveDetectionConfig_model(v string) (any, error) {
         case "eDivisive":
             result = EDIVISIVE_EDIVISIVEDETECTIONCONFIG_MODEL
         default:
-            return 0, errors.New("Unknown EDivisiveDetectionConfig_model value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

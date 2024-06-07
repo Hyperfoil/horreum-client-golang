@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 type RelativeDifferenceDetectionConfig_model int
 
 const (
@@ -17,7 +14,7 @@ func ParseRelativeDifferenceDetectionConfig_model(v string) (any, error) {
         case "relativeDifference":
             result = RELATIVEDIFFERENCE_RELATIVEDIFFERENCEDETECTIONCONFIG_MODEL
         default:
-            return 0, errors.New("Unknown RelativeDifferenceDetectionConfig_model value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

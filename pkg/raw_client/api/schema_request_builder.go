@@ -44,14 +44,14 @@ type SchemaRequestBuilderPostRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // AllLabels the allLabels property
-// returns a *SchemaAllLabelsRequestBuilder when successful
-func (m *SchemaRequestBuilder) AllLabels()(*SchemaAllLabelsRequestBuilder) {
-    return NewSchemaAllLabelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaAlllabelsAllLabelsRequestBuilder when successful
+func (m *SchemaRequestBuilder) AllLabels()(*SchemaAlllabelsAllLabelsRequestBuilder) {
+    return NewSchemaAlllabelsAllLabelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // AllTransformers the allTransformers property
-// returns a *SchemaAllTransformersRequestBuilder when successful
-func (m *SchemaRequestBuilder) AllTransformers()(*SchemaAllTransformersRequestBuilder) {
-    return NewSchemaAllTransformersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaAlltransformersAllTransformersRequestBuilder when successful
+func (m *SchemaRequestBuilder) AllTransformers()(*SchemaAlltransformersAllTransformersRequestBuilder) {
+    return NewSchemaAlltransformersAllTransformersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ById gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.schema.item collection
 // Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
@@ -95,9 +95,9 @@ func (m *SchemaRequestBuilder) Descriptors()(*SchemaDescriptorsRequestBuilder) {
     return NewSchemaDescriptorsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // FindUsages the findUsages property
-// returns a *SchemaFindUsagesRequestBuilder when successful
-func (m *SchemaRequestBuilder) FindUsages()(*SchemaFindUsagesRequestBuilder) {
-    return NewSchemaFindUsagesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaFindusagesFindUsagesRequestBuilder when successful
+func (m *SchemaRequestBuilder) FindUsages()(*SchemaFindusagesFindUsagesRequestBuilder) {
+    return NewSchemaFindusagesFindUsagesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get retrieve a paginated list of Schemas with available count
 // returns a SchemaQueryResultable when successful
@@ -116,9 +116,9 @@ func (m *SchemaRequestBuilder) Get(ctx context.Context, requestConfiguration *Sc
     return res.(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.SchemaQueryResultable), nil
 }
 // IdByUri the idByUri property
-// returns a *SchemaIdByUriRequestBuilder when successful
-func (m *SchemaRequestBuilder) IdByUri()(*SchemaIdByUriRequestBuilder) {
-    return NewSchemaIdByUriRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaIdbyuriIdByUriRequestBuilder when successful
+func (m *SchemaRequestBuilder) IdByUri()(*SchemaIdbyuriIdByUriRequestBuilder) {
+    return NewSchemaIdbyuriIdByUriRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ImportEscaped the import property
 // returns a *SchemaImportRequestBuilder when successful

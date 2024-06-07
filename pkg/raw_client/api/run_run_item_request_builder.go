@@ -48,9 +48,9 @@ func (m *RunRunItemRequestBuilder) Description()(*RunItemDescriptionRequestBuild
     return NewRunItemDescriptionRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // DropToken the dropToken property
-// returns a *RunItemDropTokenRequestBuilder when successful
-func (m *RunRunItemRequestBuilder) DropToken()(*RunItemDropTokenRequestBuilder) {
-    return NewRunItemDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *RunItemDroptokenDropTokenRequestBuilder when successful
+func (m *RunRunItemRequestBuilder) DropToken()(*RunItemDroptokenDropTokenRequestBuilder) {
+    return NewRunItemDroptokenDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get get extended Run information by Run ID
 // returns a RunExtendedable when successful
@@ -69,9 +69,9 @@ func (m *RunRunItemRequestBuilder) Get(ctx context.Context, requestConfiguration
     return res.(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.RunExtendedable), nil
 }
 // LabelValues the labelValues property
-// returns a *RunItemLabelValuesRequestBuilder when successful
-func (m *RunRunItemRequestBuilder) LabelValues()(*RunItemLabelValuesRequestBuilder) {
-    return NewRunItemLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *RunItemLabelvaluesLabelValuesRequestBuilder when successful
+func (m *RunRunItemRequestBuilder) LabelValues()(*RunItemLabelvaluesLabelValuesRequestBuilder) {
+    return NewRunItemLabelvaluesLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Metadata the metadata property
 // returns a *RunItemMetadataRequestBuilder when successful
@@ -84,9 +84,9 @@ func (m *RunRunItemRequestBuilder) Recalculate()(*RunItemRecalculateRequestBuild
     return NewRunItemRecalculateRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ResetToken the resetToken property
-// returns a *RunItemResetTokenRequestBuilder when successful
-func (m *RunRunItemRequestBuilder) ResetToken()(*RunItemResetTokenRequestBuilder) {
-    return NewRunItemResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *RunItemResettokenResetTokenRequestBuilder when successful
+func (m *RunRunItemRequestBuilder) ResetToken()(*RunItemResettokenResetTokenRequestBuilder) {
+    return NewRunItemResettokenResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Schema the schema property
 // returns a *RunItemSchemaRequestBuilder when successful
@@ -118,9 +118,9 @@ func (m *RunRunItemRequestBuilder) Trash()(*RunItemTrashRequestBuilder) {
     return NewRunItemTrashRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // UpdateAccess the updateAccess property
-// returns a *RunItemUpdateAccessRequestBuilder when successful
-func (m *RunRunItemRequestBuilder) UpdateAccess()(*RunItemUpdateAccessRequestBuilder) {
-    return NewRunItemUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *RunItemUpdateaccessUpdateAccessRequestBuilder when successful
+func (m *RunRunItemRequestBuilder) UpdateAccess()(*RunItemUpdateaccessUpdateAccessRequestBuilder) {
+    return NewRunItemUpdateaccessUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *RunRunItemRequestBuilder when successful
