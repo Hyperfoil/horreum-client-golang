@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	username = "user"
+	username = "horreum.bootstrap"
 	password = "secret"
 )
 
