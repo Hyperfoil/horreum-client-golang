@@ -6,33 +6,33 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// TestItemAddtokenAddTokenRequestBuilder builds and executes requests for operations under \api\test\{id}\addToken
-type TestItemAddtokenAddTokenRequestBuilder struct {
+// TestItemAddTokenRequestBuilder builds and executes requests for operations under \api\test\{id}\addToken
+type TestItemAddTokenRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// TestItemAddtokenAddTokenRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type TestItemAddtokenAddTokenRequestBuilderPostRequestConfiguration struct {
+// TestItemAddTokenRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type TestItemAddTokenRequestBuilderPostRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewTestItemAddtokenAddTokenRequestBuilderInternal instantiates a new TestItemAddtokenAddTokenRequestBuilder and sets the default values.
-func NewTestItemAddtokenAddTokenRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemAddtokenAddTokenRequestBuilder) {
-    m := &TestItemAddtokenAddTokenRequestBuilder{
+// NewTestItemAddTokenRequestBuilderInternal instantiates a new TestItemAddTokenRequestBuilder and sets the default values.
+func NewTestItemAddTokenRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemAddTokenRequestBuilder) {
+    m := &TestItemAddTokenRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}/addToken", pathParameters),
     }
     return m
 }
-// NewTestItemAddtokenAddTokenRequestBuilder instantiates a new TestItemAddtokenAddTokenRequestBuilder and sets the default values.
-func NewTestItemAddtokenAddTokenRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemAddtokenAddTokenRequestBuilder) {
+// NewTestItemAddTokenRequestBuilder instantiates a new TestItemAddTokenRequestBuilder and sets the default values.
+func NewTestItemAddTokenRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestItemAddTokenRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewTestItemAddtokenAddTokenRequestBuilderInternal(urlParams, requestAdapter)
+    return NewTestItemAddTokenRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post add a Test API Token for access to provide access to a test data for integrated tooling, e.g. reporting services
 // returns a *int32 when successful
-func (m *TestItemAddtokenAddTokenRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.TestTokenable, requestConfiguration *TestItemAddtokenAddTokenRequestBuilderPostRequestConfiguration)(*int32, error) {
+func (m *TestItemAddTokenRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.TestTokenable, requestConfiguration *TestItemAddTokenRequestBuilderPostRequestConfiguration)(*int32, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
@@ -48,7 +48,7 @@ func (m *TestItemAddtokenAddTokenRequestBuilder) Post(ctx context.Context, body 
 }
 // ToPostRequestInformation add a Test API Token for access to provide access to a test data for integrated tooling, e.g. reporting services
 // returns a *RequestInformation when successful
-func (m *TestItemAddtokenAddTokenRequestBuilder) ToPostRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.TestTokenable, requestConfiguration *TestItemAddtokenAddTokenRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *TestItemAddTokenRequestBuilder) ToPostRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.TestTokenable, requestConfiguration *TestItemAddTokenRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
@@ -62,7 +62,7 @@ func (m *TestItemAddtokenAddTokenRequestBuilder) ToPostRequestInformation(ctx co
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *TestItemAddtokenAddTokenRequestBuilder when successful
-func (m *TestItemAddtokenAddTokenRequestBuilder) WithUrl(rawUrl string)(*TestItemAddtokenAddTokenRequestBuilder) {
-    return NewTestItemAddtokenAddTokenRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *TestItemAddTokenRequestBuilder when successful
+func (m *TestItemAddTokenRequestBuilder) WithUrl(rawUrl string)(*TestItemAddTokenRequestBuilder) {
+    return NewTestItemAddTokenRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -64,9 +64,9 @@ func (m *TestRequestBuilder) ByIdInteger(id int32)(*TestTestItemRequestBuilder) 
     return NewTestTestItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // ByName the byName property
-// returns a *TestBynameByNameRequestBuilder when successful
-func (m *TestRequestBuilder) ByName()(*TestBynameByNameRequestBuilder) {
-    return NewTestBynameByNameRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *TestByNameRequestBuilder when successful
+func (m *TestRequestBuilder) ByName()(*TestByNameRequestBuilder) {
+    return NewTestByNameRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewTestRequestBuilderInternal instantiates a new TestRequestBuilder and sets the default values.
 func NewTestRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestRequestBuilder) {

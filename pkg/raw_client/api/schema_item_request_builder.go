@@ -57,9 +57,9 @@ func (m *SchemaItemRequestBuilder) Delete(ctx context.Context, requestConfigurat
     return nil
 }
 // DropToken the dropToken property
-// returns a *SchemaItemDroptokenDropTokenRequestBuilder when successful
-func (m *SchemaItemRequestBuilder) DropToken()(*SchemaItemDroptokenDropTokenRequestBuilder) {
-    return NewSchemaItemDroptokenDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaItemDropTokenRequestBuilder when successful
+func (m *SchemaItemRequestBuilder) DropToken()(*SchemaItemDropTokenRequestBuilder) {
+    return NewSchemaItemDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Export the export property
 // returns a *SchemaItemExportRequestBuilder when successful
@@ -88,9 +88,9 @@ func (m *SchemaItemRequestBuilder) Labels()(*SchemaItemLabelsRequestBuilder) {
     return NewSchemaItemLabelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ResetToken the resetToken property
-// returns a *SchemaItemResettokenResetTokenRequestBuilder when successful
-func (m *SchemaItemRequestBuilder) ResetToken()(*SchemaItemResettokenResetTokenRequestBuilder) {
-    return NewSchemaItemResettokenResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaItemResetTokenRequestBuilder when successful
+func (m *SchemaItemRequestBuilder) ResetToken()(*SchemaItemResetTokenRequestBuilder) {
+    return NewSchemaItemResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ToDeleteRequestInformation delete a Schema by id
 // returns a *RequestInformation when successful
@@ -122,9 +122,9 @@ func (m *SchemaItemRequestBuilder) Transformers()(*SchemaItemTransformersRequest
     return NewSchemaItemTransformersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // UpdateAccess the updateAccess property
-// returns a *SchemaItemUpdateaccessUpdateAccessRequestBuilder when successful
-func (m *SchemaItemRequestBuilder) UpdateAccess()(*SchemaItemUpdateaccessUpdateAccessRequestBuilder) {
-    return NewSchemaItemUpdateaccessUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *SchemaItemUpdateAccessRequestBuilder when successful
+func (m *SchemaItemRequestBuilder) UpdateAccess()(*SchemaItemUpdateAccessRequestBuilder) {
+    return NewSchemaItemUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *SchemaItemRequestBuilder when successful

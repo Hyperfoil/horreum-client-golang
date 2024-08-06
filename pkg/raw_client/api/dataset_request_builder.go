@@ -33,9 +33,9 @@ func (m *DatasetRequestBuilder) ByDatasetIdInteger(datasetId int32)(*DatasetData
     return NewDatasetDatasetItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // BySchema the bySchema property
-// returns a *DatasetByschemaBySchemaRequestBuilder when successful
-func (m *DatasetRequestBuilder) BySchema()(*DatasetByschemaBySchemaRequestBuilder) {
-    return NewDatasetByschemaBySchemaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *DatasetBySchemaRequestBuilder when successful
+func (m *DatasetRequestBuilder) BySchema()(*DatasetBySchemaRequestBuilder) {
+    return NewDatasetBySchemaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewDatasetRequestBuilderInternal instantiates a new DatasetRequestBuilder and sets the default values.
 func NewDatasetRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetRequestBuilder) {

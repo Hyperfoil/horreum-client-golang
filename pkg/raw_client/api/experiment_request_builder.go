@@ -46,9 +46,9 @@ func NewExperimentRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
     return NewExperimentRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Models the models property
-// returns a *ExperimentModelsrequestsModelsRequestBuilder when successful
-func (m *ExperimentRequestBuilder) Models()(*ExperimentModelsrequestsModelsRequestBuilder) {
-    return NewExperimentModelsrequestsModelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *ExperimentModelsRequestsModelsRequestBuilder when successful
+func (m *ExperimentRequestBuilder) Models()(*ExperimentModelsRequestsModelsRequestBuilder) {
+    return NewExperimentModelsRequestsModelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Run the run property
 // returns a *ExperimentRunRequestBuilder when successful
