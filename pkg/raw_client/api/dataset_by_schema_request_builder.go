@@ -6,12 +6,12 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// DatasetByschemaBySchemaRequestBuilder builds and executes requests for operations under \api\dataset\bySchema
-type DatasetByschemaBySchemaRequestBuilder struct {
+// DatasetBySchemaRequestBuilder builds and executes requests for operations under \api\dataset\bySchema
+type DatasetBySchemaRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// DatasetByschemaBySchemaRequestBuilderGetQueryParameters retrieve a paginated list of Datasets, with total count, by Schema
-type DatasetByschemaBySchemaRequestBuilderGetQueryParameters struct {
+// DatasetBySchemaRequestBuilderGetQueryParameters retrieve a paginated list of Datasets, with total count, by Schema
+type DatasetBySchemaRequestBuilderGetQueryParameters struct {
     // Sort direction
     // Deprecated: This property is deprecated, use DirectionAsSortDirection instead
     Direction *string `uriparametername:"direction"`
@@ -26,31 +26,31 @@ type DatasetByschemaBySchemaRequestBuilderGetQueryParameters struct {
     // Schema URI
     Uri *string `uriparametername:"uri"`
 }
-// DatasetByschemaBySchemaRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type DatasetByschemaBySchemaRequestBuilderGetRequestConfiguration struct {
+// DatasetBySchemaRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type DatasetBySchemaRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *DatasetByschemaBySchemaRequestBuilderGetQueryParameters
+    QueryParameters *DatasetBySchemaRequestBuilderGetQueryParameters
 }
-// NewDatasetByschemaBySchemaRequestBuilderInternal instantiates a new DatasetByschemaBySchemaRequestBuilder and sets the default values.
-func NewDatasetByschemaBySchemaRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetByschemaBySchemaRequestBuilder) {
-    m := &DatasetByschemaBySchemaRequestBuilder{
+// NewDatasetBySchemaRequestBuilderInternal instantiates a new DatasetBySchemaRequestBuilder and sets the default values.
+func NewDatasetBySchemaRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetBySchemaRequestBuilder) {
+    m := &DatasetBySchemaRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/bySchema?uri={uri}{&direction*,limit*,page*,sort*}", pathParameters),
     }
     return m
 }
-// NewDatasetByschemaBySchemaRequestBuilder instantiates a new DatasetByschemaBySchemaRequestBuilder and sets the default values.
-func NewDatasetByschemaBySchemaRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetByschemaBySchemaRequestBuilder) {
+// NewDatasetBySchemaRequestBuilder instantiates a new DatasetBySchemaRequestBuilder and sets the default values.
+func NewDatasetBySchemaRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetBySchemaRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewDatasetByschemaBySchemaRequestBuilderInternal(urlParams, requestAdapter)
+    return NewDatasetBySchemaRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get retrieve a paginated list of Datasets, with total count, by Schema
 // returns a DatasetListable when successful
-func (m *DatasetByschemaBySchemaRequestBuilder) Get(ctx context.Context, requestConfiguration *DatasetByschemaBySchemaRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.DatasetListable, error) {
+func (m *DatasetBySchemaRequestBuilder) Get(ctx context.Context, requestConfiguration *DatasetBySchemaRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.DatasetListable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
@@ -66,7 +66,7 @@ func (m *DatasetByschemaBySchemaRequestBuilder) Get(ctx context.Context, request
 }
 // ToGetRequestInformation retrieve a paginated list of Datasets, with total count, by Schema
 // returns a *RequestInformation when successful
-func (m *DatasetByschemaBySchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *DatasetByschemaBySchemaRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *DatasetBySchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *DatasetBySchemaRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
@@ -79,7 +79,7 @@ func (m *DatasetByschemaBySchemaRequestBuilder) ToGetRequestInformation(ctx cont
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *DatasetByschemaBySchemaRequestBuilder when successful
-func (m *DatasetByschemaBySchemaRequestBuilder) WithUrl(rawUrl string)(*DatasetByschemaBySchemaRequestBuilder) {
-    return NewDatasetByschemaBySchemaRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *DatasetBySchemaRequestBuilder when successful
+func (m *DatasetBySchemaRequestBuilder) WithUrl(rawUrl string)(*DatasetBySchemaRequestBuilder) {
+    return NewDatasetBySchemaRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -31,9 +31,9 @@ type TestTestItemRequestBuilderGetRequestConfiguration struct {
     QueryParameters *TestTestItemRequestBuilderGetQueryParameters
 }
 // AddToken the addToken property
-// returns a *TestItemAddtokenAddTokenRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) AddToken()(*TestItemAddtokenAddTokenRequestBuilder) {
-    return NewTestItemAddtokenAddTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *TestItemAddTokenRequestBuilder when successful
+func (m *TestTestItemRequestBuilder) AddToken()(*TestItemAddTokenRequestBuilder) {
+    return NewTestItemAddTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewTestTestItemRequestBuilderInternal instantiates a new TestTestItemRequestBuilder and sets the default values.
 func NewTestTestItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestTestItemRequestBuilder) {
@@ -66,9 +66,9 @@ func (m *TestTestItemRequestBuilder) Export()(*TestItemExportRequestBuilder) {
     return NewTestItemExportRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // FilteringLabelValues the filteringLabelValues property
-// returns a *TestItemFilteringlabelvaluesFilteringLabelValuesRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) FilteringLabelValues()(*TestItemFilteringlabelvaluesFilteringLabelValuesRequestBuilder) {
-    return NewTestItemFilteringlabelvaluesFilteringLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *TestItemFilteringLabelValuesRequestBuilder when successful
+func (m *TestTestItemRequestBuilder) FilteringLabelValues()(*TestItemFilteringLabelValuesRequestBuilder) {
+    return NewTestItemFilteringLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Fingerprint the fingerprint property
 // returns a *TestItemFingerprintRequestBuilder when successful
@@ -92,9 +92,9 @@ func (m *TestTestItemRequestBuilder) Get(ctx context.Context, requestConfigurati
     return res.(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Testable), nil
 }
 // LabelValues the labelValues property
-// returns a *TestItemLabelvaluesLabelValuesRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) LabelValues()(*TestItemLabelvaluesLabelValuesRequestBuilder) {
-    return NewTestItemLabelvaluesLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *TestItemLabelValuesRequestBuilder when successful
+func (m *TestTestItemRequestBuilder) LabelValues()(*TestItemLabelValuesRequestBuilder) {
+    return NewTestItemLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Move the move property
 // returns a *TestItemMoveRequestBuilder when successful
@@ -112,9 +112,9 @@ func (m *TestTestItemRequestBuilder) Recalculate()(*TestItemRecalculateRequestBu
     return NewTestItemRecalculateRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // RevokeToken the revokeToken property
-// returns a *TestItemRevoketokenRevokeTokenRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) RevokeToken()(*TestItemRevoketokenRevokeTokenRequestBuilder) {
-    return NewTestItemRevoketokenRevokeTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *TestItemRevokeTokenRequestBuilder when successful
+func (m *TestTestItemRequestBuilder) RevokeToken()(*TestItemRevokeTokenRequestBuilder) {
+    return NewTestItemRevokeTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ToDeleteRequestInformation delete a Test by id
 // returns a *RequestInformation when successful
@@ -151,9 +151,9 @@ func (m *TestTestItemRequestBuilder) Transformers()(*TestItemTransformersRequest
     return NewTestItemTransformersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // UpdateAccess the updateAccess property
-// returns a *TestItemUpdateaccessUpdateAccessRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) UpdateAccess()(*TestItemUpdateaccessUpdateAccessRequestBuilder) {
-    return NewTestItemUpdateaccessUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *TestItemUpdateAccessRequestBuilder when successful
+func (m *TestTestItemRequestBuilder) UpdateAccess()(*TestItemUpdateAccessRequestBuilder) {
+    return NewTestItemUpdateAccessRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *TestTestItemRequestBuilder when successful

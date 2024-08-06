@@ -38,9 +38,9 @@ func (m *RunRequestBuilder) ByIdInteger(id int32)(*RunRunItemRequestBuilder) {
     return NewRunRunItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // BySchema the bySchema property
-// returns a *RunByschemaBySchemaRequestBuilder when successful
-func (m *RunRequestBuilder) BySchema()(*RunByschemaBySchemaRequestBuilder) {
-    return NewRunByschemaBySchemaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *RunBySchemaRequestBuilder when successful
+func (m *RunRequestBuilder) BySchema()(*RunBySchemaRequestBuilder) {
+    return NewRunBySchemaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewRunRequestBuilderInternal instantiates a new RunRequestBuilder and sets the default values.
 func NewRunRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunRequestBuilder) {
@@ -71,9 +71,9 @@ func (m *RunRequestBuilder) List()(*RunListRequestBuilder) {
     return NewRunListRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // RecalculateAll the recalculateAll property
-// returns a *RunRecalculateallRecalculateAllRequestBuilder when successful
-func (m *RunRequestBuilder) RecalculateAll()(*RunRecalculateallRecalculateAllRequestBuilder) {
-    return NewRunRecalculateallRecalculateAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *RunRecalculateAllRequestBuilder when successful
+func (m *RunRequestBuilder) RecalculateAll()(*RunRecalculateAllRequestBuilder) {
+    return NewRunRecalculateAllRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Test the test property
 // returns a *RunTestRequestBuilder when successful

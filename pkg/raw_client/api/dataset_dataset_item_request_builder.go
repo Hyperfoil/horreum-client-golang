@@ -47,14 +47,14 @@ func (m *DatasetDatasetItemRequestBuilder) Get(ctx context.Context, requestConfi
     return res.(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Datasetable), nil
 }
 // LabelValues the labelValues property
-// returns a *DatasetItemLabelvaluesLabelValuesRequestBuilder when successful
-func (m *DatasetDatasetItemRequestBuilder) LabelValues()(*DatasetItemLabelvaluesLabelValuesRequestBuilder) {
-    return NewDatasetItemLabelvaluesLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *DatasetItemLabelValuesRequestBuilder when successful
+func (m *DatasetDatasetItemRequestBuilder) LabelValues()(*DatasetItemLabelValuesRequestBuilder) {
+    return NewDatasetItemLabelValuesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // PreviewLabel the previewLabel property
-// returns a *DatasetItemPreviewlabelPreviewLabelRequestBuilder when successful
-func (m *DatasetDatasetItemRequestBuilder) PreviewLabel()(*DatasetItemPreviewlabelPreviewLabelRequestBuilder) {
-    return NewDatasetItemPreviewlabelPreviewLabelRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+// returns a *DatasetItemPreviewLabelRequestBuilder when successful
+func (m *DatasetDatasetItemRequestBuilder) PreviewLabel()(*DatasetItemPreviewLabelRequestBuilder) {
+    return NewDatasetItemPreviewLabelRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Summary the summary property
 // returns a *DatasetItemSummaryRequestBuilder when successful
