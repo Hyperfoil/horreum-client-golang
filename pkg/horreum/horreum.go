@@ -2,7 +2,9 @@ package horreum
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
+	"log"
 
 	nethttp "net/http"
 
@@ -20,10 +22,11 @@ var version string
 type HorreumClient struct {
 	baseUrl      string
 	credentials  *HorreumCredentials
+	AuthMethod   AuthMethod
 	clientConfig *ClientConfiguration
 
-	RawClient   *raw_client.HorreumRawClient
-	AuthProvder authentication.AuthenticationProvider
+	RawClient    *raw_client.HorreumRawClient
+	AuthProvider authentication.AuthenticationProvider
 }
 
 func setupAuthProvider(baseUrl string, username string, password string) (authentication.AccessTokenProvider, error) {
@@ -51,18 +54,29 @@ func NewHorreumClient(baseUrl string, credentials *HorreumCredentials, clientCon
 		clientConfig: clientConfig,
 
 		// By default, set auth provider to anonymous one
-		AuthProvder: &authentication.AnonymousAuthenticationProvider{},
+		AuthProvider: &authentication.AnonymousAuthenticationProvider{},
 	}
 
 	if credentials != nil {
 		if credentials.Username != nil && credentials.Password != nil {
-			provider, err := setupAuthProvider(baseUrl, *credentials.Username, *credentials.Password)
-			if err != nil {
-				return nil, fmt.Errorf("error setting up keycloak provider: %w", err)
+			if clientConfig == nil || clientConfig.AuthMethod == BEARER {
+				provider, err := setupAuthProvider(baseUrl, *credentials.Username, *credentials.Password)
+				if err != nil {
+					return nil, fmt.Errorf("error setting up keycloak provider: %w", err)
+				}
+				log.Default().Println("Using OIDC bearer token for authentication")
+				client.AuthProvider = authentication.NewBaseBearerTokenAuthenticationProvider(provider)
+			} else if clientConfig.AuthMethod == BASIC {
+				basic := "Basic " + base64.StdEncoding.EncodeToString([]byte(*credentials.Username+":"+*credentials.Password))
+				provider, err := authentication.NewApiKeyAuthenticationProvider(basic, "Authentication", authentication.HEADER_KEYLOCATION)
+				if err != nil {
+					return nil, fmt.Errorf("error setting up auth provider: %w", err)
+				}
+				log.Default().Println("Using Basic HTTP authentication")
+				client.AuthProvider = provider
 			}
-			client.AuthProvder = authentication.NewBaseBearerTokenAuthenticationProvider(provider)
 		} else if credentials.Password != nil {
-			return nil, fmt.Errorf("providing password without username, have you missed something?")
+			return nil, fmt.Errorf("provided password without username")
 		}
 	}
 
@@ -92,7 +106,7 @@ func NewHorreumClient(baseUrl string, credentials *HorreumCredentials, clientCon
 		httpClient = http.GetDefaultClient(middlewares...)
 	}
 
-	adapter, err := http.NewNetHttpRequestAdapterWithParseNodeFactoryAndSerializationWriterFactoryAndHttpClient(client.AuthProvder, nil, nil, httpClient)
+	adapter, err := http.NewNetHttpRequestAdapterWithParseNodeFactoryAndSerializationWriterFactoryAndHttpClient(client.AuthProvider, nil, nil, httpClient)
 	if err != nil {
 		return nil, fmt.Errorf("error creating client adapter: %w", err)
 	}

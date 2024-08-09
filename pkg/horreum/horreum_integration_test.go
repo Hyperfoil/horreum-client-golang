@@ -55,7 +55,7 @@ func TestMissingTokenWithAnonymous(t *testing.T) {
 		Method:      abstractions.GET,
 		UrlTemplate: "/api",
 	}
-	err := client.AuthProvder.AuthenticateRequest(ctx, req, nil)
+	err := client.AuthProvider.AuthenticateRequest(ctx, req, nil)
 
 	a.Nil(err)
 	a.Nil(req.Headers)
@@ -68,7 +68,7 @@ func TestExistingTokenWithAuthentication(t *testing.T) {
 		Method: abstractions.GET,
 	}
 	req.SetUri(url.URL{Scheme: "https", Host: "localhost:8080", Path: "api/"})
-	err := client.AuthProvder.AuthenticateRequest(ctx, req, nil)
+	err := client.AuthProvider.AuthenticateRequest(ctx, req, nil)
 
 	a.Nil(err)
 	a.NotNil(req.Headers)

@@ -18,10 +18,20 @@ func NewDefaultHorreumCredentials() HorreumCredentials {
 	}
 }
 
+type AuthMethod int64
+
+const (
+	// BEARER authentication method where a token is provided from the OIDC server
+	BEARER = iota
+	// BASIC encodes username and password in the HTTP request
+	BASIC
+)
+
 type ClientConfiguration struct {
 	HttpClient            *http.Client
 	ParentTransport       http.RoundTripper
 	UseDefaultMiddlewares bool
+	AuthMethod            AuthMethod
 	Options               []abstractions.RequestOption
 }
 
@@ -30,6 +40,7 @@ func NewDefaultClientConfiguration() ClientConfiguration {
 		HttpClient:            nil,
 		ParentTransport:       nil,
 		UseDefaultMiddlewares: true,
+		AuthMethod:            BEARER,
 		Options:               []abstractions.RequestOption{},
 	}
 }
