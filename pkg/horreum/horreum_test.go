@@ -1,6 +1,7 @@
 package horreum
 
 import (
+	"github.com/microsoft/kiota-abstractions-go/authentication"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -25,7 +26,7 @@ func TestMissingMissingPasswordWithUsername(t *testing.T) {
 		Password: &password,
 	}, nil)
 	assert.NotNil(t, err)
-	assert.Equal(t, "providing password without username, have you missed something?", err.Error())
+	assert.Equal(t, "provided password without username", err.Error())
 }
 
 func TestAuthProviderSetupFailure(t *testing.T) {
@@ -37,6 +38,16 @@ func TestAuthProviderSetupFailure(t *testing.T) {
 	assert.Contains(t, err.Error(), "error setting up keycloak provider")
 	assert.Contains(t, err.Error(), "error retrieving keycloak configuration")
 	assert.Contains(t, err.Error(), "connection refused")
+}
+
+func TestBasicAuthSetup(t *testing.T) {
+	client, _ := NewHorreumClient("http://localhost:9999", &HorreumCredentials{
+		Username: &username,
+		Password: &password,
+	}, &ClientConfiguration{
+		AuthMethod: BASIC,
+	})
+	assert.IsType(t, &authentication.ApiKeyAuthenticationProvider{}, client.AuthProvider)
 }
 
 func TestGetClientVersion(t *testing.T) {
