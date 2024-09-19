@@ -14,7 +14,7 @@ import (
 var (
 	ctx      = context.Background()
 	baseUrl  = "http://localhost:8080"
-	username = "user"
+	username = "horreum.bootstrap"
 	password = "secret"
 
 	// assertions
