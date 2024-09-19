@@ -12,7 +12,7 @@ import (
 
 var (
 	ctx                            = context.Background()
-	username                       = "user"
+	username                       = "horreum.bootstrap"
 	password                       = "secret"
 	cleanupData                    = true
 	acmeBenchmarkSchema            = models.NewSchema()
