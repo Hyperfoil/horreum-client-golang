@@ -5,10 +5,11 @@ type Datastore_type int
 const (
     POSTGRES_DATASTORE_TYPE Datastore_type = iota
     ELASTICSEARCH_DATASTORE_TYPE
+    COLLECTORAPI_DATASTORE_TYPE
 )
 
 func (i Datastore_type) String() string {
-    return []string{"POSTGRES", "ELASTICSEARCH"}[i]
+    return []string{"POSTGRES", "ELASTICSEARCH", "COLLECTORAPI"}[i]
 }
 func ParseDatastore_type(v string) (any, error) {
     result := POSTGRES_DATASTORE_TYPE
@@ -17,6 +18,8 @@ func ParseDatastore_type(v string) (any, error) {
             result = POSTGRES_DATASTORE_TYPE
         case "ELASTICSEARCH":
             result = ELASTICSEARCH_DATASTORE_TYPE
+        case "COLLECTORAPI":
+            result = COLLECTORAPI_DATASTORE_TYPE
         default:
             return nil, nil
     }
