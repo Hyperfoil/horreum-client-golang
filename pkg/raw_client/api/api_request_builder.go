@@ -51,3 +51,8 @@ func (m *ApiRequestBuilder) Schema()(*SchemaRequestBuilder) {
 func (m *ApiRequestBuilder) Test()(*TestRequestBuilder) {
     return NewTestRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// User the user property
+// returns a *UserRequestBuilder when successful
+func (m *ApiRequestBuilder) User()(*UserRequestBuilder) {
+    return NewUserRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
