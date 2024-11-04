@@ -5,6 +5,7 @@ package horreum
 
 import (
 	"context"
+	"github.com/microsoft/kiota-abstractions-go/authentication"
 	"net/url"
 	"testing"
 
@@ -134,6 +135,39 @@ func TestAddAndDeleteTest(t *testing.T) {
 	list, err = client.RawClient.Api().Test().Get(ctx, nil)
 	a.Nil(err)
 	a.EqualValues(0, *list.GetCount())
+}
+
+func TestAPIKeyAuthSetup(t *testing.T) {
+	client, _ := NewHorreumClient("http://localhost:8080", &HorreumCredentials{
+		Username: &username,
+		Password: &password,
+	}, &ClientConfiguration{
+		AuthMethod: BEARER,
+	})
+
+	keyRequest := api.NewUserApikeyPostRequestBody()
+	keyRequest.SetName(of("Go client test key"))
+	keyRequest.SetTypeEscaped(of(models.USER_KEYTYPE))
+
+	key, err := client.RawClient.Api().User().Apikey().Post(context.Background(), keyRequest, nil)
+	assert.Nil(t, err)
+	assert.NotEmpty(t, key)
+
+	apiClient, err := NewHorreumClient("http://localhost:8080", &HorreumCredentials{
+		ApiKey: key,
+	}, &ClientConfiguration{AuthMethod: API_KEY})
+
+	assert.IsType(t, &authentication.ApiKeyAuthenticationProvider{}, apiClient.AuthProvider)
+
+	// make sure the API Key header is added correctly to a dummy request
+	req := abstractions.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(abstractions.GET, "https://localhost:8080", make(map[string]string))
+	apiClient.AuthProvider.AuthenticateRequest(context.Background(), req, nil)
+	assert.True(t, req.Headers.ContainsKey("X-Horreum-API-Key"))
+	assert.Equal(t, *key, req.Headers.Get("X-Horreum-API-Key")[0])
+
+	// kiota go client requires https which prevents using the API Key for integration test (with a dev Horreum instance)
+	_, apiErr := apiClient.RawClient.Api().User().Apikey().Get(context.Background(), nil)
+	assert.NotNil(t, apiErr)
 }
 
 // of returns a pointer to the provided literal/const input

@@ -75,6 +75,13 @@ func NewHorreumClient(baseUrl string, credentials *HorreumCredentials, clientCon
 				log.Default().Println("Using Basic HTTP authentication")
 				client.AuthProvider = provider
 			}
+		} else if credentials.ApiKey != nil && (clientConfig == nil || clientConfig.AuthMethod == API_KEY) {
+			provider, err := authentication.NewApiKeyAuthenticationProvider(*credentials.ApiKey, "X-Horreum-API-Key", authentication.HEADER_KEYLOCATION)
+			if err != nil {
+				return nil, fmt.Errorf("error setting up auth provider: %w", err)
+			}
+			log.Default().Println("Using API key authentication")
+			client.AuthProvider = provider
 		} else if credentials.Password != nil {
 			return nil, fmt.Errorf("provided password without username")
 		}
