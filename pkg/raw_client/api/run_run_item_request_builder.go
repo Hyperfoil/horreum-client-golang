@@ -10,24 +10,17 @@ import (
 type RunRunItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// RunRunItemRequestBuilderGetQueryParameters get extended Run information by Run ID
-type RunRunItemRequestBuilderGetQueryParameters struct {
-    // Run API token
-    Token *string `uriparametername:"token"`
-}
 // RunRunItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type RunRunItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *RunRunItemRequestBuilderGetQueryParameters
 }
 // NewRunRunItemRequestBuilderInternal instantiates a new RunRunItemRequestBuilder and sets the default values.
 func NewRunRunItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunRunItemRequestBuilder) {
     m := &RunRunItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}{?token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}", pathParameters),
     }
     return m
 }
@@ -46,11 +39,6 @@ func (m *RunRunItemRequestBuilder) Data()(*RunItemDataRequestBuilder) {
 // returns a *RunItemDescriptionRequestBuilder when successful
 func (m *RunRunItemRequestBuilder) Description()(*RunItemDescriptionRequestBuilder) {
     return NewRunItemDescriptionRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
-// DropToken the dropToken property
-// returns a *RunItemDropTokenRequestBuilder when successful
-func (m *RunRunItemRequestBuilder) DropToken()(*RunItemDropTokenRequestBuilder) {
-    return NewRunItemDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get get extended Run information by Run ID
 // returns a RunExtendedable when successful
@@ -83,11 +71,6 @@ func (m *RunRunItemRequestBuilder) Metadata()(*RunItemMetadataRequestBuilder) {
 func (m *RunRunItemRequestBuilder) Recalculate()(*RunItemRecalculateRequestBuilder) {
     return NewRunItemRecalculateRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ResetToken the resetToken property
-// returns a *RunItemResetTokenRequestBuilder when successful
-func (m *RunRunItemRequestBuilder) ResetToken()(*RunItemResetTokenRequestBuilder) {
-    return NewRunItemResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // Schema the schema property
 // returns a *RunItemSchemaRequestBuilder when successful
 func (m *RunRunItemRequestBuilder) Schema()(*RunItemSchemaRequestBuilder) {
@@ -103,9 +86,6 @@ func (m *RunRunItemRequestBuilder) Summary()(*RunItemSummaryRequestBuilder) {
 func (m *RunRunItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *RunRunItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }

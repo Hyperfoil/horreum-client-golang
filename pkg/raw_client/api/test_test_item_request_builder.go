@@ -17,28 +17,17 @@ type TestTestItemRequestBuilderDeleteRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// TestTestItemRequestBuilderGetQueryParameters retrieve a test by id
-type TestTestItemRequestBuilderGetQueryParameters struct {
-    Token *string `uriparametername:"token"`
-}
 // TestTestItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type TestTestItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *TestTestItemRequestBuilderGetQueryParameters
-}
-// AddToken the addToken property
-// returns a *TestItemAddTokenRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) AddToken()(*TestItemAddTokenRequestBuilder) {
-    return NewTestItemAddTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewTestTestItemRequestBuilderInternal instantiates a new TestTestItemRequestBuilder and sets the default values.
 func NewTestTestItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*TestTestItemRequestBuilder) {
     m := &TestTestItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}{?token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/test/{id}", pathParameters),
     }
     return m
 }
@@ -111,11 +100,6 @@ func (m *TestTestItemRequestBuilder) Notifications()(*TestItemNotificationsReque
 func (m *TestTestItemRequestBuilder) Recalculate()(*TestItemRecalculateRequestBuilder) {
     return NewTestItemRecalculateRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// RevokeToken the revokeToken property
-// returns a *TestItemRevokeTokenRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) RevokeToken()(*TestItemRevokeTokenRequestBuilder) {
-    return NewTestItemRevokeTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // ToDeleteRequestInformation delete a Test by id
 // returns a *RequestInformation when successful
 func (m *TestTestItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *TestTestItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
@@ -131,19 +115,11 @@ func (m *TestTestItemRequestBuilder) ToDeleteRequestInformation(ctx context.Cont
 func (m *TestTestItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TestTestItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
-}
-// Tokens the tokens property
-// returns a *TestItemTokensRequestBuilder when successful
-func (m *TestTestItemRequestBuilder) Tokens()(*TestItemTokensRequestBuilder) {
-    return NewTestItemTokensRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Transformers the transformers property
 // returns a *TestItemTransformersRequestBuilder when successful

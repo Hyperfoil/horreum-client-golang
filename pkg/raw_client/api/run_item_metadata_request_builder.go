@@ -13,8 +13,6 @@ type RunItemMetadataRequestBuilder struct {
 type RunItemMetadataRequestBuilderGetQueryParameters struct {
     // Filter by Schmea URI
     SchemaUri *string `uriparametername:"schemaUri"`
-    // Run API token
-    Token *string `uriparametername:"token"`
 }
 // RunItemMetadataRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type RunItemMetadataRequestBuilderGetRequestConfiguration struct {
@@ -28,7 +26,7 @@ type RunItemMetadataRequestBuilderGetRequestConfiguration struct {
 // NewRunItemMetadataRequestBuilderInternal instantiates a new RunItemMetadataRequestBuilder and sets the default values.
 func NewRunItemMetadataRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemMetadataRequestBuilder) {
     m := &RunItemMetadataRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/metadata{?schemaUri*,token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/metadata{?schemaUri*}", pathParameters),
     }
     return m
 }

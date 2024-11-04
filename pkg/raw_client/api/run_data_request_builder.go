@@ -29,8 +29,6 @@ type RunDataRequestBuilderPostQueryParameters struct {
     Stop *string `uriparametername:"stop"`
     // test name of ID
     Test *string `uriparametername:"test"`
-    // Horreum internal token. Incompatible with Keycloak
-    Token *string `uriparametername:"token"`
 }
 // RunDataRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type RunDataRequestBuilderPostRequestConfiguration struct {
@@ -44,7 +42,7 @@ type RunDataRequestBuilderPostRequestConfiguration struct {
 // NewRunDataRequestBuilderInternal instantiates a new RunDataRequestBuilder and sets the default values.
 func NewRunDataRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunDataRequestBuilder) {
     m := &RunDataRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/data?start={start}&stop={stop}&test={test}{&access*,description*,owner*,schema*,token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/data?start={start}&stop={stop}&test={test}{&access*,description*,owner*,schema*}", pathParameters),
     }
     return m
 }

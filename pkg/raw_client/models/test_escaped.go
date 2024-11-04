@@ -29,8 +29,6 @@ type Test struct {
     timelineFunction *string
     // List of label names that are used for determining metric to use as the time series
     timelineLabels []string
-    // Array of API tokens associated with test
-    tokens []TestTokenable
     // Array for transformers defined for the Test
     transformers []Transformerable
 }
@@ -187,22 +185,6 @@ func (m *Test) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a
         }
         return nil
     }
-    res["tokens"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateTestTokenFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]TestTokenable, len(val))
-            for i, v := range val {
-                if v != nil {
-                    res[i] = v.(TestTokenable)
-                }
-            }
-            m.SetTokens(res)
-        }
-        return nil
-    }
     res["transformers"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetCollectionOfObjectValues(CreateTransformerFromDiscriminatorValue)
         if err != nil {
@@ -260,11 +242,6 @@ func (m *Test) GetTimelineFunction()(*string) {
 // returns a []string when successful
 func (m *Test) GetTimelineLabels()([]string) {
     return m.timelineLabels
-}
-// GetTokens gets the tokens property value. Array of API tokens associated with test
-// returns a []TestTokenable when successful
-func (m *Test) GetTokens()([]TestTokenable) {
-    return m.tokens
 }
 // GetTransformers gets the transformers property value. Array for transformers defined for the Test
 // returns a []Transformerable when successful
@@ -343,18 +320,6 @@ func (m *Test) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c49
             return err
         }
     }
-    if m.GetTokens() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTokens()))
-        for i, v := range m.GetTokens() {
-            if v != nil {
-                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-            }
-        }
-        err = writer.WriteCollectionOfObjectValues("tokens", cast)
-        if err != nil {
-            return err
-        }
-    }
     if m.GetTransformers() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTransformers()))
         for i, v := range m.GetTransformers() {
@@ -413,10 +378,6 @@ func (m *Test) SetTimelineFunction(value *string)() {
 func (m *Test) SetTimelineLabels(value []string)() {
     m.timelineLabels = value
 }
-// SetTokens sets the tokens property value. Array of API tokens associated with test
-func (m *Test) SetTokens(value []TestTokenable)() {
-    m.tokens = value
-}
 // SetTransformers sets the transformers property value. Array for transformers defined for the Test
 func (m *Test) SetTransformers(value []Transformerable)() {
     m.transformers = value
@@ -435,7 +396,6 @@ type Testable interface {
     GetNotificationsEnabled()(*bool)
     GetTimelineFunction()(*string)
     GetTimelineLabels()([]string)
-    GetTokens()([]TestTokenable)
     GetTransformers()([]Transformerable)
     SetCompareUrl(value *string)()
     SetDatastoreId(value *int32)()
@@ -448,6 +408,5 @@ type Testable interface {
     SetNotificationsEnabled(value *bool)()
     SetTimelineFunction(value *string)()
     SetTimelineLabels(value []string)()
-    SetTokens(value []TestTokenable)()
     SetTransformers(value []Transformerable)()
 }

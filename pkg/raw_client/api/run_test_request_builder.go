@@ -21,8 +21,6 @@ type RunTestRequestBuilderPostQueryParameters struct {
     Owner *string `uriparametername:"owner"`
     // test name of ID
     Test *string `uriparametername:"test"`
-    // API token
-    Token *string `uriparametername:"token"`
 }
 // RunTestRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type RunTestRequestBuilderPostRequestConfiguration struct {
@@ -36,7 +34,7 @@ type RunTestRequestBuilderPostRequestConfiguration struct {
 // NewRunTestRequestBuilderInternal instantiates a new RunTestRequestBuilder and sets the default values.
 func NewRunTestRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunTestRequestBuilder) {
     m := &RunTestRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/test{?access*,owner*,test*,token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/test{?access*,owner*,test*}", pathParameters),
     }
     return m
 }
