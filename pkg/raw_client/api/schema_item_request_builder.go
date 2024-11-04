@@ -17,24 +17,17 @@ type SchemaItemRequestBuilderDeleteRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// SchemaItemRequestBuilderGetQueryParameters retrieve Schema by ID
-type SchemaItemRequestBuilderGetQueryParameters struct {
-    // API token for authorization
-    Token *string `uriparametername:"token"`
-}
 // SchemaItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type SchemaItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *SchemaItemRequestBuilderGetQueryParameters
 }
 // NewSchemaItemRequestBuilderInternal instantiates a new SchemaItemRequestBuilder and sets the default values.
 func NewSchemaItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaItemRequestBuilder) {
     m := &SchemaItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}{?token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema/{%2Did}", pathParameters),
     }
     return m
 }
@@ -55,11 +48,6 @@ func (m *SchemaItemRequestBuilder) Delete(ctx context.Context, requestConfigurat
         return err
     }
     return nil
-}
-// DropToken the dropToken property
-// returns a *SchemaItemDropTokenRequestBuilder when successful
-func (m *SchemaItemRequestBuilder) DropToken()(*SchemaItemDropTokenRequestBuilder) {
-    return NewSchemaItemDropTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Export the export property
 // returns a *SchemaItemExportRequestBuilder when successful
@@ -87,11 +75,6 @@ func (m *SchemaItemRequestBuilder) Get(ctx context.Context, requestConfiguration
 func (m *SchemaItemRequestBuilder) Labels()(*SchemaItemLabelsRequestBuilder) {
     return NewSchemaItemLabelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ResetToken the resetToken property
-// returns a *SchemaItemResetTokenRequestBuilder when successful
-func (m *SchemaItemRequestBuilder) ResetToken()(*SchemaItemResetTokenRequestBuilder) {
-    return NewSchemaItemResetTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // ToDeleteRequestInformation delete a Schema by id
 // returns a *RequestInformation when successful
 func (m *SchemaItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *SchemaItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
@@ -107,9 +90,6 @@ func (m *SchemaItemRequestBuilder) ToDeleteRequestInformation(ctx context.Contex
 func (m *SchemaItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SchemaItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }

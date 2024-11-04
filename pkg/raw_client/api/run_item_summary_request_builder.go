@@ -10,24 +10,17 @@ import (
 type RunItemSummaryRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// RunItemSummaryRequestBuilderGetQueryParameters get Run Summary information by Run ID
-type RunItemSummaryRequestBuilderGetQueryParameters struct {
-    // Run API token
-    Token *string `uriparametername:"token"`
-}
 // RunItemSummaryRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type RunItemSummaryRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *RunItemSummaryRequestBuilderGetQueryParameters
 }
 // NewRunItemSummaryRequestBuilderInternal instantiates a new RunItemSummaryRequestBuilder and sets the default values.
 func NewRunItemSummaryRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*RunItemSummaryRequestBuilder) {
     m := &RunItemSummaryRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/summary{?token*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/run/{id}/summary", pathParameters),
     }
     return m
 }
@@ -58,9 +51,6 @@ func (m *RunItemSummaryRequestBuilder) Get(ctx context.Context, requestConfigura
 func (m *RunItemSummaryRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *RunItemSummaryRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }

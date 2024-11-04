@@ -15,8 +15,6 @@ type Schema struct {
     name *string
     // JSON validation schema. Used to validate uploaded JSON documents
     schema *string
-    // Array of API tokens associated with test
-    token *string
     // Unique, versioned schema URI
     uri *string
 }
@@ -81,16 +79,6 @@ func (m *Schema) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2689638
         }
         return nil
     }
-    res["token"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetToken(val)
-        }
-        return nil
-    }
     res["uri"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -117,11 +105,6 @@ func (m *Schema) GetName()(*string) {
 // returns a *string when successful
 func (m *Schema) GetSchema()(*string) {
     return m.schema
-}
-// GetToken gets the token property value. Array of API tokens associated with test
-// returns a *string when successful
-func (m *Schema) GetToken()(*string) {
-    return m.token
 }
 // GetUri gets the uri property value. Unique, versioned schema URI
 // returns a *string when successful
@@ -159,12 +142,6 @@ func (m *Schema) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c
         }
     }
     {
-        err = writer.WriteStringValue("token", m.GetToken())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err = writer.WriteStringValue("uri", m.GetUri())
         if err != nil {
             return err
@@ -188,10 +165,6 @@ func (m *Schema) SetName(value *string)() {
 func (m *Schema) SetSchema(value *string)() {
     m.schema = value
 }
-// SetToken sets the token property value. Array of API tokens associated with test
-func (m *Schema) SetToken(value *string)() {
-    m.token = value
-}
 // SetUri sets the uri property value. Unique, versioned schema URI
 func (m *Schema) SetUri(value *string)() {
     m.uri = value
@@ -203,12 +176,10 @@ type Schemaable interface {
     GetId()(*int32)
     GetName()(*string)
     GetSchema()(*string)
-    GetToken()(*string)
     GetUri()(*string)
     SetDescription(value *string)()
     SetId(value *int32)()
     SetName(value *string)()
     SetSchema(value *string)()
-    SetToken(value *string)()
     SetUri(value *string)()
 }

@@ -20,8 +20,6 @@ type RunSummary struct {
     testid *int32
     // test ID run relates to
     testname *string
-    // The token property
-    token *string
     // has Run been trashed in the UI
     trashed *bool
     // Array of validation errors
@@ -135,16 +133,6 @@ func (m *RunSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
         }
         return nil
     }
-    res["token"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetToken(val)
-        }
-        return nil
-    }
     res["trashed"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -197,11 +185,6 @@ func (m *RunSummary) GetTestid()(*int32) {
 // returns a *string when successful
 func (m *RunSummary) GetTestname()(*string) {
     return m.testname
-}
-// GetToken gets the token property value. The token property
-// returns a *string when successful
-func (m *RunSummary) GetToken()(*string) {
-    return m.token
 }
 // GetTrashed gets the trashed property value. has Run been trashed in the UI
 // returns a *bool when successful
@@ -268,12 +251,6 @@ func (m *RunSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
         }
     }
     {
-        err = writer.WriteStringValue("token", m.GetToken())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err = writer.WriteBoolValue("trashed", m.GetTrashed())
         if err != nil {
             return err
@@ -321,10 +298,6 @@ func (m *RunSummary) SetTestid(value *int32)() {
 func (m *RunSummary) SetTestname(value *string)() {
     m.testname = value
 }
-// SetToken sets the token property value. The token property
-func (m *RunSummary) SetToken(value *string)() {
-    m.token = value
-}
 // SetTrashed sets the trashed property value. has Run been trashed in the UI
 func (m *RunSummary) SetTrashed(value *bool)() {
     m.trashed = value
@@ -343,7 +316,6 @@ type RunSummaryable interface {
     GetSchemas()([]SchemaUsageable)
     GetTestid()(*int32)
     GetTestname()(*string)
-    GetToken()(*string)
     GetTrashed()(*bool)
     GetValidationErrors()([]ValidationErrorable)
     SetDatasets(value []int32)()
@@ -353,7 +325,6 @@ type RunSummaryable interface {
     SetSchemas(value []SchemaUsageable)()
     SetTestid(value *int32)()
     SetTestname(value *string)()
-    SetToken(value *string)()
     SetTrashed(value *bool)()
     SetValidationErrors(value []ValidationErrorable)()
 }
