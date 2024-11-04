@@ -9,12 +9,14 @@ import (
 type HorreumCredentials struct {
 	Username *string
 	Password *string
+	ApiKey   *string
 }
 
 func NewDefaultHorreumCredentials() HorreumCredentials {
 	return HorreumCredentials{
 		Username: nil,
 		Password: nil,
+		ApiKey:   nil,
 	}
 }
 
@@ -25,6 +27,8 @@ const (
 	BEARER = iota
 	// BASIC encodes username and password in the HTTP request
 	BASIC
+	// API_KEY authenticate with Horreum tokens
+	API_KEY
 )
 
 type ClientConfiguration struct {
