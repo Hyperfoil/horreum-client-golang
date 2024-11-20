@@ -1,14 +1,13 @@
 # This workflow will run the full CI for the Horreum Go library including the build and the tests execution
 # This is going to be triggered on every pull request as well as on main and stables branches.
 name: Golang client ci
-
 on:
   push:
     branches:
       - main
       - 0.15.x
+      - 0.16.x
   pull_request:
-
 jobs:
   test:
     name: test/${{ matrix.go }}
@@ -16,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: [ "1.20", "1.21", "1.22" ]
+        go: ["1.20", "1.21", "1.22"]
     env:
       FORCE_COLOR: "1"
       PRE_COMMIT_COLOR: "always"
