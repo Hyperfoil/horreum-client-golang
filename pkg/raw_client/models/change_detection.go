@@ -65,6 +65,13 @@ func (m *ChangeDetection_ChangeDetection_config) GetEDivisiveDetectionConfig()(E
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *ChangeDetection_ChangeDetection_config) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+    if m.GetEDivisiveDetectionConfig() != nil {
+        return m.GetEDivisiveDetectionConfig().GetFieldDeserializers()
+    } else if m.GetFixedThresholdDetectionConfig() != nil {
+        return m.GetFixedThresholdDetectionConfig().GetFieldDeserializers()
+    } else if m.GetRelativeDifferenceDetectionConfig() != nil {
+        return m.GetRelativeDifferenceDetectionConfig().GetFieldDeserializers()
+    }
     return make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
 }
 // GetFixedThresholdDetectionConfig gets the FixedThresholdDetectionConfig property value. Composed type representation for type FixedThresholdDetectionConfigable
