@@ -74,6 +74,15 @@ func CreateAction_Action_configFromDiscriminatorValue(parseNode i878a80d2330e89d
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Action_Action_config) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+    if m.GetGithubIssueCommentActionConfig() != nil {
+        return m.GetGithubIssueCommentActionConfig().GetFieldDeserializers()
+    } else if m.GetGithubIssueCreateActionConfig() != nil {
+        return m.GetGithubIssueCreateActionConfig().GetFieldDeserializers()
+    } else if m.GetHttpActionConfig() != nil {
+        return m.GetHttpActionConfig().GetFieldDeserializers()
+    } else if m.GetSlackChannelMessageActionConfig() != nil {
+        return m.GetSlackChannelMessageActionConfig().GetFieldDeserializers()
+    }
     return make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
 }
 // GetGithubIssueCommentActionConfig gets the GithubIssueCommentActionConfig property value. Composed type representation for type GithubIssueCommentActionConfigable
