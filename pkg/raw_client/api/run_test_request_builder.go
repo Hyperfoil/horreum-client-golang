@@ -45,20 +45,23 @@ func NewRunTestRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371
     return NewRunTestRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post upload a new Run
-// returns a []byte when successful
-func (m *RunTestRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Runable, requestConfiguration *RunTestRequestBuilderPostRequestConfiguration)([]byte, error) {
+// returns a []int32 when successful
+func (m *RunTestRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Runable, requestConfiguration *RunTestRequestBuilderPostRequestConfiguration)([]int32, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitiveCollection(ctx, requestInfo, "int32", nil)
     if err != nil {
         return nil, err
     }
-    if res == nil {
-        return nil, nil
+    val := make([]int32, len(res))
+    for i, v := range res {
+        if v != nil {
+            val[i] = *(v.(*int32))
+        }
     }
-    return res.([]byte), nil
+    return val, nil
 }
 // ToPostRequestInformation upload a new Run
 // returns a *RequestInformation when successful
@@ -71,6 +74,7 @@ func (m *RunTestRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
     if err != nil {
         return nil, err
