@@ -53,20 +53,20 @@ func NewRunDataRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371
     return NewRunDataRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post upload a new Run
-// returns a *int32 when successful
-func (m *RunDataRequestBuilder) Post(ctx context.Context, body *string, requestConfiguration *RunDataRequestBuilderPostRequestConfiguration)(*int32, error) {
+// returns a *string when successful
+func (m *RunDataRequestBuilder) Post(ctx context.Context, body *string, requestConfiguration *RunDataRequestBuilderPostRequestConfiguration)(*string, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "int32", nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "string", nil)
     if err != nil {
         return nil, err
     }
     if res == nil {
         return nil, nil
     }
-    return res.(*int32), nil
+    return res.(*string), nil
 }
 // ToPostRequestInformation upload a new Run
 // returns a *RequestInformation when successful
@@ -79,7 +79,7 @@ func (m *RunDataRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
-    requestInfo.Headers.TryAdd("Accept", "application/json")
+    requestInfo.Headers.TryAdd("Accept", "text/plain;q=0.9")
     requestInfo.SetContentFromScalar(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
     return requestInfo, nil
 }
