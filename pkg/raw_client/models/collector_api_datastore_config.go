@@ -5,19 +5,19 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ElasticsearchDatastoreConfig type of backend datastore
-type ElasticsearchDatastoreConfig struct {
+// CollectorApiDatastoreConfig type of backend datastore
+type CollectorApiDatastoreConfig struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The authentication property
-    authentication ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable
+    authentication CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable
     // Built In
     builtIn *bool
-    // Elasticsearch url
+    // Collector url, e.g. https://collector.foci.life/api/v1/image-stats
     url *string
 }
-// ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication composed type wrapper for classes APIKeyAuthable, NoAuthable, UsernamePassAuthable
-type ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication struct {
+// CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication composed type wrapper for classes APIKeyAuthable, NoAuthable, UsernamePassAuthable
+type CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication struct {
     // Composed type representation for type APIKeyAuthable
     aPIKeyAuth APIKeyAuthable
     // Composed type representation for type NoAuthable
@@ -25,16 +25,16 @@ type ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication st
     // Composed type representation for type UsernamePassAuthable
     usernamePassAuth UsernamePassAuthable
 }
-// NewElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication instantiates a new ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication and sets the default values.
-func NewElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication()(*ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) {
-    m := &ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication{
+// NewCollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication instantiates a new CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication and sets the default values.
+func NewCollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication()(*CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) {
+    m := &CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication{
     }
     return m
 }
-// CreateElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateCollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    result := NewElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication()
+func CreateCollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    result := NewCollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication()
     if parseNode != nil {
         mappingValueNode, err := parseNode.GetChildNode("type")
         if err != nil {
@@ -60,12 +60,12 @@ func CreateElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticat
 }
 // GetAPIKeyAuth gets the APIKeyAuth property value. Composed type representation for type APIKeyAuthable
 // returns a APIKeyAuthable when successful
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) GetAPIKeyAuth()(APIKeyAuthable) {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) GetAPIKeyAuth()(APIKeyAuthable) {
     return m.aPIKeyAuth
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     if m.GetAPIKeyAuth() != nil {
         return m.GetAPIKeyAuth().GetFieldDeserializers()
     } else if m.GetNoAuth() != nil {
@@ -77,21 +77,21 @@ func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticatio
 }
 // GetIsComposedType determines if the current object is a wrapper around a composed type
 // returns a bool when successful
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) GetIsComposedType()(bool) {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) GetIsComposedType()(bool) {
     return true
 }
 // GetNoAuth gets the NoAuth property value. Composed type representation for type NoAuthable
 // returns a NoAuthable when successful
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) GetNoAuth()(NoAuthable) {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) GetNoAuth()(NoAuthable) {
     return m.noAuth
 }
 // GetUsernamePassAuth gets the UsernamePassAuth property value. Composed type representation for type UsernamePassAuthable
 // returns a UsernamePassAuthable when successful
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) GetUsernamePassAuth()(UsernamePassAuthable) {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) GetUsernamePassAuth()(UsernamePassAuthable) {
     return m.usernamePassAuth
 }
 // Serialize serializes information the current object
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     if m.GetAPIKeyAuth() != nil {
         err := writer.WriteObjectValue("", m.GetAPIKeyAuth())
         if err != nil {
@@ -111,18 +111,18 @@ func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticatio
     return nil
 }
 // SetAPIKeyAuth sets the APIKeyAuth property value. Composed type representation for type APIKeyAuthable
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) SetAPIKeyAuth(value APIKeyAuthable)() {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) SetAPIKeyAuth(value APIKeyAuthable)() {
     m.aPIKeyAuth = value
 }
 // SetNoAuth sets the NoAuth property value. Composed type representation for type NoAuthable
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) SetNoAuth(value NoAuthable)() {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) SetNoAuth(value NoAuthable)() {
     m.noAuth = value
 }
 // SetUsernamePassAuth sets the UsernamePassAuth property value. Composed type representation for type UsernamePassAuthable
-func (m *ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authentication) SetUsernamePassAuth(value UsernamePassAuthable)() {
+func (m *CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authentication) SetUsernamePassAuth(value UsernamePassAuthable)() {
     m.usernamePassAuth = value
 }
-type ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable interface {
+type CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAPIKeyAuth()(APIKeyAuthable)
     GetNoAuth()(NoAuthable)
@@ -131,44 +131,44 @@ type ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationabl
     SetNoAuth(value NoAuthable)()
     SetUsernamePassAuth(value UsernamePassAuthable)()
 }
-// NewElasticsearchDatastoreConfig instantiates a new ElasticsearchDatastoreConfig and sets the default values.
-func NewElasticsearchDatastoreConfig()(*ElasticsearchDatastoreConfig) {
-    m := &ElasticsearchDatastoreConfig{
+// NewCollectorApiDatastoreConfig instantiates a new CollectorApiDatastoreConfig and sets the default values.
+func NewCollectorApiDatastoreConfig()(*CollectorApiDatastoreConfig) {
+    m := &CollectorApiDatastoreConfig{
     }
     m.SetAdditionalData(make(map[string]any))
     return m
 }
-// CreateElasticsearchDatastoreConfigFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// CreateCollectorApiDatastoreConfigFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
-func CreateElasticsearchDatastoreConfigFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
-    return NewElasticsearchDatastoreConfig(), nil
+func CreateCollectorApiDatastoreConfigFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
+    return NewCollectorApiDatastoreConfig(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 // returns a map[string]any when successful
-func (m *ElasticsearchDatastoreConfig) GetAdditionalData()(map[string]any) {
+func (m *CollectorApiDatastoreConfig) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAuthentication gets the authentication property value. The authentication property
-// returns a ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable when successful
-func (m *ElasticsearchDatastoreConfig) GetAuthentication()(ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable) {
+// returns a CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable when successful
+func (m *CollectorApiDatastoreConfig) GetAuthentication()(CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable) {
     return m.authentication
 }
 // GetBuiltIn gets the builtIn property value. Built In
 // returns a *bool when successful
-func (m *ElasticsearchDatastoreConfig) GetBuiltIn()(*bool) {
+func (m *CollectorApiDatastoreConfig) GetBuiltIn()(*bool) {
     return m.builtIn
 }
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
-func (m *ElasticsearchDatastoreConfig) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *CollectorApiDatastoreConfig) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["authentication"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateCollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetAuthentication(val.(ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable))
+            m.SetAuthentication(val.(CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable))
         }
         return nil
     }
@@ -194,13 +194,13 @@ func (m *ElasticsearchDatastoreConfig) GetFieldDeserializers()(map[string]func(i
     }
     return res
 }
-// GetUrl gets the url property value. Elasticsearch url
+// GetUrl gets the url property value. Collector url, e.g. https://collector.foci.life/api/v1/image-stats
 // returns a *string when successful
-func (m *ElasticsearchDatastoreConfig) GetUrl()(*string) {
+func (m *CollectorApiDatastoreConfig) GetUrl()(*string) {
     return m.url
 }
 // Serialize serializes information the current object
-func (m *ElasticsearchDatastoreConfig) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+func (m *CollectorApiDatastoreConfig) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
         err := writer.WriteObjectValue("authentication", m.GetAuthentication())
         if err != nil {
@@ -228,28 +228,28 @@ func (m *ElasticsearchDatastoreConfig) Serialize(writer i878a80d2330e89d26896388
     return nil
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *ElasticsearchDatastoreConfig) SetAdditionalData(value map[string]any)() {
+func (m *CollectorApiDatastoreConfig) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetAuthentication sets the authentication property value. The authentication property
-func (m *ElasticsearchDatastoreConfig) SetAuthentication(value ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable)() {
+func (m *CollectorApiDatastoreConfig) SetAuthentication(value CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable)() {
     m.authentication = value
 }
 // SetBuiltIn sets the builtIn property value. Built In
-func (m *ElasticsearchDatastoreConfig) SetBuiltIn(value *bool)() {
+func (m *CollectorApiDatastoreConfig) SetBuiltIn(value *bool)() {
     m.builtIn = value
 }
-// SetUrl sets the url property value. Elasticsearch url
-func (m *ElasticsearchDatastoreConfig) SetUrl(value *string)() {
+// SetUrl sets the url property value. Collector url, e.g. https://collector.foci.life/api/v1/image-stats
+func (m *CollectorApiDatastoreConfig) SetUrl(value *string)() {
     m.url = value
 }
-type ElasticsearchDatastoreConfigable interface {
+type CollectorApiDatastoreConfigable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    GetAuthentication()(ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable)
+    GetAuthentication()(CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable)
     GetBuiltIn()(*bool)
     GetUrl()(*string)
-    SetAuthentication(value ElasticsearchDatastoreConfig_ElasticsearchDatastoreConfig_authenticationable)()
+    SetAuthentication(value CollectorApiDatastoreConfig_CollectorApiDatastoreConfig_authenticationable)()
     SetBuiltIn(value *bool)()
     SetUrl(value *string)()
 }

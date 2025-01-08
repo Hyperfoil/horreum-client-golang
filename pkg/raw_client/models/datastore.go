@@ -4,14 +4,12 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// Datastore type of backend datastore
+// Datastore instance of backend datastore
 type Datastore struct {
     // Access rights for the test. This defines the visibility of the Test in the UI
     access *Datastore_access
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // Is this a built-in datastore? Built-in datastores cannot be deleted or modified
-    builtIn *bool
     // The config property
     config Datastore_Datastore_configable
     // Unique Datastore id
@@ -23,8 +21,10 @@ type Datastore struct {
     // Type of backend datastore
     typeEscaped *Datastore_type
 }
-// Datastore_Datastore_config composed type wrapper for classes ElasticsearchDatastoreConfigable, PostgresDatastoreConfigable
+// Datastore_Datastore_config composed type wrapper for classes CollectorApiDatastoreConfigable, ElasticsearchDatastoreConfigable, PostgresDatastoreConfigable
 type Datastore_Datastore_config struct {
+    // Composed type representation for type CollectorApiDatastoreConfigable
+    collectorApiDatastoreConfig CollectorApiDatastoreConfigable
     // Composed type representation for type ElasticsearchDatastoreConfigable
     elasticsearchDatastoreConfig ElasticsearchDatastoreConfigable
     // Composed type representation for type PostgresDatastoreConfigable
@@ -56,6 +56,11 @@ func CreateDatastore_Datastore_configFromDiscriminatorValue(parseNode i878a80d23
     }
     return result, nil
 }
+// GetCollectorApiDatastoreConfig gets the CollectorApiDatastoreConfig property value. Composed type representation for type CollectorApiDatastoreConfigable
+// returns a CollectorApiDatastoreConfigable when successful
+func (m *Datastore_Datastore_config) GetCollectorApiDatastoreConfig()(CollectorApiDatastoreConfigable) {
+    return m.collectorApiDatastoreConfig
+}
 // GetElasticsearchDatastoreConfig gets the ElasticsearchDatastoreConfig property value. Composed type representation for type ElasticsearchDatastoreConfigable
 // returns a ElasticsearchDatastoreConfigable when successful
 func (m *Datastore_Datastore_config) GetElasticsearchDatastoreConfig()(ElasticsearchDatastoreConfigable) {
@@ -64,7 +69,9 @@ func (m *Datastore_Datastore_config) GetElasticsearchDatastoreConfig()(Elasticse
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Datastore_Datastore_config) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    if m.GetElasticsearchDatastoreConfig() != nil {
+    if m.GetCollectorApiDatastoreConfig() != nil {
+        return m.GetCollectorApiDatastoreConfig().GetFieldDeserializers()
+    } else if m.GetElasticsearchDatastoreConfig() != nil {
         return m.GetElasticsearchDatastoreConfig().GetFieldDeserializers()
     } else if m.GetPostgresDatastoreConfig() != nil {
         return m.GetPostgresDatastoreConfig().GetFieldDeserializers()
@@ -83,7 +90,12 @@ func (m *Datastore_Datastore_config) GetPostgresDatastoreConfig()(PostgresDatast
 }
 // Serialize serializes information the current object
 func (m *Datastore_Datastore_config) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    if m.GetElasticsearchDatastoreConfig() != nil {
+    if m.GetCollectorApiDatastoreConfig() != nil {
+        err := writer.WriteObjectValue("", m.GetCollectorApiDatastoreConfig())
+        if err != nil {
+            return err
+        }
+    } else if m.GetElasticsearchDatastoreConfig() != nil {
         err := writer.WriteObjectValue("", m.GetElasticsearchDatastoreConfig())
         if err != nil {
             return err
@@ -96,6 +108,10 @@ func (m *Datastore_Datastore_config) Serialize(writer i878a80d2330e89d26896388a3
     }
     return nil
 }
+// SetCollectorApiDatastoreConfig sets the CollectorApiDatastoreConfig property value. Composed type representation for type CollectorApiDatastoreConfigable
+func (m *Datastore_Datastore_config) SetCollectorApiDatastoreConfig(value CollectorApiDatastoreConfigable)() {
+    m.collectorApiDatastoreConfig = value
+}
 // SetElasticsearchDatastoreConfig sets the ElasticsearchDatastoreConfig property value. Composed type representation for type ElasticsearchDatastoreConfigable
 func (m *Datastore_Datastore_config) SetElasticsearchDatastoreConfig(value ElasticsearchDatastoreConfigable)() {
     m.elasticsearchDatastoreConfig = value
@@ -106,8 +122,10 @@ func (m *Datastore_Datastore_config) SetPostgresDatastoreConfig(value PostgresDa
 }
 type Datastore_Datastore_configable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetCollectorApiDatastoreConfig()(CollectorApiDatastoreConfigable)
     GetElasticsearchDatastoreConfig()(ElasticsearchDatastoreConfigable)
     GetPostgresDatastoreConfig()(PostgresDatastoreConfigable)
+    SetCollectorApiDatastoreConfig(value CollectorApiDatastoreConfigable)()
     SetElasticsearchDatastoreConfig(value ElasticsearchDatastoreConfigable)()
     SetPostgresDatastoreConfig(value PostgresDatastoreConfigable)()
 }
@@ -133,11 +151,6 @@ func (m *Datastore) GetAccess()(*Datastore_access) {
 func (m *Datastore) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetBuiltIn gets the builtIn property value. Is this a built-in datastore? Built-in datastores cannot be deleted or modified
-// returns a *bool when successful
-func (m *Datastore) GetBuiltIn()(*bool) {
-    return m.builtIn
-}
 // GetConfig gets the config property value. The config property
 // returns a Datastore_Datastore_configable when successful
 func (m *Datastore) GetConfig()(Datastore_Datastore_configable) {
@@ -154,16 +167,6 @@ func (m *Datastore) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2689
         }
         if val != nil {
             m.SetAccess(val.(*Datastore_access))
-        }
-        return nil
-    }
-    res["builtIn"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBuiltIn(val)
         }
         return nil
     }
@@ -249,12 +252,6 @@ func (m *Datastore) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c0
         }
     }
     {
-        err := writer.WriteBoolValue("builtIn", m.GetBuiltIn())
-        if err != nil {
-            return err
-        }
-    }
-    {
         err := writer.WriteObjectValue("config", m.GetConfig())
         if err != nil {
             return err
@@ -301,10 +298,6 @@ func (m *Datastore) SetAccess(value *Datastore_access)() {
 func (m *Datastore) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetBuiltIn sets the builtIn property value. Is this a built-in datastore? Built-in datastores cannot be deleted or modified
-func (m *Datastore) SetBuiltIn(value *bool)() {
-    m.builtIn = value
-}
 // SetConfig sets the config property value. The config property
 func (m *Datastore) SetConfig(value Datastore_Datastore_configable)() {
     m.config = value
@@ -329,14 +322,12 @@ type Datastoreable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAccess()(*Datastore_access)
-    GetBuiltIn()(*bool)
     GetConfig()(Datastore_Datastore_configable)
     GetId()(*int32)
     GetName()(*string)
     GetOwner()(*string)
     GetTypeEscaped()(*Datastore_type)
     SetAccess(value *Datastore_access)()
-    SetBuiltIn(value *bool)()
     SetConfig(value Datastore_Datastore_configable)()
     SetId(value *int32)()
     SetName(value *string)()
