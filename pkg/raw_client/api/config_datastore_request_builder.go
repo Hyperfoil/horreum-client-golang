@@ -2,6 +2,7 @@ package api
 
 import (
     "context"
+    i53ac87e8cb3cc9276228f74d38694a208cacb99bb8ceb705eeae99fb88d4d274 "strconv"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
@@ -25,6 +26,7 @@ type ConfigDatastoreRequestBuilderPutRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ById gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.config.datastore.item collection
+// Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
 // returns a *ConfigDatastoreItemRequestBuilder when successful
 func (m *ConfigDatastoreRequestBuilder) ById(id string)(*ConfigDatastoreItemRequestBuilder) {
     urlTplParams := make(map[string]string)
@@ -34,6 +36,16 @@ func (m *ConfigDatastoreRequestBuilder) ById(id string)(*ConfigDatastoreItemRequ
     if id != "" {
         urlTplParams["%2Did"] = id
     }
+    return NewConfigDatastoreItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
+// ByIdInteger gets an item from the github.com/hyperfoil/horreum-client-golang/pkg/raw_client.api.config.datastore.item collection
+// returns a *ConfigDatastoreItemRequestBuilder when successful
+func (m *ConfigDatastoreRequestBuilder) ByIdInteger(id int32)(*ConfigDatastoreItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    urlTplParams["%2Did"] = i53ac87e8cb3cc9276228f74d38694a208cacb99bb8ceb705eeae99fb88d4d274.FormatInt(int64(id), 10)
     return NewConfigDatastoreItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewConfigDatastoreRequestBuilderInternal instantiates a new ConfigDatastoreRequestBuilder and sets the default values.
@@ -110,6 +122,11 @@ func (m *ConfigDatastoreRequestBuilder) ToPutRequestInformation(ctx context.Cont
         return nil, err
     }
     return requestInfo, nil
+}
+// Types the types property
+// returns a *ConfigDatastoreTypesRequestBuilder when successful
+func (m *ConfigDatastoreRequestBuilder) Types()(*ConfigDatastoreTypesRequestBuilder) {
+    return NewConfigDatastoreTypesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // returns a *ConfigDatastoreRequestBuilder when successful
