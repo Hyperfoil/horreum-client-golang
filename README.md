@@ -15,21 +15,9 @@
 
 [Horreum](https://github.com/Hyperfoil/Horreum) is a service for storing performance data and regression analysis.
 
-Please, visit our project website: 
+## Contributing
 
-[https://horreum.hyperfoil.io](https://horreum.hyperfoil.io)
-
-for more information.
-
-[Horreum](https://github.com/Hyperfoil/Horreum) is a [Quarkus](https://quarkus.io/) based application which uses
-[Quinoa](https://quarkiverse.github.io/quarkiverse-docs/quarkus-quinoa/dev/) as its [nodejs](https://nodejs.org/en) engine.
-
-This project is about providing a simplified setup and examples to use 
-[Horreum](https://github.com/Hyperfoil/Horreum) using the [golang](https://go.dev/) programming language.
-
-## 🧑‍💻 Contributing
-
-Contributions to `horreum-client-golang` Please check our [CONTRIBUTING.md](./CONTRIBUTING.md)
+Please check the [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ### If you have any idea or doubt 👇
 
@@ -45,6 +33,9 @@ community.
 
 Consider giving the project a [star](https://github.com/Hyperfoil/horreum-client-golang/stargazers) on
 [GitHub](https://github.com/Hyperfoil/horreum-client-golang/) if you find it useful.
+
+## Release
+Please check the [RELEASE.md](./docs/RELEASE.md)
 
 ## License
 
