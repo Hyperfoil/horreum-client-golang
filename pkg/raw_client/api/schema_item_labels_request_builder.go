@@ -80,7 +80,7 @@ func (m *SchemaItemLabelsRequestBuilder) Get(ctx context.Context, requestConfigu
     }
     return val, nil
 }
-// Post save new or update existing Label for a Schema
+// Post save new or update existing Label for a Schema (Label id only required when updating existing one)
 // returns a *int32 when successful
 func (m *SchemaItemLabelsRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPostRequestConfiguration)(*int32, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
@@ -107,7 +107,7 @@ func (m *SchemaItemLabelsRequestBuilder) ToGetRequestInformation(ctx context.Con
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation save new or update existing Label for a Schema
+// ToPostRequestInformation save new or update existing Label for a Schema (Label id only required when updating existing one)
 // returns a *RequestInformation when successful
 func (m *SchemaItemLabelsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
