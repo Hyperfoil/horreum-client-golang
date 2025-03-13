@@ -43,6 +43,13 @@ type SchemaRequestBuilderPostRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
+// SchemaRequestBuilderPutRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type SchemaRequestBuilderPutRequestConfiguration struct {
+    // Request headers
+    Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
+    // Request options
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
+}
 // AllLabels the allLabels property
 // returns a *SchemaAllLabelsRequestBuilder when successful
 func (m *SchemaRequestBuilder) AllLabels()(*SchemaAllLabelsRequestBuilder) {
@@ -141,6 +148,22 @@ func (m *SchemaRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1
     }
     return res.(*int32), nil
 }
+// Put update an existing Schema
+// returns a *int32 when successful
+func (m *SchemaRequestBuilder) Put(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Schemaable, requestConfiguration *SchemaRequestBuilderPutRequestConfiguration)(*int32, error) {
+    requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
+    if err != nil {
+        return nil, err
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "int32", nil)
+    if err != nil {
+        return nil, err
+    }
+    if res == nil {
+        return nil, nil
+    }
+    return res.(*int32), nil
+}
 // ToGetRequestInformation retrieve a paginated list of Schemas with available count
 // returns a *RequestInformation when successful
 func (m *SchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SchemaRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
@@ -159,6 +182,21 @@ func (m *SchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requ
 // returns a *RequestInformation when successful
 func (m *SchemaRequestBuilder) ToPostRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Schemaable, requestConfiguration *SchemaRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+    if requestConfiguration != nil {
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
+    return requestInfo, nil
+}
+// ToPutRequestInformation update an existing Schema
+// returns a *RequestInformation when successful
+func (m *SchemaRequestBuilder) ToPutRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Schemaable, requestConfiguration *SchemaRequestBuilderPutRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
