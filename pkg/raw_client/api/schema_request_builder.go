@@ -20,6 +20,7 @@ type SchemaRequestBuilderGetQueryParameters struct {
     DirectionAsSortDirection *i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.SortDirection `uriparametername:"direction"`
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
+    Name *string `uriparametername:"name"`
     // filter by page number of a paginated list of Schemas
     Page *int32 `uriparametername:"page"`
     // __my, __all or a comma delimited  list of roles
@@ -86,7 +87,7 @@ func (m *SchemaRequestBuilder) ByIdInteger(id int32)(*SchemaItemRequestBuilder) 
 // NewSchemaRequestBuilderInternal instantiates a new SchemaRequestBuilder and sets the default values.
 func NewSchemaRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SchemaRequestBuilder) {
     m := &SchemaRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema{?direction*,limit*,page*,roles*,sort*}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/schema{?direction*,limit*,name*,page*,roles*,sort*}", pathParameters),
     }
     return m
 }
