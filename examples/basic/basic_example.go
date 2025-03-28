@@ -37,21 +37,21 @@ func init() {
 	acmeBenchmarkSchema.SetName(Of("ACME Benchmark Schema"))
 	acmeBenchmarkSchema.SetDescription(Of("Data produced by benchmarking tool"))
 	acmeBenchmarkSchema.SetOwner(Of("dev-team"))
-	acmeBenchmarkSchema.SetAccess(Of(models.PUBLIC_PROTECTEDTYPE_ACCESS))
+	acmeBenchmarkSchema.SetAccess(Of(models.PUBLIC_SCHEMA_ACCESS))
 	acmeBenchmarkSchema.SetUri(Of("urn:acme:benchmark:0.1"))
 
 	// Horreum Schema
 	acmeHorreumSchema.SetName(Of("ACME Horreum Schema"))
 	acmeHorreumSchema.SetDescription(Of("Used in Datasets"))
 	acmeHorreumSchema.SetOwner(Of("dev-team"))
-	acmeHorreumSchema.SetAccess(Of(models.PUBLIC_PROTECTEDTYPE_ACCESS))
+	acmeHorreumSchema.SetAccess(Of(models.PUBLIC_SCHEMA_ACCESS))
 	acmeHorreumSchema.SetUri(Of("urn:acme:horreum:0.1"))
 
 	// Transformer
 	acmeBenchmarkSchemaTransformer.SetName(Of("Acme Transformer"))
 	acmeBenchmarkSchemaTransformer.SetDescription(Of("Transformer for converting complex runs into individual datasets"))
 	acmeBenchmarkSchemaTransformer.SetOwner(Of("dev-team"))
-	acmeBenchmarkSchemaTransformer.SetAccess(Of(models.PUBLIC_PROTECTEDTYPE_ACCESS))
+	acmeBenchmarkSchemaTransformer.SetAccess(Of(models.PUBLIC_TRANSFORMER_ACCESS))
 	acmeBenchmarkSchemaTransformer.SetTargetSchemaUri(Of("urn:acme:horreum:0.1"))
 	acmeBenchmarkSchemaTransformer.SetFunction(Of("({results, hash}) => results.map(r => ({ ...r, hash }))"))
 
@@ -69,7 +69,7 @@ func init() {
 	roadrunnerTest.SetName(Of("Roadrunner Test"))
 	roadrunnerTest.SetDescription(Of("acme.com benchmark"))
 	roadrunnerTest.SetOwner(Of("dev-team"))
-	roadrunnerTest.SetAccess(Of(models.PUBLIC_PROTECTEDTYPE_ACCESS))
+	roadrunnerTest.SetAccess(Of(models.PUBLIC_TEST_ACCESS))
 	roadrunnerTest.SetFingerprintLabels([]string{"benchmark_test"})
 
 	// Roadrunner Run

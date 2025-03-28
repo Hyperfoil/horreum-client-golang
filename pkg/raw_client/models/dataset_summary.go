@@ -5,17 +5,26 @@ import (
 )
 
 type DatasetSummary struct {
-    ProtectedTimeType
+    // Access rights for the test. This defines the visibility of the Test in the UI
+    access *DatasetSummary_access
+    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additionalData map[string]any
     // Dataset description
     description *string
     // Unique Dataset ID
     id *int32
     // Ordinal position of Dataset Summary on returned List
     ordinal *int32
+    // Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+    owner *string
     // Run ID that Dataset relates to
     runId *int32
     // List of Schema usages
     schemas []SchemaUsageable
+    // Run Start timestamp
+    start *int64
+    // Run Stop timestamp
+    stop *int64
     // Test ID that Dataset relates to
     testId *int32
     // Test name that the Dataset relates to
@@ -28,14 +37,24 @@ type DatasetSummary struct {
 // NewDatasetSummary instantiates a new DatasetSummary and sets the default values.
 func NewDatasetSummary()(*DatasetSummary) {
     m := &DatasetSummary{
-        ProtectedTimeType: *NewProtectedTimeType(),
     }
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateDatasetSummaryFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
 func CreateDatasetSummaryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewDatasetSummary(), nil
+}
+// GetAccess gets the access property value. Access rights for the test. This defines the visibility of the Test in the UI
+// returns a *DatasetSummary_access when successful
+func (m *DatasetSummary) GetAccess()(*DatasetSummary_access) {
+    return m.access
+}
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
+func (m *DatasetSummary) GetAdditionalData()(map[string]any) {
+    return m.additionalData
 }
 // GetDescription gets the description property value. Dataset description
 // returns a *string when successful
@@ -45,7 +64,17 @@ func (m *DatasetSummary) GetDescription()(*string) {
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *DatasetSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.ProtectedTimeType.GetFieldDeserializers()
+    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["access"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseDatasetSummary_access)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAccess(val.(*DatasetSummary_access))
+        }
+        return nil
+    }
     res["description"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -76,6 +105,16 @@ func (m *DatasetSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         }
         return nil
     }
+    res["owner"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOwner(val)
+        }
+        return nil
+    }
     res["runId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
@@ -99,6 +138,26 @@ func (m *DatasetSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89
                 }
             }
             m.SetSchemas(res)
+        }
+        return nil
+    }
+    res["start"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt64Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetStart(val)
+        }
+        return nil
+    }
+    res["stop"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetInt64Value()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetStop(val)
         }
         return nil
     }
@@ -160,6 +219,11 @@ func (m *DatasetSummary) GetId()(*int32) {
 func (m *DatasetSummary) GetOrdinal()(*int32) {
     return m.ordinal
 }
+// GetOwner gets the owner property value. Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+// returns a *string when successful
+func (m *DatasetSummary) GetOwner()(*string) {
+    return m.owner
+}
 // GetRunId gets the runId property value. Run ID that Dataset relates to
 // returns a *int32 when successful
 func (m *DatasetSummary) GetRunId()(*int32) {
@@ -169,6 +233,16 @@ func (m *DatasetSummary) GetRunId()(*int32) {
 // returns a []SchemaUsageable when successful
 func (m *DatasetSummary) GetSchemas()([]SchemaUsageable) {
     return m.schemas
+}
+// GetStart gets the start property value. Run Start timestamp
+// returns a *int64 when successful
+func (m *DatasetSummary) GetStart()(*int64) {
+    return m.start
+}
+// GetStop gets the stop property value. Run Stop timestamp
+// returns a *int64 when successful
+func (m *DatasetSummary) GetStop()(*int64) {
+    return m.stop
 }
 // GetTestId gets the testId property value. Test ID that Dataset relates to
 // returns a *int32 when successful
@@ -192,30 +266,39 @@ func (m *DatasetSummary) GetView()(DatasetSummary_viewable) {
 }
 // Serialize serializes information the current object
 func (m *DatasetSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.ProtectedTimeType.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    {
-        err = writer.WriteStringValue("description", m.GetDescription())
+    if m.GetAccess() != nil {
+        cast := (*m.GetAccess()).String()
+        err := writer.WriteStringValue("access", &cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("id", m.GetId())
+        err := writer.WriteStringValue("description", m.GetDescription())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("ordinal", m.GetOrdinal())
+        err := writer.WriteInt32Value("id", m.GetId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("runId", m.GetRunId())
+        err := writer.WriteInt32Value("ordinal", m.GetOrdinal())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("owner", m.GetOwner())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("runId", m.GetRunId())
         if err != nil {
             return err
         }
@@ -227,19 +310,31 @@ func (m *DatasetSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
                 cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
             }
         }
-        err = writer.WriteCollectionOfObjectValues("schemas", cast)
+        err := writer.WriteCollectionOfObjectValues("schemas", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("testId", m.GetTestId())
+        err := writer.WriteInt64Value("start", m.GetStart())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("testname", m.GetTestname())
+        err := writer.WriteInt64Value("stop", m.GetStop())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteInt32Value("testId", m.GetTestId())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("testname", m.GetTestname())
         if err != nil {
             return err
         }
@@ -251,18 +346,32 @@ func (m *DatasetSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
                 cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
             }
         }
-        err = writer.WriteCollectionOfObjectValues("validationErrors", cast)
+        err := writer.WriteCollectionOfObjectValues("validationErrors", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteObjectValue("view", m.GetView())
+        err := writer.WriteObjectValue("view", m.GetView())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
         }
     }
     return nil
+}
+// SetAccess sets the access property value. Access rights for the test. This defines the visibility of the Test in the UI
+func (m *DatasetSummary) SetAccess(value *DatasetSummary_access)() {
+    m.access = value
+}
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+func (m *DatasetSummary) SetAdditionalData(value map[string]any)() {
+    m.additionalData = value
 }
 // SetDescription sets the description property value. Dataset description
 func (m *DatasetSummary) SetDescription(value *string)() {
@@ -276,6 +385,10 @@ func (m *DatasetSummary) SetId(value *int32)() {
 func (m *DatasetSummary) SetOrdinal(value *int32)() {
     m.ordinal = value
 }
+// SetOwner sets the owner property value. Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+func (m *DatasetSummary) SetOwner(value *string)() {
+    m.owner = value
+}
 // SetRunId sets the runId property value. Run ID that Dataset relates to
 func (m *DatasetSummary) SetRunId(value *int32)() {
     m.runId = value
@@ -283,6 +396,14 @@ func (m *DatasetSummary) SetRunId(value *int32)() {
 // SetSchemas sets the schemas property value. List of Schema usages
 func (m *DatasetSummary) SetSchemas(value []SchemaUsageable)() {
     m.schemas = value
+}
+// SetStart sets the start property value. Run Start timestamp
+func (m *DatasetSummary) SetStart(value *int64)() {
+    m.start = value
+}
+// SetStop sets the stop property value. Run Stop timestamp
+func (m *DatasetSummary) SetStop(value *int64)() {
+    m.stop = value
 }
 // SetTestId sets the testId property value. Test ID that Dataset relates to
 func (m *DatasetSummary) SetTestId(value *int32)() {
@@ -301,22 +422,30 @@ func (m *DatasetSummary) SetView(value DatasetSummary_viewable)() {
     m.view = value
 }
 type DatasetSummaryable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    ProtectedTimeTypeable
+    GetAccess()(*DatasetSummary_access)
     GetDescription()(*string)
     GetId()(*int32)
     GetOrdinal()(*int32)
+    GetOwner()(*string)
     GetRunId()(*int32)
     GetSchemas()([]SchemaUsageable)
+    GetStart()(*int64)
+    GetStop()(*int64)
     GetTestId()(*int32)
     GetTestname()(*string)
     GetValidationErrors()([]ValidationErrorable)
     GetView()(DatasetSummary_viewable)
+    SetAccess(value *DatasetSummary_access)()
     SetDescription(value *string)()
     SetId(value *int32)()
     SetOrdinal(value *int32)()
+    SetOwner(value *string)()
     SetRunId(value *int32)()
     SetSchemas(value []SchemaUsageable)()
+    SetStart(value *int64)()
+    SetStop(value *int64)()
     SetTestId(value *int32)()
     SetTestname(value *string)()
     SetValidationErrors(value []ValidationErrorable)()
