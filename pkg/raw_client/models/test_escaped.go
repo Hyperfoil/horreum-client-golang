@@ -6,7 +6,10 @@ import (
 
 // Test represents a Test. Tests are typically equivalent to a particular benchmark
 type Test struct {
-    ProtectedType
+    // Access rights for the test. This defines the visibility of the Test in the UI
+    access *Test_access
+    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additionalData map[string]any
     // URL to external service that can be called to compare runs.  This is typically an external reporting/visulization service
     compareUrl *string
     // backend ID for backing datastore
@@ -25,6 +28,8 @@ type Test struct {
     name *string
     // Are notifications enabled for the test
     notificationsEnabled *bool
+    // Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+    owner *string
     // Label function to modify timeline labels to a produce a value used for ordering datapoints
     timelineFunction *string
     // List of label names that are used for determining metric to use as the time series
@@ -35,14 +40,24 @@ type Test struct {
 // NewTest instantiates a new Test and sets the default values.
 func NewTest()(*Test) {
     m := &Test{
-        ProtectedType: *NewProtectedType(),
     }
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateTestFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
 func CreateTestFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTest(), nil
+}
+// GetAccess gets the access property value. Access rights for the test. This defines the visibility of the Test in the UI
+// returns a *Test_access when successful
+func (m *Test) GetAccess()(*Test_access) {
+    return m.access
+}
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
+func (m *Test) GetAdditionalData()(map[string]any) {
+    return m.additionalData
 }
 // GetCompareUrl gets the compareUrl property value. URL to external service that can be called to compare runs.  This is typically an external reporting/visulization service
 // returns a *string when successful
@@ -62,7 +77,17 @@ func (m *Test) GetDescription()(*string) {
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Test) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.ProtectedType.GetFieldDeserializers()
+    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["access"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseTest_access)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAccess(val.(*Test_access))
+        }
+        return nil
+    }
     res["compareUrl"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -159,6 +184,16 @@ func (m *Test) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a
         }
         return nil
     }
+    res["owner"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOwner(val)
+        }
+        return nil
+    }
     res["timelineFunction"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -233,6 +268,11 @@ func (m *Test) GetName()(*string) {
 func (m *Test) GetNotificationsEnabled()(*bool) {
     return m.notificationsEnabled
 }
+// GetOwner gets the owner property value. Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+// returns a *string when successful
+func (m *Test) GetOwner()(*string) {
+    return m.owner
+}
 // GetTimelineFunction gets the timelineFunction property value. Label function to modify timeline labels to a produce a value used for ordering datapoints
 // returns a *string when successful
 func (m *Test) GetTimelineFunction()(*string) {
@@ -250,72 +290,81 @@ func (m *Test) GetTransformers()([]Transformerable) {
 }
 // Serialize serializes information the current object
 func (m *Test) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.ProtectedType.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    {
-        err = writer.WriteStringValue("compareUrl", m.GetCompareUrl())
+    if m.GetAccess() != nil {
+        cast := (*m.GetAccess()).String()
+        err := writer.WriteStringValue("access", &cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("datastoreId", m.GetDatastoreId())
+        err := writer.WriteStringValue("compareUrl", m.GetCompareUrl())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("description", m.GetDescription())
+        err := writer.WriteInt32Value("datastoreId", m.GetDatastoreId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("fingerprintFilter", m.GetFingerprintFilter())
+        err := writer.WriteStringValue("description", m.GetDescription())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("fingerprintFilter", m.GetFingerprintFilter())
         if err != nil {
             return err
         }
     }
     if m.GetFingerprintLabels() != nil {
-        err = writer.WriteCollectionOfStringValues("fingerprintLabels", m.GetFingerprintLabels())
+        err := writer.WriteCollectionOfStringValues("fingerprintLabels", m.GetFingerprintLabels())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("folder", m.GetFolder())
+        err := writer.WriteStringValue("folder", m.GetFolder())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("id", m.GetId())
+        err := writer.WriteInt32Value("id", m.GetId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("name", m.GetName())
+        err := writer.WriteStringValue("name", m.GetName())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteBoolValue("notificationsEnabled", m.GetNotificationsEnabled())
+        err := writer.WriteBoolValue("notificationsEnabled", m.GetNotificationsEnabled())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("timelineFunction", m.GetTimelineFunction())
+        err := writer.WriteStringValue("owner", m.GetOwner())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("timelineFunction", m.GetTimelineFunction())
         if err != nil {
             return err
         }
     }
     if m.GetTimelineLabels() != nil {
-        err = writer.WriteCollectionOfStringValues("timelineLabels", m.GetTimelineLabels())
+        err := writer.WriteCollectionOfStringValues("timelineLabels", m.GetTimelineLabels())
         if err != nil {
             return err
         }
@@ -327,12 +376,26 @@ func (m *Test) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c49
                 cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
             }
         }
-        err = writer.WriteCollectionOfObjectValues("transformers", cast)
+        err := writer.WriteCollectionOfObjectValues("transformers", cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
         }
     }
     return nil
+}
+// SetAccess sets the access property value. Access rights for the test. This defines the visibility of the Test in the UI
+func (m *Test) SetAccess(value *Test_access)() {
+    m.access = value
+}
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+func (m *Test) SetAdditionalData(value map[string]any)() {
+    m.additionalData = value
 }
 // SetCompareUrl sets the compareUrl property value. URL to external service that can be called to compare runs.  This is typically an external reporting/visulization service
 func (m *Test) SetCompareUrl(value *string)() {
@@ -370,6 +433,10 @@ func (m *Test) SetName(value *string)() {
 func (m *Test) SetNotificationsEnabled(value *bool)() {
     m.notificationsEnabled = value
 }
+// SetOwner sets the owner property value. Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+func (m *Test) SetOwner(value *string)() {
+    m.owner = value
+}
 // SetTimelineFunction sets the timelineFunction property value. Label function to modify timeline labels to a produce a value used for ordering datapoints
 func (m *Test) SetTimelineFunction(value *string)() {
     m.timelineFunction = value
@@ -383,8 +450,9 @@ func (m *Test) SetTransformers(value []Transformerable)() {
     m.transformers = value
 }
 type Testable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    ProtectedTypeable
+    GetAccess()(*Test_access)
     GetCompareUrl()(*string)
     GetDatastoreId()(*int32)
     GetDescription()(*string)
@@ -394,9 +462,11 @@ type Testable interface {
     GetId()(*int32)
     GetName()(*string)
     GetNotificationsEnabled()(*bool)
+    GetOwner()(*string)
     GetTimelineFunction()(*string)
     GetTimelineLabels()([]string)
     GetTransformers()([]Transformerable)
+    SetAccess(value *Test_access)()
     SetCompareUrl(value *string)()
     SetDatastoreId(value *int32)()
     SetDescription(value *string)()
@@ -406,6 +476,7 @@ type Testable interface {
     SetId(value *int32)()
     SetName(value *string)()
     SetNotificationsEnabled(value *bool)()
+    SetOwner(value *string)()
     SetTimelineFunction(value *string)()
     SetTimelineLabels(value []string)()
     SetTransformers(value []Transformerable)()

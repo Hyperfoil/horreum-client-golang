@@ -5,7 +5,10 @@ import (
 )
 
 type TestSummary struct {
-    ProtectedType
+    // Access rights for the test. This defines the visibility of the Test in the UI
+    access *TestSummary_access
+    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additionalData map[string]any
     // Total number of Datasets for the Test
     datasets *float64
     // Datastore id
@@ -18,6 +21,8 @@ type TestSummary struct {
     id *int32
     // Test name
     name *string
+    // Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+    owner *string
     // Total number of Runs for the Test
     runs *float64
     // Subscriptions for each test for authenticated user
@@ -26,14 +31,24 @@ type TestSummary struct {
 // NewTestSummary instantiates a new TestSummary and sets the default values.
 func NewTestSummary()(*TestSummary) {
     m := &TestSummary{
-        ProtectedType: *NewProtectedType(),
     }
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateTestSummaryFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
 // returns a Parsable when successful
 func CreateTestSummaryFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTestSummary(), nil
+}
+// GetAccess gets the access property value. Access rights for the test. This defines the visibility of the Test in the UI
+// returns a *TestSummary_access when successful
+func (m *TestSummary) GetAccess()(*TestSummary_access) {
+    return m.access
+}
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
+func (m *TestSummary) GetAdditionalData()(map[string]any) {
+    return m.additionalData
 }
 // GetDatasets gets the datasets property value. Total number of Datasets for the Test
 // returns a *float64 when successful
@@ -53,7 +68,17 @@ func (m *TestSummary) GetDescription()(*string) {
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *TestSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := m.ProtectedType.GetFieldDeserializers()
+    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["access"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseTestSummary_access)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAccess(val.(*TestSummary_access))
+        }
+        return nil
+    }
     res["datasets"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetFloat64Value()
         if err != nil {
@@ -114,6 +139,16 @@ func (m *TestSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
+    res["owner"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOwner(val)
+        }
+        return nil
+    }
     res["runs"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetFloat64Value()
         if err != nil {
@@ -157,6 +192,11 @@ func (m *TestSummary) GetId()(*int32) {
 func (m *TestSummary) GetName()(*string) {
     return m.name
 }
+// GetOwner gets the owner property value. Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+// returns a *string when successful
+func (m *TestSummary) GetOwner()(*string) {
+    return m.owner
+}
 // GetRuns gets the runs property value. Total number of Runs for the Test
 // returns a *float64 when successful
 func (m *TestSummary) GetRuns()(*float64) {
@@ -169,59 +209,82 @@ func (m *TestSummary) GetWatching()([]string) {
 }
 // Serialize serializes information the current object
 func (m *TestSummary) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
-    err := m.ProtectedType.Serialize(writer)
-    if err != nil {
-        return err
-    }
-    {
-        err = writer.WriteFloat64Value("datasets", m.GetDatasets())
+    if m.GetAccess() != nil {
+        cast := (*m.GetAccess()).String()
+        err := writer.WriteStringValue("access", &cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("datastoreId", m.GetDatastoreId())
+        err := writer.WriteFloat64Value("datasets", m.GetDatasets())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("description", m.GetDescription())
+        err := writer.WriteInt32Value("datastoreId", m.GetDatastoreId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("folder", m.GetFolder())
+        err := writer.WriteStringValue("description", m.GetDescription())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteInt32Value("id", m.GetId())
+        err := writer.WriteStringValue("folder", m.GetFolder())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteStringValue("name", m.GetName())
+        err := writer.WriteInt32Value("id", m.GetId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteFloat64Value("runs", m.GetRuns())
+        err := writer.WriteStringValue("name", m.GetName())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteStringValue("owner", m.GetOwner())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteFloat64Value("runs", m.GetRuns())
         if err != nil {
             return err
         }
     }
     if m.GetWatching() != nil {
-        err = writer.WriteCollectionOfStringValues("watching", m.GetWatching())
+        err := writer.WriteCollectionOfStringValues("watching", m.GetWatching())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
         }
     }
     return nil
+}
+// SetAccess sets the access property value. Access rights for the test. This defines the visibility of the Test in the UI
+func (m *TestSummary) SetAccess(value *TestSummary_access)() {
+    m.access = value
+}
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+func (m *TestSummary) SetAdditionalData(value map[string]any)() {
+    m.additionalData = value
 }
 // SetDatasets sets the datasets property value. Total number of Datasets for the Test
 func (m *TestSummary) SetDatasets(value *float64)() {
@@ -247,6 +310,10 @@ func (m *TestSummary) SetId(value *int32)() {
 func (m *TestSummary) SetName(value *string)() {
     m.name = value
 }
+// SetOwner sets the owner property value. Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
+func (m *TestSummary) SetOwner(value *string)() {
+    m.owner = value
+}
 // SetRuns sets the runs property value. Total number of Runs for the Test
 func (m *TestSummary) SetRuns(value *float64)() {
     m.runs = value
@@ -256,22 +323,26 @@ func (m *TestSummary) SetWatching(value []string)() {
     m.watching = value
 }
 type TestSummaryable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
-    ProtectedTypeable
+    GetAccess()(*TestSummary_access)
     GetDatasets()(*float64)
     GetDatastoreId()(*int32)
     GetDescription()(*string)
     GetFolder()(*string)
     GetId()(*int32)
     GetName()(*string)
+    GetOwner()(*string)
     GetRuns()(*float64)
     GetWatching()([]string)
+    SetAccess(value *TestSummary_access)()
     SetDatasets(value *float64)()
     SetDatastoreId(value *int32)()
     SetDescription(value *string)()
     SetFolder(value *string)()
     SetId(value *int32)()
     SetName(value *string)()
+    SetOwner(value *string)()
     SetRuns(value *float64)()
     SetWatching(value []string)()
 }

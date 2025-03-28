@@ -5,9 +5,10 @@ package horreum
 
 import (
 	"context"
-	"github.com/microsoft/kiota-abstractions-go/authentication"
 	"net/url"
 	"testing"
+
+	"github.com/microsoft/kiota-abstractions-go/authentication"
 
 	"github.com/hyperfoil/horreum-client-golang/pkg/raw_client/api"
 	"github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
@@ -119,7 +120,7 @@ func TestAddAndDeleteTest(t *testing.T) {
 	body.SetName(of("TestName"))
 	body.SetDescription(of("Simple Test"))
 	body.SetOwner(of("dev-team"))
-	body.SetAccess(of(models.PUBLIC_PROTECTEDTYPE_ACCESS))
+	body.SetAccess(of(models.PROTECTED_TEST_ACCESS))
 
 	created, err := client.RawClient.Api().Test().Post(ctx, body, nil)
 	a.Nil(err)

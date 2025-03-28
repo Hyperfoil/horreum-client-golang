@@ -16,7 +16,7 @@ type ConditionComponent struct {
     // Change detection model component title
     title *string
     // UI Component type
-    typeEscaped ConditionComponent_typeable
+    typeEscaped *ConditionComponent_type
 }
 // NewConditionComponent instantiates a new ConditionComponent and sets the default values.
 func NewConditionComponent()(*ConditionComponent) {
@@ -85,12 +85,12 @@ func (m *ConditionComponent) GetFieldDeserializers()(map[string]func(i878a80d233
         return nil
     }
     res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateConditionComponent_typeFromDiscriminatorValue)
+        val, err := n.GetEnumValue(ParseConditionComponent_type)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetTypeEscaped(val.(ConditionComponent_typeable))
+            m.SetTypeEscaped(val.(*ConditionComponent_type))
         }
         return nil
     }
@@ -112,8 +112,8 @@ func (m *ConditionComponent) GetTitle()(*string) {
     return m.title
 }
 // GetTypeEscaped gets the type property value. UI Component type
-// returns a ConditionComponent_typeable when successful
-func (m *ConditionComponent) GetTypeEscaped()(ConditionComponent_typeable) {
+// returns a *ConditionComponent_type when successful
+func (m *ConditionComponent) GetTypeEscaped()(*ConditionComponent_type) {
     return m.typeEscaped
 }
 // Serialize serializes information the current object
@@ -142,8 +142,9 @@ func (m *ConditionComponent) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             return err
         }
     }
-    {
-        err := writer.WriteObjectValue("type", m.GetTypeEscaped())
+    if m.GetTypeEscaped() != nil {
+        cast := (*m.GetTypeEscaped()).String()
+        err := writer.WriteStringValue("type", &cast)
         if err != nil {
             return err
         }
@@ -177,7 +178,7 @@ func (m *ConditionComponent) SetTitle(value *string)() {
     m.title = value
 }
 // SetTypeEscaped sets the type property value. UI Component type
-func (m *ConditionComponent) SetTypeEscaped(value ConditionComponent_typeable)() {
+func (m *ConditionComponent) SetTypeEscaped(value *ConditionComponent_type)() {
     m.typeEscaped = value
 }
 type ConditionComponentable interface {
@@ -187,10 +188,10 @@ type ConditionComponentable interface {
     GetName()(*string)
     GetProperties()(ConditionComponent_propertiesable)
     GetTitle()(*string)
-    GetTypeEscaped()(ConditionComponent_typeable)
+    GetTypeEscaped()(*ConditionComponent_type)
     SetDescription(value *string)()
     SetName(value *string)()
     SetProperties(value ConditionComponent_propertiesable)()
     SetTitle(value *string)()
-    SetTypeEscaped(value ConditionComponent_typeable)()
+    SetTypeEscaped(value *ConditionComponent_type)()
 }
