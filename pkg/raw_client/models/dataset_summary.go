@@ -32,7 +32,7 @@ type DatasetSummary struct {
     // List of Validation Errors
     validationErrors []ValidationErrorable
     // map of view component ids to the LabelValueMap to render the component for this dataset
-    view DatasetSummary_viewable
+    view IndexedLabelValueMapable
 }
 // NewDatasetSummary instantiates a new DatasetSummary and sets the default values.
 func NewDatasetSummary()(*DatasetSummary) {
@@ -198,12 +198,12 @@ func (m *DatasetSummary) GetFieldDeserializers()(map[string]func(i878a80d2330e89
         return nil
     }
     res["view"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateDatasetSummary_viewFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateIndexedLabelValueMapFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetView(val.(DatasetSummary_viewable))
+            m.SetView(val.(IndexedLabelValueMapable))
         }
         return nil
     }
@@ -260,8 +260,8 @@ func (m *DatasetSummary) GetValidationErrors()([]ValidationErrorable) {
     return m.validationErrors
 }
 // GetView gets the view property value. map of view component ids to the LabelValueMap to render the component for this dataset
-// returns a DatasetSummary_viewable when successful
-func (m *DatasetSummary) GetView()(DatasetSummary_viewable) {
+// returns a IndexedLabelValueMapable when successful
+func (m *DatasetSummary) GetView()(IndexedLabelValueMapable) {
     return m.view
 }
 // Serialize serializes information the current object
@@ -418,7 +418,7 @@ func (m *DatasetSummary) SetValidationErrors(value []ValidationErrorable)() {
     m.validationErrors = value
 }
 // SetView sets the view property value. map of view component ids to the LabelValueMap to render the component for this dataset
-func (m *DatasetSummary) SetView(value DatasetSummary_viewable)() {
+func (m *DatasetSummary) SetView(value IndexedLabelValueMapable)() {
     m.view = value
 }
 type DatasetSummaryable interface {
@@ -436,7 +436,7 @@ type DatasetSummaryable interface {
     GetTestId()(*int32)
     GetTestname()(*string)
     GetValidationErrors()([]ValidationErrorable)
-    GetView()(DatasetSummary_viewable)
+    GetView()(IndexedLabelValueMapable)
     SetAccess(value *DatasetSummary_access)()
     SetDescription(value *string)()
     SetId(value *int32)()
@@ -449,5 +449,5 @@ type DatasetSummaryable interface {
     SetTestId(value *int32)()
     SetTestname(value *string)()
     SetValidationErrors(value []ValidationErrorable)()
-    SetView(value DatasetSummary_viewable)()
+    SetView(value IndexedLabelValueMapable)()
 }

@@ -10,9 +10,9 @@ type FixedThresholdDetectionConfig struct {
     // Built In
     builtIn *bool
     // Upper bound for acceptable datapoint values
-    max FixedThresholdDetectionConfig_maxable
+    max FixThresholdConfigable
     // Lower bound for acceptable datapoint values
-    min FixedThresholdDetectionConfig_minable
+    min FixThresholdConfigable
     // The model property
     model *FixedThresholdDetectionConfig_model
 }
@@ -53,22 +53,22 @@ func (m *FixedThresholdDetectionConfig) GetFieldDeserializers()(map[string]func(
         return nil
     }
     res["max"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateFixedThresholdDetectionConfig_maxFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateFixThresholdConfigFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetMax(val.(FixedThresholdDetectionConfig_maxable))
+            m.SetMax(val.(FixThresholdConfigable))
         }
         return nil
     }
     res["min"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateFixedThresholdDetectionConfig_minFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateFixThresholdConfigFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetMin(val.(FixedThresholdDetectionConfig_minable))
+            m.SetMin(val.(FixThresholdConfigable))
         }
         return nil
     }
@@ -85,13 +85,13 @@ func (m *FixedThresholdDetectionConfig) GetFieldDeserializers()(map[string]func(
     return res
 }
 // GetMax gets the max property value. Upper bound for acceptable datapoint values
-// returns a FixedThresholdDetectionConfig_maxable when successful
-func (m *FixedThresholdDetectionConfig) GetMax()(FixedThresholdDetectionConfig_maxable) {
+// returns a FixThresholdConfigable when successful
+func (m *FixedThresholdDetectionConfig) GetMax()(FixThresholdConfigable) {
     return m.max
 }
 // GetMin gets the min property value. Lower bound for acceptable datapoint values
-// returns a FixedThresholdDetectionConfig_minable when successful
-func (m *FixedThresholdDetectionConfig) GetMin()(FixedThresholdDetectionConfig_minable) {
+// returns a FixThresholdConfigable when successful
+func (m *FixedThresholdDetectionConfig) GetMin()(FixThresholdConfigable) {
     return m.min
 }
 // GetModel gets the model property value. The model property
@@ -143,11 +143,11 @@ func (m *FixedThresholdDetectionConfig) SetBuiltIn(value *bool)() {
     m.builtIn = value
 }
 // SetMax sets the max property value. Upper bound for acceptable datapoint values
-func (m *FixedThresholdDetectionConfig) SetMax(value FixedThresholdDetectionConfig_maxable)() {
+func (m *FixedThresholdDetectionConfig) SetMax(value FixThresholdConfigable)() {
     m.max = value
 }
 // SetMin sets the min property value. Lower bound for acceptable datapoint values
-func (m *FixedThresholdDetectionConfig) SetMin(value FixedThresholdDetectionConfig_minable)() {
+func (m *FixedThresholdDetectionConfig) SetMin(value FixThresholdConfigable)() {
     m.min = value
 }
 // SetModel sets the model property value. The model property
@@ -158,11 +158,11 @@ type FixedThresholdDetectionConfigable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBuiltIn()(*bool)
-    GetMax()(FixedThresholdDetectionConfig_maxable)
-    GetMin()(FixedThresholdDetectionConfig_minable)
+    GetMax()(FixThresholdConfigable)
+    GetMin()(FixThresholdConfigable)
     GetModel()(*FixedThresholdDetectionConfig_model)
     SetBuiltIn(value *bool)()
-    SetMax(value FixedThresholdDetectionConfig_maxable)()
-    SetMin(value FixedThresholdDetectionConfig_minable)()
+    SetMax(value FixThresholdConfigable)()
+    SetMin(value FixThresholdConfigable)()
     SetModel(value *FixedThresholdDetectionConfig_model)()
 }

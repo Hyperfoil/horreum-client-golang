@@ -11,7 +11,7 @@ type ExperimentResult struct {
     // A list of Dataset Info for experiment baseline(s)
     baseline []DatasetInfoable
     // Dataset Info about dataset used for experiment
-    datasetInfo ExperimentResult_datasetInfoable
+    datasetInfo DatasetInfoable
     // The extraLabels property
     extraLabels *string
     // A list of log statements recorded while Experiment was evaluated
@@ -19,7 +19,7 @@ type ExperimentResult struct {
     // The notify property
     notify *bool
     // Experiment profile that results relates to
-    profile ExperimentResult_profileable
+    profile ExperimentProfileable
     // A Map of all comparisons and results evaluated during an Experiment
     results ExperimentResult_resultsable
 }
@@ -46,8 +46,8 @@ func (m *ExperimentResult) GetBaseline()([]DatasetInfoable) {
     return m.baseline
 }
 // GetDatasetInfo gets the datasetInfo property value. Dataset Info about dataset used for experiment
-// returns a ExperimentResult_datasetInfoable when successful
-func (m *ExperimentResult) GetDatasetInfo()(ExperimentResult_datasetInfoable) {
+// returns a DatasetInfoable when successful
+func (m *ExperimentResult) GetDatasetInfo()(DatasetInfoable) {
     return m.datasetInfo
 }
 // GetExtraLabels gets the extraLabels property value. The extraLabels property
@@ -76,12 +76,12 @@ func (m *ExperimentResult) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["datasetInfo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateExperimentResult_datasetInfoFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateDatasetInfoFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDatasetInfo(val.(ExperimentResult_datasetInfoable))
+            m.SetDatasetInfo(val.(DatasetInfoable))
         }
         return nil
     }
@@ -122,12 +122,12 @@ func (m *ExperimentResult) GetFieldDeserializers()(map[string]func(i878a80d2330e
         return nil
     }
     res["profile"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateExperimentResult_profileFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateExperimentProfileFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetProfile(val.(ExperimentResult_profileable))
+            m.SetProfile(val.(ExperimentProfileable))
         }
         return nil
     }
@@ -154,8 +154,8 @@ func (m *ExperimentResult) GetNotify()(*bool) {
     return m.notify
 }
 // GetProfile gets the profile property value. Experiment profile that results relates to
-// returns a ExperimentResult_profileable when successful
-func (m *ExperimentResult) GetProfile()(ExperimentResult_profileable) {
+// returns a ExperimentProfileable when successful
+func (m *ExperimentResult) GetProfile()(ExperimentProfileable) {
     return m.profile
 }
 // GetResults gets the results property value. A Map of all comparisons and results evaluated during an Experiment
@@ -236,7 +236,7 @@ func (m *ExperimentResult) SetBaseline(value []DatasetInfoable)() {
     m.baseline = value
 }
 // SetDatasetInfo sets the datasetInfo property value. Dataset Info about dataset used for experiment
-func (m *ExperimentResult) SetDatasetInfo(value ExperimentResult_datasetInfoable)() {
+func (m *ExperimentResult) SetDatasetInfo(value DatasetInfoable)() {
     m.datasetInfo = value
 }
 // SetExtraLabels sets the extraLabels property value. The extraLabels property
@@ -252,7 +252,7 @@ func (m *ExperimentResult) SetNotify(value *bool)() {
     m.notify = value
 }
 // SetProfile sets the profile property value. Experiment profile that results relates to
-func (m *ExperimentResult) SetProfile(value ExperimentResult_profileable)() {
+func (m *ExperimentResult) SetProfile(value ExperimentProfileable)() {
     m.profile = value
 }
 // SetResults sets the results property value. A Map of all comparisons and results evaluated during an Experiment
@@ -263,17 +263,17 @@ type ExperimentResultable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetBaseline()([]DatasetInfoable)
-    GetDatasetInfo()(ExperimentResult_datasetInfoable)
+    GetDatasetInfo()(DatasetInfoable)
     GetExtraLabels()(*string)
     GetLogs()([]DatasetLogable)
     GetNotify()(*bool)
-    GetProfile()(ExperimentResult_profileable)
+    GetProfile()(ExperimentProfileable)
     GetResults()(ExperimentResult_resultsable)
     SetBaseline(value []DatasetInfoable)()
-    SetDatasetInfo(value ExperimentResult_datasetInfoable)()
+    SetDatasetInfo(value DatasetInfoable)()
     SetExtraLabels(value *string)()
     SetLogs(value []DatasetLogable)()
     SetNotify(value *bool)()
-    SetProfile(value ExperimentResult_profileable)()
+    SetProfile(value ExperimentProfileable)()
     SetResults(value ExperimentResult_resultsable)()
 }
