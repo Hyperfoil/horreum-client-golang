@@ -15,7 +15,7 @@ type TestExport struct {
     // URL to external service that can be called to compare runs.  This is typically an external reporting/visulization service
     compareUrl *string
     // Datastore associated with test
-    datastore TestExport_datastoreable
+    datastore Datastoreable
     // backend ID for backing datastore
     datastoreId *int32
     // Description of the test
@@ -39,7 +39,7 @@ type TestExport struct {
     // Name of the team that owns the test. Users must belong to the team that owns a test to make modifications
     owner *string
     // Watcher object associated with test
-    subscriptions TestExport_subscriptionsable
+    subscriptions Watchable
     // Label function to modify timeline labels to a produce a value used for ordering datapoints
     timelineFunction *string
     // List of label names that are used for determining metric to use as the time series
@@ -82,8 +82,8 @@ func (m *TestExport) GetCompareUrl()(*string) {
     return m.compareUrl
 }
 // GetDatastore gets the datastore property value. Datastore associated with test
-// returns a TestExport_datastoreable when successful
-func (m *TestExport) GetDatastore()(TestExport_datastoreable) {
+// returns a Datastoreable when successful
+func (m *TestExport) GetDatastore()(Datastoreable) {
     return m.datastore
 }
 // GetDatastoreId gets the datastoreId property value. backend ID for backing datastore
@@ -142,12 +142,12 @@ func (m *TestExport) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
         return nil
     }
     res["datastore"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTestExport_datastoreFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateDatastoreFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetDatastore(val.(TestExport_datastoreable))
+            m.SetDatastore(val.(Datastoreable))
         }
         return nil
     }
@@ -280,12 +280,12 @@ func (m *TestExport) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
         return nil
     }
     res["subscriptions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateTestExport_subscriptionsFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateWatchFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSubscriptions(val.(TestExport_subscriptionsable))
+            m.SetSubscriptions(val.(Watchable))
         }
         return nil
     }
@@ -390,8 +390,8 @@ func (m *TestExport) GetOwner()(*string) {
     return m.owner
 }
 // GetSubscriptions gets the subscriptions property value. Watcher object associated with test
-// returns a TestExport_subscriptionsable when successful
-func (m *TestExport) GetSubscriptions()(TestExport_subscriptionsable) {
+// returns a Watchable when successful
+func (m *TestExport) GetSubscriptions()(Watchable) {
     return m.subscriptions
 }
 // GetTimelineFunction gets the timelineFunction property value. Label function to modify timeline labels to a produce a value used for ordering datapoints
@@ -592,7 +592,7 @@ func (m *TestExport) SetCompareUrl(value *string)() {
     m.compareUrl = value
 }
 // SetDatastore sets the datastore property value. Datastore associated with test
-func (m *TestExport) SetDatastore(value TestExport_datastoreable)() {
+func (m *TestExport) SetDatastore(value Datastoreable)() {
     m.datastore = value
 }
 // SetDatastoreId sets the datastoreId property value. backend ID for backing datastore
@@ -640,7 +640,7 @@ func (m *TestExport) SetOwner(value *string)() {
     m.owner = value
 }
 // SetSubscriptions sets the subscriptions property value. Watcher object associated with test
-func (m *TestExport) SetSubscriptions(value TestExport_subscriptionsable)() {
+func (m *TestExport) SetSubscriptions(value Watchable)() {
     m.subscriptions = value
 }
 // SetTimelineFunction sets the timelineFunction property value. Label function to modify timeline labels to a produce a value used for ordering datapoints
@@ -665,7 +665,7 @@ type TestExportable interface {
     GetAccess()(*TestExport_access)
     GetActions()([]Actionable)
     GetCompareUrl()(*string)
-    GetDatastore()(TestExport_datastoreable)
+    GetDatastore()(Datastoreable)
     GetDatastoreId()(*int32)
     GetDescription()(*string)
     GetExperiments()([]ExperimentProfileable)
@@ -677,7 +677,7 @@ type TestExportable interface {
     GetName()(*string)
     GetNotificationsEnabled()(*bool)
     GetOwner()(*string)
-    GetSubscriptions()(TestExport_subscriptionsable)
+    GetSubscriptions()(Watchable)
     GetTimelineFunction()(*string)
     GetTimelineLabels()([]string)
     GetTransformers()([]Transformerable)
@@ -685,7 +685,7 @@ type TestExportable interface {
     SetAccess(value *TestExport_access)()
     SetActions(value []Actionable)()
     SetCompareUrl(value *string)()
-    SetDatastore(value TestExport_datastoreable)()
+    SetDatastore(value Datastoreable)()
     SetDatastoreId(value *int32)()
     SetDescription(value *string)()
     SetExperiments(value []ExperimentProfileable)()
@@ -697,7 +697,7 @@ type TestExportable interface {
     SetName(value *string)()
     SetNotificationsEnabled(value *bool)()
     SetOwner(value *string)()
-    SetSubscriptions(value TestExport_subscriptionsable)()
+    SetSubscriptions(value Watchable)()
     SetTimelineFunction(value *string)()
     SetTimelineLabels(value []string)()
     SetTransformers(value []Transformerable)()

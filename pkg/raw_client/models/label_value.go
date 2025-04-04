@@ -13,7 +13,7 @@ type LabelValue struct {
     // Label name
     name *string
     // Summary description of Schema
-    schema LabelValue_schemaable
+    schema SchemaDescriptorable
     // Value value extracted from Dataset. This can be a scalar, array or JSON object
     value *string
 }
@@ -59,12 +59,12 @@ func (m *LabelValue) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
         return nil
     }
     res["schema"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateLabelValue_schemaFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateSchemaDescriptorFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetSchema(val.(LabelValue_schemaable))
+            m.SetSchema(val.(SchemaDescriptorable))
         }
         return nil
     }
@@ -91,8 +91,8 @@ func (m *LabelValue) GetName()(*string) {
     return m.name
 }
 // GetSchema gets the schema property value. Summary description of Schema
-// returns a LabelValue_schemaable when successful
-func (m *LabelValue) GetSchema()(LabelValue_schemaable) {
+// returns a SchemaDescriptorable when successful
+func (m *LabelValue) GetSchema()(SchemaDescriptorable) {
     return m.schema
 }
 // GetValue gets the value property value. Value value extracted from Dataset. This can be a scalar, array or JSON object
@@ -147,7 +147,7 @@ func (m *LabelValue) SetName(value *string)() {
     m.name = value
 }
 // SetSchema sets the schema property value. Summary description of Schema
-func (m *LabelValue) SetSchema(value LabelValue_schemaable)() {
+func (m *LabelValue) SetSchema(value SchemaDescriptorable)() {
     m.schema = value
 }
 // SetValue sets the value property value. Value value extracted from Dataset. This can be a scalar, array or JSON object
@@ -159,10 +159,10 @@ type LabelValueable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetId()(*int32)
     GetName()(*string)
-    GetSchema()(LabelValue_schemaable)
+    GetSchema()(SchemaDescriptorable)
     GetValue()(*string)
     SetId(value *int32)()
     SetName(value *string)()
-    SetSchema(value LabelValue_schemaable)()
+    SetSchema(value SchemaDescriptorable)()
     SetValue(value *string)()
 }
