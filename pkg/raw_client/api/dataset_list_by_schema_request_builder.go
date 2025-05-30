@@ -9,53 +9,51 @@ import (
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
-// DatasetListWithTestItemRequestBuilder builds and executes requests for operations under \api\dataset\list\{testId}
-type DatasetListWithTestItemRequestBuilder struct {
+// DatasetListBySchemaRequestBuilder builds and executes requests for operations under \api\dataset\list\bySchema
+type DatasetListBySchemaRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// DatasetListWithTestItemRequestBuilderGetQueryParameters retrieve a paginated list of Datasets, with total count, by Test
-type DatasetListWithTestItemRequestBuilderGetQueryParameters struct {
+// DatasetListBySchemaRequestBuilderGetQueryParameters retrieve a paginated list of Datasets, with total count, by Schema
+type DatasetListBySchemaRequestBuilderGetQueryParameters struct {
     // Sort direction
     // Deprecated: This property is deprecated, use DirectionAsSortDirection instead
     Direction *string `uriparametername:"direction"`
     // Sort direction
     DirectionAsSortDirection *i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.SortDirection `uriparametername:"direction"`
-    // JOSN Filter expression to apply to query
-    Filter *string `uriparametername:"filter"`
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
     // filter by page number of a paginated list of Schemas
     Page *int32 `uriparametername:"page"`
     // Field name to sort results
     Sort *string `uriparametername:"sort"`
-    // Optional View ID to filter datasets by view
-    ViewId *int32 `uriparametername:"viewId"`
+    // Schema URI
+    Uri *string `uriparametername:"uri"`
 }
-// DatasetListWithTestItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type DatasetListWithTestItemRequestBuilderGetRequestConfiguration struct {
+// DatasetListBySchemaRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type DatasetListBySchemaRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestHeaders
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *DatasetListWithTestItemRequestBuilderGetQueryParameters
+    QueryParameters *DatasetListBySchemaRequestBuilderGetQueryParameters
 }
-// NewDatasetListWithTestItemRequestBuilderInternal instantiates a new DatasetListWithTestItemRequestBuilder and sets the default values.
-func NewDatasetListWithTestItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetListWithTestItemRequestBuilder) {
-    m := &DatasetListWithTestItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/list/{testId}{?direction*,filter*,limit*,page*,sort*,viewId*}", pathParameters),
+// NewDatasetListBySchemaRequestBuilderInternal instantiates a new DatasetListBySchemaRequestBuilder and sets the default values.
+func NewDatasetListBySchemaRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetListBySchemaRequestBuilder) {
+    m := &DatasetListBySchemaRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/api/dataset/list/bySchema?uri={uri}{&direction*,limit*,page*,sort*}", pathParameters),
     }
     return m
 }
-// NewDatasetListWithTestItemRequestBuilder instantiates a new DatasetListWithTestItemRequestBuilder and sets the default values.
-func NewDatasetListWithTestItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetListWithTestItemRequestBuilder) {
+// NewDatasetListBySchemaRequestBuilder instantiates a new DatasetListBySchemaRequestBuilder and sets the default values.
+func NewDatasetListBySchemaRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*DatasetListBySchemaRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewDatasetListWithTestItemRequestBuilderInternal(urlParams, requestAdapter)
+    return NewDatasetListBySchemaRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get retrieve a paginated list of Datasets, with total count, by Test
+// Get retrieve a paginated list of Datasets, with total count, by Schema
 // returns a DatasetListable when successful
-func (m *DatasetListWithTestItemRequestBuilder) Get(ctx context.Context, requestConfiguration *DatasetListWithTestItemRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.DatasetListable, error) {
+func (m *DatasetListBySchemaRequestBuilder) Get(ctx context.Context, requestConfiguration *DatasetListBySchemaRequestBuilderGetRequestConfiguration)(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.DatasetListable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
@@ -69,9 +67,9 @@ func (m *DatasetListWithTestItemRequestBuilder) Get(ctx context.Context, request
     }
     return res.(i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.DatasetListable), nil
 }
-// ToGetRequestInformation retrieve a paginated list of Datasets, with total count, by Test
+// ToGetRequestInformation retrieve a paginated list of Datasets, with total count, by Schema
 // returns a *RequestInformation when successful
-func (m *DatasetListWithTestItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *DatasetListWithTestItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *DatasetListBySchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *DatasetListBySchemaRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
@@ -84,7 +82,7 @@ func (m *DatasetListWithTestItemRequestBuilder) ToGetRequestInformation(ctx cont
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-// returns a *DatasetListWithTestItemRequestBuilder when successful
-func (m *DatasetListWithTestItemRequestBuilder) WithUrl(rawUrl string)(*DatasetListWithTestItemRequestBuilder) {
-    return NewDatasetListWithTestItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
+// returns a *DatasetListBySchemaRequestBuilder when successful
+func (m *DatasetListBySchemaRequestBuilder) WithUrl(rawUrl string)(*DatasetListBySchemaRequestBuilder) {
+    return NewDatasetListBySchemaRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }
