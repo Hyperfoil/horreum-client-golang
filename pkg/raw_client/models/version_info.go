@@ -10,6 +10,8 @@ import (
 type VersionInfo struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Commit of Horreum
+    commit *string
     // Privacy statement
     privacyStatement *string
     // Timestamp of server startup
@@ -34,10 +36,25 @@ func CreateVersionInfoFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a
 func (m *VersionInfo) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
+// GetCommit gets the commit property value. Commit of Horreum
+// returns a *string when successful
+func (m *VersionInfo) GetCommit()(*string) {
+    return m.commit
+}
 // GetFieldDeserializers the deserialization information for the current model
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *VersionInfo) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["commit"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCommit(val)
+        }
+        return nil
+    }
     res["privacyStatement"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -88,6 +105,12 @@ func (m *VersionInfo) GetVersion()(*string) {
 // Serialize serializes information the current object
 func (m *VersionInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
+        err := writer.WriteStringValue("commit", m.GetCommit())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteStringValue("privacyStatement", m.GetPrivacyStatement())
         if err != nil {
             return err
@@ -117,6 +140,10 @@ func (m *VersionInfo) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
 func (m *VersionInfo) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetCommit sets the commit property value. Commit of Horreum
+func (m *VersionInfo) SetCommit(value *string)() {
+    m.commit = value
+}
 // SetPrivacyStatement sets the privacyStatement property value. Privacy statement
 func (m *VersionInfo) SetPrivacyStatement(value *string)() {
     m.privacyStatement = value
@@ -132,9 +159,11 @@ func (m *VersionInfo) SetVersion(value *string)() {
 type VersionInfoable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetCommit()(*string)
     GetPrivacyStatement()(*string)
     GetStartTimestamp()(*int64)
     GetVersion()(*string)
+    SetCommit(value *string)()
     SetPrivacyStatement(value *string)()
     SetStartTimestamp(value *int64)()
     SetVersion(value *string)()
