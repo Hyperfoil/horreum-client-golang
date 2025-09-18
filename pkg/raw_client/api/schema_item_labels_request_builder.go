@@ -7,6 +7,7 @@ import (
     "context"
     i53ac87e8cb3cc9276228f74d38694a208cacb99bb8ceb705eeae99fb88d4d274 "strconv"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
     i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1 "github.com/hyperfoil/horreum-client-golang/pkg/raw_client/models"
 )
 
@@ -90,37 +91,43 @@ func (m *SchemaItemLabelsRequestBuilder) Get(ctx context.Context, requestConfigu
     }
     return val, nil
 }
-// Post save new or update existing Label for a Schema (Label id only required when updating existing one)
-// returns a *int32 when successful
-func (m *SchemaItemLabelsRequestBuilder) Post(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPostRequestConfiguration)(*int32, error) {
+// Post save new Label for a Schema
+// returns a []int32 when successful
+func (m *SchemaItemLabelsRequestBuilder) Post(ctx context.Context, body []i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPostRequestConfiguration)([]int32, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "int32", nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitiveCollection(ctx, requestInfo, "int32", nil)
     if err != nil {
         return nil, err
     }
-    if res == nil {
-        return nil, nil
+    val := make([]int32, len(res))
+    for i, v := range res {
+        if v != nil {
+            val[i] = *(v.(*int32))
+        }
     }
-    return res.(*int32), nil
+    return val, nil
 }
-// Put update existing Label for a Schema (Label id only required when updating existing one)
-// returns a *int32 when successful
-func (m *SchemaItemLabelsRequestBuilder) Put(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPutRequestConfiguration)(*int32, error) {
+// Put update existing Label(s) for a Schema
+// returns a []int32 when successful
+func (m *SchemaItemLabelsRequestBuilder) Put(ctx context.Context, body []i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPutRequestConfiguration)([]int32, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "int32", nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitiveCollection(ctx, requestInfo, "int32", nil)
     if err != nil {
         return nil, err
     }
-    if res == nil {
-        return nil, nil
+    val := make([]int32, len(res))
+    for i, v := range res {
+        if v != nil {
+            val[i] = *(v.(*int32))
+        }
     }
-    return res.(*int32), nil
+    return val, nil
 }
 // ToGetRequestInformation retrieve list of Labels for a Schema by Schema ID
 // returns a *RequestInformation when successful
@@ -133,31 +140,43 @@ func (m *SchemaItemLabelsRequestBuilder) ToGetRequestInformation(ctx context.Con
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation save new or update existing Label for a Schema (Label id only required when updating existing one)
+// ToPostRequestInformation save new Label for a Schema
 // returns a *RequestInformation when successful
-func (m *SchemaItemLabelsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *SchemaItemLabelsRequestBuilder) ToPostRequestInformation(ctx context.Context, body []i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     requestInfo.Headers.TryAdd("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(body))
+    for i, v := range body {
+        if v != nil {
+            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+        }
+    }
+    err := requestInfo.SetContentFromParsableCollection(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", cast)
     if err != nil {
         return nil, err
     }
     return requestInfo, nil
 }
-// ToPutRequestInformation update existing Label for a Schema (Label id only required when updating existing one)
+// ToPutRequestInformation update existing Label(s) for a Schema
 // returns a *RequestInformation when successful
-func (m *SchemaItemLabelsRequestBuilder) ToPutRequestInformation(ctx context.Context, body i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPutRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *SchemaItemLabelsRequestBuilder) ToPutRequestInformation(ctx context.Context, body []i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.Labelable, requestConfiguration *SchemaItemLabelsRequestBuilderPutRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     requestInfo.Headers.TryAdd("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(body))
+    for i, v := range body {
+        if v != nil {
+            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+        }
+    }
+    err := requestInfo.SetContentFromParsableCollection(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", cast)
     if err != nil {
         return nil, err
     }
