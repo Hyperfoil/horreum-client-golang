@@ -20,7 +20,7 @@ type TestRequestBuilderGetQueryParameters struct {
     Direction *string `uriparametername:"direction"`
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
-    // filter by page number of a paginated list of Tests
+    // filter by page number of a paginated list of Tests starting from 1
     Page *int32 `uriparametername:"page"`
     // __my, __all or a comma delimited  list of roles
     Roles *string `uriparametername:"roles"`

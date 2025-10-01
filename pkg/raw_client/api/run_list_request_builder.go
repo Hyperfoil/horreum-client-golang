@@ -25,7 +25,7 @@ type RunListRequestBuilderGetQueryParameters struct {
     Limit *int32 `uriparametername:"limit"`
     // match all Runs?
     MatchAll *bool `uriparametername:"matchAll"`
-    // filter by page number of a paginated list of Tests
+    // filter by page number of a paginated list of Tests starting from 1
     Page *int32 `uriparametername:"page"`
     // query string to filter runs
     Query *string `uriparametername:"query"`
