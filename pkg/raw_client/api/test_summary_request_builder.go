@@ -23,7 +23,7 @@ type TestSummaryRequestBuilderGetQueryParameters struct {
     Limit *int32 `uriparametername:"limit"`
     // Filter by test name
     Name *string `uriparametername:"name"`
-    // filter by page number of a paginated list of, set to 0 means return all results 
+    // filter by page number of a paginated list of, set to 0 means return all results
     Page *int32 `uriparametername:"page"`
     // "__my", "__all" or a comma delimited  list of roles
     Roles *string `uriparametername:"roles"`

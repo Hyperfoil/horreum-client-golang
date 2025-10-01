@@ -22,7 +22,7 @@ type RunListWithTestItemRequestBuilderGetQueryParameters struct {
     DirectionAsSortDirection *i24479a9d05b05b7c1efaeda9ae24aee51c8acc6f59ee3190ae7f0941a410c8a1.SortDirection `uriparametername:"direction"`
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
-    // filter by page number of a paginated list of Tests
+    // filter by page number of a paginated list of Tests starting from 1
     Page *int32 `uriparametername:"page"`
     // Field name to sort results
     Sort *string `uriparametername:"sort"`

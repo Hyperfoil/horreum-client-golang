@@ -24,7 +24,7 @@ type DatasetListByRunWithRunItemRequestBuilderGetQueryParameters struct {
     Filter *string `uriparametername:"filter"`
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
-    // filter by page number of a paginated list of Schemas
+    // filter by page number of a paginated list of Schemas starting from 1
     Page *int32 `uriparametername:"page"`
     // Field name to sort results
     Sort *string `uriparametername:"sort"`

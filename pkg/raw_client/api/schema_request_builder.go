@@ -24,7 +24,7 @@ type SchemaRequestBuilderGetQueryParameters struct {
     // limit the number of results
     Limit *int32 `uriparametername:"limit"`
     Name *string `uriparametername:"name"`
-    // filter by page number of a paginated list of Schemas
+    // filter by page number of a paginated list of Schemas starting from 1
     Page *int32 `uriparametername:"page"`
     // __my, __all or a comma delimited  list of roles
     Roles *string `uriparametername:"roles"`
