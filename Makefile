@@ -26,7 +26,7 @@ endif
 
 # env variables
 GOLANGCI_LINT ?= ${PROJECT_BIN}/golangci-lint
-GOLANGCI_LINT_VERSION ?= "v2.0.2"
+GOLANGCI_LINT_VERSION ?= "v2.5.0"
 KIOTA ?= ${PROJECT_BIN}/kiota
 KIOTA_VERSION ?= "v1.28.0"
 HORREUM_BRANCH ?= "master"
