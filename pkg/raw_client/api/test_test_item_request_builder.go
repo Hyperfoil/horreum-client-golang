@@ -57,6 +57,11 @@ func (m *TestTestItemRequestBuilder) Delete(ctx context.Context, requestConfigur
 func (m *TestTestItemRequestBuilder) Export()(*TestItemExportRequestBuilder) {
     return NewTestItemExportRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// FilteringLabels the filteringLabels property
+// returns a *TestItemFilteringLabelsRequestBuilder when successful
+func (m *TestTestItemRequestBuilder) FilteringLabels()(*TestItemFilteringLabelsRequestBuilder) {
+    return NewTestItemFilteringLabelsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // FilteringLabelValues the filteringLabelValues property
 // returns a *TestItemFilteringLabelValuesRequestBuilder when successful
 func (m *TestTestItemRequestBuilder) FilteringLabelValues()(*TestItemFilteringLabelValuesRequestBuilder) {
