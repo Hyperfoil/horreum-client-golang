@@ -33,7 +33,8 @@ func NewTestItemFilteringLabelValuesRequestBuilder(rawUrl string, requestAdapter
     urlParams["request-raw-url"] = rawUrl
     return NewTestItemFilteringLabelValuesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get list all unique Label Values for a Test
+// Get list all unique Label Values for a Test. This api is deprecated, use /filteringLabels instead.
+// Deprecated: 
 // returns a UntypedNodeable when successful
 func (m *TestItemFilteringLabelValuesRequestBuilder) Get(ctx context.Context, requestConfiguration *TestItemFilteringLabelValuesRequestBuilderGetRequestConfiguration)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
@@ -49,7 +50,8 @@ func (m *TestItemFilteringLabelValuesRequestBuilder) Get(ctx context.Context, re
     }
     return res.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.UntypedNodeable), nil
 }
-// ToGetRequestInformation list all unique Label Values for a Test
+// ToGetRequestInformation list all unique Label Values for a Test. This api is deprecated, use /filteringLabels instead.
+// Deprecated: 
 // returns a *RequestInformation when successful
 func (m *TestItemFilteringLabelValuesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TestItemFilteringLabelValuesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
@@ -61,6 +63,7 @@ func (m *TestItemFilteringLabelValuesRequestBuilder) ToGetRequestInformation(ctx
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// Deprecated: 
 // returns a *TestItemFilteringLabelValuesRequestBuilder when successful
 func (m *TestItemFilteringLabelValuesRequestBuilder) WithUrl(rawUrl string)(*TestItemFilteringLabelValuesRequestBuilder) {
     return NewTestItemFilteringLabelValuesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
