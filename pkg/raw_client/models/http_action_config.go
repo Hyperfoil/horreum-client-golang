@@ -10,6 +10,8 @@ import (
 type HttpActionConfig struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
+    // Optional formatter to transform payload before sending; when set, wraps formatted text in {"text": "..."}
+    formatter *string
     // Action type
     typeEscaped *string
     // HTTP address
@@ -36,6 +38,16 @@ func (m *HttpActionConfig) GetAdditionalData()(map[string]any) {
 // returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *HttpActionConfig) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["formatter"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetFormatter(val)
+        }
+        return nil
+    }
     res["type"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -58,6 +70,11 @@ func (m *HttpActionConfig) GetFieldDeserializers()(map[string]func(i878a80d2330e
     }
     return res
 }
+// GetFormatter gets the formatter property value. Optional formatter to transform payload before sending; when set, wraps formatted text in {"text": "..."}
+// returns a *string when successful
+func (m *HttpActionConfig) GetFormatter()(*string) {
+    return m.formatter
+}
 // GetTypeEscaped gets the type property value. Action type
 // returns a *string when successful
 func (m *HttpActionConfig) GetTypeEscaped()(*string) {
@@ -70,6 +87,12 @@ func (m *HttpActionConfig) GetUrl()(*string) {
 }
 // Serialize serializes information the current object
 func (m *HttpActionConfig) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
+    {
+        err := writer.WriteStringValue("formatter", m.GetFormatter())
+        if err != nil {
+            return err
+        }
+    }
     {
         err := writer.WriteStringValue("type", m.GetTypeEscaped())
         if err != nil {
@@ -94,6 +117,10 @@ func (m *HttpActionConfig) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
 func (m *HttpActionConfig) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
+// SetFormatter sets the formatter property value. Optional formatter to transform payload before sending; when set, wraps formatted text in {"text": "..."}
+func (m *HttpActionConfig) SetFormatter(value *string)() {
+    m.formatter = value
+}
 // SetTypeEscaped sets the type property value. Action type
 func (m *HttpActionConfig) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
@@ -105,8 +132,10 @@ func (m *HttpActionConfig) SetUrl(value *string)() {
 type HttpActionConfigable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetFormatter()(*string)
     GetTypeEscaped()(*string)
     GetUrl()(*string)
+    SetFormatter(value *string)()
     SetTypeEscaped(value *string)()
     SetUrl(value *string)()
 }
